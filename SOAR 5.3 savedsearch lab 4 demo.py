@@ -136,6 +136,7 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
     phantom.format(container=container, template=template, parameters=parameters, name="format_2")
 
     prompt_1(container=container)
+    update_event_1(container=container)
 
     return
 
@@ -155,6 +156,41 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
     ]
 
     phantom.prompt2(container=container, user=user, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
+
+    return
+
+
+def update_event_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("update_event_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.notableId","artifact:*.id"])
+    format_2 = phantom.get_format_data(name="format_2")
+
+    parameters = []
+
+    # build parameters list for 'update_event_1' call
+    for container_artifact_item in container_artifact_data:
+        if container_artifact_item[0] is not None:
+            parameters.append({
+                "status": "in progress",
+                "comment": format_2,
+                "event_ids": container_artifact_item[0],
+                "context": {'artifact_id': container_artifact_item[1]},
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["telstra100"])
 
     return
 
