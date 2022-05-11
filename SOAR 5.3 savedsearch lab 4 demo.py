@@ -106,7 +106,55 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.act("run query", parameters=parameters, name="run_query_1", assets=["telstra100"])
+    phantom.act("run query", parameters=parameters, name="run_query_1", assets=["telstra100"], callback=format_2)
+
+    return
+
+
+def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_2() called")
+
+    template = """%%\npeer: {0} with priority {1} communicated {2}  times\n%%"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "run_query_1:action_result.data.*.peer",
+        "run_query_1:action_result.data.*.priority",
+        "run_query_1:action_result.data.*.count"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_2")
+
+    prompt_1(container=container)
+
+    return
+
+
+def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("prompt_1() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = "admin"
+    message = """Host {0} has malware detected and connected to the following peers: \n\n{1}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "list_merge_1:custom_function_result.data.*.item",
+        "format_2:formatted_data"
+    ]
+
+    phantom.prompt2(container=container, user=user, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
 
     return
 
