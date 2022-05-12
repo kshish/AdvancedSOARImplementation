@@ -21,13 +21,6 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_2_to_port_4",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
-                },
-                {
                     "id": "port_4_to_port_6",
                     "sourceNode": "4",
                     "sourcePort": "4_out",
@@ -47,9 +40,23 @@
                     "sourcePort": "6_out",
                     "targetNode": "8",
                     "targetPort": "8_in"
+                },
+                {
+                    "id": "port_2_to_port_9",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "id": "port_9_to_port_4",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "7815e56c242dfe4ac942f5f6c2d2dc262623ad54",
+            "hash": "02c68dac8522fe372307ef03b2082d23604bc3ae",
             "nodes": {
                 "0": {
                     "data": {
@@ -64,7 +71,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1000,
-                    "y": 419.9999999999998
+                    "y": 419.99999999999966
                 },
                 "1": {
                     "data": {
@@ -306,7 +313,7 @@
                     "id": "4",
                     "type": "action",
                     "x": 980,
-                    "y": 824.5
+                    "y": 920
                 },
                 "6": {
                     "data": {
@@ -388,6 +395,36 @@
                     "type": "action",
                     "x": 1180,
                     "y": 1204.5
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "code_1",
+                        "id": "9",
+                        "inputParameters": [
+                            "container:name",
+                            "container:description",
+                            "artifact:*.cef.destinationAddress",
+                            "artifact:*.cef.destinationHostName",
+                            "list_merge_1:custom_function_result.data.*.item",
+                            "format_1:formatted_data"
+                        ],
+                        "outputVariables": [
+                            "myoutputvar",
+                            "telstraCorpID",
+                            "someothervar"
+                        ],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "code",
+                    "userCode": "    code_1__myoutputvar=\"chris wuz here\"\n    \n    # Write your custom code here...\n\n",
+                    "x": 980,
+                    "y": 804.5
                 }
             },
             "notes": ""
@@ -399,7 +436,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-05-11T02:53:14.294011+00:00",
+    "create_time": "2022-05-12T00:05:02.994031+00:00",
     "draft_mode": false,
     "labels": [
         "malware"
