@@ -38,7 +38,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_1")
 
-    code_1(container=container)
+    run_query_1(container=container)
 
     return
 
@@ -191,43 +191,6 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.act("update event", parameters=parameters, name="update_event_1", assets=["telstra100"])
-
-    return
-
-
-def code_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("code_1() called")
-
-    name_value = container.get("name", None)
-    description_value = container.get("description", None)
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destinationAddress","artifact:*.cef.destinationHostName"])
-    list_merge_1_data = phantom.collect2(container=container, datapath=["list_merge_1:custom_function_result.data.*.item"])
-    format_1 = phantom.get_format_data(name="format_1")
-
-    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
-    container_artifact_cef_item_1 = [item[1] for item in container_artifact_data]
-    list_merge_1_data___item = [item[0] for item in list_merge_1_data]
-
-    code_1__myoutputvar = None
-    code_1__telstracorpid = None
-    code_1__someothervar = None
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-    code_1__myoutputvar="chris wuz here"
-    
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.save_run_data(key="code_1:myoutputvar", value=json.dumps(code_1__myoutputvar))
-    phantom.save_run_data(key="code_1:telstracorpid", value=json.dumps(code_1__telstracorpid))
-    phantom.save_run_data(key="code_1:someothervar", value=json.dumps(code_1__someothervar))
-
-    run_query_1(container=container)
 
     return
 
