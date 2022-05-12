@@ -47,9 +47,23 @@
                     "sourcePort": "6_out",
                     "targetNode": "8",
                     "targetPort": "8_in"
+                },
+                {
+                    "id": "port_3_to_port_10",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
+                },
+                {
+                    "id": "port_10_to_port_11",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
                 }
             ],
-            "hash": "7815e56c242dfe4ac942f5f6c2d2dc262623ad54",
+            "hash": "5189a89cf4b5e0307a415b38476155e72a111415",
             "nodes": {
                 "0": {
                     "data": {
@@ -64,7 +78,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1000,
-                    "y": 419.9999999999998
+                    "y": 419.99999999999966
                 },
                 "1": {
                     "data": {
@@ -83,6 +97,90 @@
                     "x": 1360,
                     "y": 1400
                 },
+                "10": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "myTelstraFun",
+                            "repoName": "chris"
+                        },
+                        "functionId": 2,
+                        "functionName": "myTelstraFun_2",
+                        "id": "10",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "myTelstraFun": {
+                                "description": "demo",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "ip"
+                                        ],
+                                        "description": "Map some IPs here",
+                                        "inputType": "list",
+                                        "label": "myIp",
+                                        "name": "myIp",
+                                        "placeholder": "111.222.33.44",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "somevalue",
+                                        "name": "somevalue",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "myTelstraFun",
+                                "name": "myTelstraFun"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "myTelstraFun": {
+                                "myIp": "artifact:*.cef.destinationAddress",
+                                "somevalue": "container:name"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "utility",
+                    "x": 680,
+                    "y": 724.5
+                },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": "admin",
+                        "functionId": 2,
+                        "functionName": "prompt_2",
+                        "id": "11",
+                        "message": "myout IP: {0}\nmy string output: {1}",
+                        "parameters": [
+                            "mytelstrafun_2:custom_function_result.data.myoutIP",
+                            "mytelstrafun_2:custom_function_result.data.myout"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "prompt",
+                    "x": 760,
+                    "y": 924.5
+                },
                 "2": {
                     "data": {
                         "advanced": {
@@ -100,7 +198,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "format",
-                    "x": 980,
+                    "x": 1000,
                     "y": 680
                 },
                 "3": {
@@ -399,7 +497,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-05-12T00:08:27.459745+00:00",
+    "create_time": "2022-05-12T01:02:11.683095+00:00",
     "draft_mode": false,
     "labels": [
         "malware"

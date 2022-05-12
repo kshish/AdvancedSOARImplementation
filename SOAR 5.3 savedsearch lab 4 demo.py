@@ -76,7 +76,18 @@ def list_merge_1(action=None, success=None, container=None, results=None, handle
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="community/list_merge", parameters=parameters, name="list_merge_1", callback=format_1)
+    phantom.custom_function(custom_function="community/list_merge", parameters=parameters, name="list_merge_1", callback=list_merge_1_callback)
+
+    return
+
+
+def list_merge_1_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("list_merge_1_callback() called")
+
+    
+    format_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    mytelstrafun_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+
 
     return
 
@@ -191,6 +202,55 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.act("update event", parameters=parameters, name="update_event_1", assets=["telstra100"])
+
+    return
+
+
+def mytelstrafun_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("mytelstrafun_2() called")
+
+    name_value = container.get("name", None)
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destinationAddress","artifact:*.id"])
+
+    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
+
+    parameters = []
+
+    parameters.append({
+        "myIp": container_artifact_cef_item_0,
+        "somevalue": name_value,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="chris/myTelstraFun", parameters=parameters, name="mytelstrafun_2", callback=prompt_2)
+
+    return
+
+
+def prompt_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("prompt_2() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = "admin"
+    message = """myout IP: {0}\nmy string output: {1}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "mytelstrafun_2:custom_function_result.data.myoutIP",
+        "mytelstrafun_2:custom_function_result.data.myout"
+    ]
+
+    phantom.prompt2(container=container, user=user, message=message, respond_in_mins=30, name="prompt_2", parameters=parameters)
 
     return
 
