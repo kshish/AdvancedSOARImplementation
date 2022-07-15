@@ -1,0 +1,31 @@
+{
+    "create_time": "2022-07-15T06:15:39.226293+00:00",
+    "custom_function_id": "96895b6bf07307e78682b68407f5aace3c8ca529",
+    "description": "Filtering nested lists. Makes the code cleaner.",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "A comma seperated list of values for use in filtering the list of lists",
+            "input_type": "item",
+            "name": "filter_items",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "A list of lists, because of the way Phantom handles components, if this is returned from another custom function, it will be triple nested.  For example:\n\n[\n    [\n       ['a', 'b'],\n       ['c', 'd'],\n       ['e', 'f']\n    ]\n]\n\nAs such we will take the first list element, which happens to be the nested list we are looking for but if this doesn't work for you, please feel free to edit this up to your needs. :)",
+            "input_type": "list",
+            "name": "list_obj",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "filtered_list",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.3.0.84310",
+    "python_version": "2.7"
+}
