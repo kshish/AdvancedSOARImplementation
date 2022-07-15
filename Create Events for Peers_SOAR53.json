@@ -1,0 +1,265 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "",
+            "edges": [
+                {
+                    "id": "port_10_to_port_1",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                },
+                {
+                    "id": "port_0_to_port_7",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_18",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "18",
+                    "targetPort": "18_in"
+                },
+                {
+                    "id": "port_18_to_port_10",
+                    "sourceNode": "18",
+                    "sourcePort": "18_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
+                }
+            ],
+            "hash": "25f88e8403857275ddf21f0f7fbc92f69c6a6ec2",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "x": 20,
+                    "y": 0
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
+                    "x": 20,
+                    "y": 756
+                },
+                "10": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Create Containers",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "L5_CF_Create_Containers_From_List_py3_SOAR53",
+                            "repoName": "kshish-phantom"
+                        },
+                        "functionId": 6,
+                        "functionName": "create_containers",
+                        "id": "10",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "L5_CF_Create_Containers_From_List_py3_SOAR53": {
+                                "description": "    From a list of lists, create a set of Phantom containers and add in the appropriate artifacts\n    \n    Args:\n        to_be_containerized: List of Lists for things to be containerized.\n        container_label: This will be the label applied to the container\n    \n    Returns a JSON-serializable object that implements the configured data paths:\n        new_container_ids: List of container id's that have been created by this Custom Function.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_label",
+                                        "name": "container_label",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "to_be_containerized",
+                                        "name": "to_be_containerized",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "L5_CF_Create_Containers_From_List_py3_SOAR53",
+                                "name": "L5_CF_Create_Containers_From_List_py3_SOAR53"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "L5_CF_Create_Containers_From_List_py3_SOAR53": {
+                                "container_label": "container:label",
+                                "to_be_containerized": "filter_list:custom_function_result.data.filtered_list"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "utility",
+                    "x": 0,
+                    "y": 600
+                },
+                "18": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Filter List",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "L5_CF_Filter_List_copy_by_scott",
+                            "repoName": "local"
+                        },
+                        "functionId": 9,
+                        "functionName": "filter_list",
+                        "id": "18",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "L5_CF_Filter_List_copy_by_scott": {
+                                "description": "Filtering nested lists. Makes the code cleaner.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A comma seperated list of values for use in filtering the list of lists",
+                                        "inputType": "item",
+                                        "label": "filter_items",
+                                        "name": "filter_items",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A list of lists, because of the way Phantom handles components, if this is returned from another custom function, it will be triple nested.  For example:\n\n[\n    [\n       ['a', 'b'],\n       ['c', 'd'],\n       ['e', 'f']\n    ]\n]\n\nAs such we will take the first list element, which happens to be the nested list we are looking for but if this doesn't work for you, please feel free to edit this up to your needs. :)",
+                                        "inputType": "list",
+                                        "label": "list_obj",
+                                        "name": "list_obj",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "L5_CF_Filter_List_copy_by_scott",
+                                "name": "L5_CF_Filter_List_copy_by_scott"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "L5_CF_Filter_List_copy_by_scott": {
+                                "filter_items": "high,critical",
+                                "list_obj": "retrieve_list:custom_function_result.data.listContents"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "18",
+                    "type": "utility",
+                    "x": 0,
+                    "y": 440
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Retrieve List",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "L5_CF_Retrieve_List_SOAR53",
+                            "repoName": "kshish-phantom"
+                        },
+                        "functionId": 4,
+                        "functionName": "retrieve_list",
+                        "id": "7",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "L5_CF_Retrieve_List_SOAR53": {
+                                "description": "This CF retrieves the contents of a list",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "listName",
+                                        "name": "listName",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "L5_CF_Retrieve_List_SOAR53",
+                                "name": "L5_CF_Retrieve_List_SOAR53"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "L5_CF_Retrieve_List_SOAR53": {
+                                "listName": "playbook_input:peerlist"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "utility",
+                    "x": 0,
+                    "y": 300
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": [
+            {
+                "contains": [],
+                "description": "Name of list of peers",
+                "name": "peerList"
+            }
+        ],
+        "output_spec": null,
+        "playbook_type": "data",
+        "python_version": "3",
+        "schema": "5.0.6",
+        "version": "5.3.0.84310"
+    },
+    "create_time": "2022-07-15T06:12:48.114543+00:00",
+    "draft_mode": false,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
