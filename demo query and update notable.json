@@ -21,26 +21,14 @@
                     "targetPort": "3_in"
                 },
                 {
-                    "id": "port_3_to_port_4",
+                    "id": "port_3_to_port_5",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_4_to_port_5",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
                     "targetNode": "5",
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "80a3e0df66103b4a4da991de0816db808664e85e",
+            "hash": "8862a39009ef7687e903da82272b3a3d467bc20f",
             "nodes": {
                 "0": {
                     "data": {
@@ -133,51 +121,6 @@
                     "x": 960,
                     "y": 784.5
                 },
-                "4": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "conditions": [
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 0,
-                                        "op": "==",
-                                        "param": "run_query_1:action_result.data.*.priority",
-                                        "value": "high"
-                                    },
-                                    {
-                                        "op": "==",
-                                        "param": "run_query_1:action_result.data.*.priority",
-                                        "value": "medium"
-                                    }
-                                ],
-                                "conditionIndex": 0,
-                                "logic": "or"
-                            }
-                        ],
-                        "customDatapaths": {
-                            "run_query_1": {
-                                "action_result.data.*.priority": {
-                                    "contains": [],
-                                    "isCustomDatapath": true,
-                                    "label": "action_result.data.*.priority",
-                                    "value": "run_query_1:action_result.data.*.priority"
-                                }
-                            }
-                        },
-                        "functionId": 1,
-                        "functionName": "filter_1",
-                        "id": "4",
-                        "type": "filter"
-                    },
-                    "errors": {},
-                    "id": "4",
-                    "type": "filter",
-                    "x": 1020,
-                    "y": 864.5
-                },
                 "5": {
                     "data": {
                         "action": "update event",
@@ -212,7 +155,7 @@
                     "id": "5",
                     "type": "action",
                     "x": 960,
-                    "y": 1044.5
+                    "y": 1040
                 }
             },
             "notes": ""
@@ -224,7 +167,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-09-29T17:13:45.322128+00:00",
+    "create_time": "2022-09-29T17:14:52.996119+00:00",
     "draft_mode": false,
     "labels": [
         "malware"
