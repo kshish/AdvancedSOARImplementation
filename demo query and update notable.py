@@ -79,8 +79,10 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
     # collect filtered artifact ids and results for 'if' condition 1
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
+        logical_operator="or",
         conditions=[
-            ["run_query_1:action_result.data.*.priority", "==", "high"]
+            ["run_query_1:action_result.data.*.priority", "==", "high"],
+            ["run_query_1:action_result.data.*.priority", "==", "medium"]
         ],
         name="filter_1:condition_1")
 

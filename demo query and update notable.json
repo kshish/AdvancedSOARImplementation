@@ -40,7 +40,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "2496f386155ca0b82de867b8f759bea731b79c86",
+            "hash": "80a3e0df66103b4a4da991de0816db808664e85e",
             "nodes": {
                 "0": {
                     "data": {
@@ -146,12 +146,27 @@
                                         "op": "==",
                                         "param": "run_query_1:action_result.data.*.priority",
                                         "value": "high"
+                                    },
+                                    {
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.priority",
+                                        "value": "medium"
                                     }
                                 ],
                                 "conditionIndex": 0,
-                                "logic": "and"
+                                "logic": "or"
                             }
                         ],
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.priority": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.priority",
+                                    "value": "run_query_1:action_result.data.*.priority"
+                                }
+                            }
+                        },
                         "functionId": 1,
                         "functionName": "filter_1",
                         "id": "4",
@@ -209,7 +224,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-09-29T17:12:12.227211+00:00",
+    "create_time": "2022-09-29T17:13:45.322128+00:00",
     "draft_mode": false,
     "labels": [
         "malware"
