@@ -54,8 +54,8 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     if format_1 is not None:
         parameters.append({
-            "command": "savedsearch",
             "query": format_1,
+            "command": "savedsearch",
         })
 
     ################################################################################
@@ -103,7 +103,37 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["es100"])
+    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["es100"], callback=l5_mm_03_store_peer_list_1)
+
+    return
+
+
+def l5_mm_03_store_peer_list_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("l5_mm_03_store_peer_list_1() called")
+
+    id_value = container.get("id", None)
+    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.data","run_query_1:action_result.parameter.context.artifact_id"], action_results=results)
+
+    run_query_1_result_item_0 = [item[0] for item in run_query_1_result_data]
+
+    parameters = []
+
+    parameters.append({
+        "container_id": id_value,
+        "peer_list": run_query_1_result_item_0,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="chris/L5_MM_03_store_peer_list", parameters=parameters, name="l5_mm_03_store_peer_list_1")
 
     return
 

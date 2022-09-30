@@ -26,9 +26,16 @@
                     "sourcePort": "3_out",
                     "targetNode": "5",
                     "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "8862a39009ef7687e903da82272b3a3d467bc20f",
+            "hash": "48b7aa53ae51738f75ec79fb032265619064595b",
             "nodes": {
                 "0": {
                     "data": {
@@ -43,7 +50,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -156,6 +163,66 @@
                     "type": "action",
                     "x": 960,
                     "y": 1040
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "L5_MM_03_store_peer_list",
+                            "repoName": "chris"
+                        },
+                        "functionId": 1,
+                        "functionName": "L5_MM_03_store_peer_list_1",
+                        "id": "6",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "L5_MM_03_store_peer_list": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "phantom container id"
+                                        ],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "peer_list",
+                                        "name": "peer_list",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "L5_MM_03_store_peer_list",
+                                "name": "L5_MM_03_store_peer_list"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "L5_MM_03_store_peer_list": {
+                                "container_id": "container:id",
+                                "peer_list": "run_query_1:action_result.data"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "utility",
+                    "x": 1320,
+                    "y": 1064.5
                 }
             },
             "notes": ""
@@ -167,7 +234,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-09-29T17:14:52.996119+00:00",
+    "create_time": "2022-09-30T20:18:51.211801+00:00",
     "draft_mode": false,
     "labels": [
         "malware"
