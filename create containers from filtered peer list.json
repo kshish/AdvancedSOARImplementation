@@ -26,9 +26,16 @@
                     "sourcePort": "3_out",
                     "targetNode": "4",
                     "targetPort": "4_in"
+                },
+                {
+                    "id": "port_3_to_port_5",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
                 }
             ],
-            "hash": "dc2dcd2e667ff189ffc28c8fd3485fd2b024c65e",
+            "hash": "4f927b420f4ec6dcbb32cb36deb34ef7be8be8c3",
             "nodes": {
                 "0": {
                     "data": {
@@ -332,6 +339,64 @@
                     "type": "utility",
                     "x": 1240,
                     "y": 884.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "L5_MM_Create_containers_from_list",
+                            "repoName": "chris"
+                        },
+                        "functionId": 4,
+                        "functionName": "L5_MM_Create_containers_from_list_4",
+                        "id": "5",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "L5_MM_Create_containers_from_list": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "container_label",
+                                        "name": "container_label",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "to_be_containerized",
+                                        "name": "to_be_containerized",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "L5_MM_Create_containers_from_list",
+                                "name": "L5_MM_Create_containers_from_list"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "L5_MM_Create_containers_from_list": {
+                                "container_label": "splunk",
+                                "to_be_containerized": "l5_cf_filter_list_soar53_2:custom_function_result.data.filtered_list"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "utility",
+                    "x": 980,
+                    "y": 924.5
                 }
             },
             "notes": ""
@@ -349,7 +414,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-09-30T20:32:17.789273+00:00",
+    "create_time": "2022-09-30T20:35:27.591527+00:00",
     "draft_mode": false,
     "labels": [
         "*"

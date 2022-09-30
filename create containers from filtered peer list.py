@@ -68,7 +68,18 @@ def l5_cf_filter_list_soar53_2(action=None, success=None, container=None, result
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="chris/L5_CF_Filter_List_SOAR53", parameters=parameters, name="l5_cf_filter_list_soar53_2", callback=debug_3)
+    phantom.custom_function(custom_function="chris/L5_CF_Filter_List_SOAR53", parameters=parameters, name="l5_cf_filter_list_soar53_2", callback=l5_cf_filter_list_soar53_2_callback)
+
+    return
+
+
+def l5_cf_filter_list_soar53_2_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("l5_cf_filter_list_soar53_2_callback() called")
+
+    
+    debug_3(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    l5_mm_create_containers_from_list_4(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+
 
     return
 
@@ -106,6 +117,35 @@ def debug_3(action=None, success=None, container=None, results=None, handle=None
     ################################################################################
 
     phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_3")
+
+    return
+
+
+def l5_mm_create_containers_from_list_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("l5_mm_create_containers_from_list_4() called")
+
+    l5_cf_filter_list_soar53_2__result = phantom.collect2(container=container, datapath=["l5_cf_filter_list_soar53_2:custom_function_result.data.filtered_list"])
+
+    l5_cf_filter_list_soar53_2_data_filtered_list = [item[0] for item in l5_cf_filter_list_soar53_2__result]
+
+    parameters = []
+
+    parameters.append({
+        "container_label": "splunk",
+        "to_be_containerized": l5_cf_filter_list_soar53_2_data_filtered_list,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="chris/L5_MM_Create_containers_from_list", parameters=parameters, name="l5_mm_create_containers_from_list_4")
 
     return
 
