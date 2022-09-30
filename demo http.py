@@ -38,7 +38,44 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["mylocalsoar"])
+    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["mylocalsoar"], callback=debug_1)
+
+    return
+
+
+def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("debug_1() called")
+
+    get_data_1_result_data = phantom.collect2(container=container, datapath=["get_data_1:action_result.data","get_data_1:action_result.parameter.context.artifact_id"], action_results=results)
+
+    get_data_1_result_item_0 = [item[0] for item in get_data_1_result_data]
+
+    parameters = []
+
+    parameters.append({
+        "input_1": get_data_1_result_item_0,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_1")
 
     return
 
