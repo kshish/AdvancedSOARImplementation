@@ -1,0 +1,47 @@
+{
+    "create_time": "2022-09-30T15:27:09.967815+00:00",
+    "custom_function_id": "41a06e3b63c795288a6608268d227449f04d4c5c",
+    "description": "",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "list",
+            "name": "peer",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "list",
+            "name": "priority",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "list",
+            "name": "count",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [
+                "phantom container id"
+            ],
+            "description": "",
+            "input_type": "list",
+            "name": "container_id",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "result_list_name",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.3.0.84310",
+    "python_version": "3"
+}
