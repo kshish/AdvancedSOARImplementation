@@ -33,9 +33,16 @@
                     "sourcePort": "5_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "0bdd3bba1a864e57220889dbaf8e9a3a1597adae",
+            "hash": "ff0ce8fc8554f011239add842f8bf29090e6a643",
             "nodes": {
                 "0": {
                     "data": {
@@ -245,6 +252,35 @@
                     "type": "utility",
                     "x": 1320,
                     "y": 1064.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_create_containers_from_filtered_peer_list_1",
+                        "id": "7",
+                        "inputs": {
+                            "list_name": {
+                                "datapaths": [
+                                    "l5_mm_03_save_peer_list_1:custom_function_result.data.result_list_name"
+                                ],
+                                "deduplicate": false
+                            }
+                        },
+                        "playbookName": "create containers from filtered peer list",
+                        "playbookRepo": 3,
+                        "playbookRepoName": "chris",
+                        "playbookType": "data",
+                        "synchronous": false,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "playbook",
+                    "x": 1320,
+                    "y": 1224.5
                 }
             },
             "notes": ""
@@ -256,7 +292,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-09-30T20:23:25.525347+00:00",
+    "create_time": "2022-09-30T20:28:37.216626+00:00",
     "draft_mode": false,
     "labels": [
         "malware"

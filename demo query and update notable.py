@@ -137,7 +137,34 @@ def l5_mm_03_save_peer_list_1(action=None, success=None, container=None, results
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="chris/L5_MM_03_save_peer_list", parameters=parameters, name="l5_mm_03_save_peer_list_1")
+    phantom.custom_function(custom_function="chris/L5_MM_03_save_peer_list", parameters=parameters, name="l5_mm_03_save_peer_list_1", callback=playbook_create_containers_from_filtered_peer_list_1)
+
+    return
+
+
+def playbook_create_containers_from_filtered_peer_list_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("playbook_create_containers_from_filtered_peer_list_1() called")
+
+    l5_mm_03_save_peer_list_1__result = phantom.collect2(container=container, datapath=["l5_mm_03_save_peer_list_1:custom_function_result.data.result_list_name"])
+
+    l5_mm_03_save_peer_list_1_data_result_list_name = [item[0] for item in l5_mm_03_save_peer_list_1__result]
+
+    inputs = {
+        "list_name": l5_mm_03_save_peer_list_1_data_result_list_name,
+    }
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    # call playbook "chris/create containers from filtered peer list", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("chris/create containers from filtered peer list", container=container, inputs=inputs)
 
     return
 
