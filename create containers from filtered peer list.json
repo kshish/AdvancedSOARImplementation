@@ -1,0 +1,185 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "",
+            "edges": [
+                {
+                    "id": "port_0_to_port_2",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_3",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                }
+            ],
+            "hash": "a396d1cb8d3f7c8740870c7ad397280fedde7cbe",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "x": 1000,
+                    "y": 419.9999999999999
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
+                    "x": 1000,
+                    "y": 1000
+                },
+                "2": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "L5_MM_retrieveList",
+                            "repoName": "chris"
+                        },
+                        "functionId": 1,
+                        "functionName": "L5_MM_retrieveList_1",
+                        "id": "2",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "L5_MM_retrieveList": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "listName",
+                                        "name": "listName",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "L5_MM_retrieveList",
+                                "name": "L5_MM_retrieveList"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "L5_MM_retrieveList": {
+                                "listName": "playbook_input:list_name"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "utility",
+                    "x": 980,
+                    "y": 624.5
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "L5_CF_Filter_List_SOAR53",
+                            "repoName": "chris"
+                        },
+                        "functionId": 2,
+                        "functionName": "L5_CF_Filter_List_SOAR53_2",
+                        "id": "3",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "L5_CF_Filter_List_SOAR53": {
+                                "description": "Filtering nested lists. Makes the code cleaner.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A comma seperated list of values for use in filtering the list of lists",
+                                        "inputType": "item",
+                                        "label": "filter_items",
+                                        "name": "filter_items",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A list of lists, because of the way Phantom handles components, if this is returned from another custom function, it will be triple nested.  For example:\n\n[\n    [\n       ['a', 'b'],\n       ['c', 'd'],\n       ['e', 'f']\n    ]\n]\n\nAs such we will take the first list element, which happens to be the nested list we are looking for but if this doesn't work for you, please feel free to edit this up to your needs. :)",
+                                        "inputType": "list",
+                                        "label": "list_obj",
+                                        "name": "list_obj",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "L5_CF_Filter_List_SOAR53",
+                                "name": "L5_CF_Filter_List_SOAR53"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "L5_CF_Filter_List_SOAR53": {
+                                "filter_items": "high",
+                                "list_obj": "l5_mm_retrievelist_1:custom_function_result.data.listContents"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "utility",
+                    "x": 980,
+                    "y": 764.5
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": [
+            {
+                "contains": [],
+                "description": "peer list",
+                "name": "list_name"
+            }
+        ],
+        "output_spec": null,
+        "playbook_type": "data",
+        "python_version": "3",
+        "schema": "5.0.6",
+        "version": "5.3.0.84310"
+    },
+    "create_time": "2022-09-30T20:27:27.956010+00:00",
+    "draft_mode": false,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
