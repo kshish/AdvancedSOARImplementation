@@ -23,9 +23,9 @@ def L5_MM_Create_containers_from_list(container_label=None, to_be_containerized=
     for item in to_be_containerized[0]:
         phantom.debug(item)
         #(count, peer, priority) = item
-        count= item['count']
-        peer = item['peer']
-        priority= item['priority']
+        count= item[2]
+        peer = item[0]
+        priority= item[1]
         phantom.debug(peer)
         phantom.debug(priority)
         phantom.debug(count)
