@@ -103,24 +103,28 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["es100"], callback=l5_mm_03_store_peer_list_1)
+    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["es100"], callback=l5_mm_03_save_peer_list_1)
 
     return
 
 
-def l5_mm_03_store_peer_list_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("l5_mm_03_store_peer_list_1() called")
+def l5_mm_03_save_peer_list_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("l5_mm_03_save_peer_list_1() called")
 
     id_value = container.get("id", None)
-    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.data","run_query_1:action_result.parameter.context.artifact_id"], action_results=results)
+    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.data.*.peer","run_query_1:action_result.data.*.priority","run_query_1:action_result.data.*.count","run_query_1:action_result.parameter.context.artifact_id"], action_results=results)
 
     run_query_1_result_item_0 = [item[0] for item in run_query_1_result_data]
+    run_query_1_result_item_1 = [item[1] for item in run_query_1_result_data]
+    run_query_1_result_item_2 = [item[2] for item in run_query_1_result_data]
 
     parameters = []
 
     parameters.append({
+        "peer": run_query_1_result_item_0,
+        "priority": run_query_1_result_item_1,
+        "count": run_query_1_result_item_2,
         "container_id": id_value,
-        "peer_list": run_query_1_result_item_0,
     })
 
     ################################################################################
@@ -133,7 +137,7 @@ def l5_mm_03_store_peer_list_1(action=None, success=None, container=None, result
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="chris/L5_MM_03_store_peer_list", parameters=parameters, name="l5_mm_03_store_peer_list_1")
+    phantom.custom_function(custom_function="chris/L5_MM_03_save_peer_list", parameters=parameters, name="l5_mm_03_save_peer_list_1")
 
     return
 

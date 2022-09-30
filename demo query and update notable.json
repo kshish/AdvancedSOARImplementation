@@ -35,7 +35,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "48b7aa53ae51738f75ec79fb032265619064595b",
+            "hash": "0bdd3bba1a864e57220889dbaf8e9a3a1597adae",
             "nodes": {
                 "0": {
                     "data": {
@@ -171,26 +171,24 @@
                         },
                         "customFunction": {
                             "draftMode": false,
-                            "name": "L5_MM_03_store_peer_list",
+                            "name": "L5_MM_03_save_peer_list",
                             "repoName": "chris"
                         },
                         "functionId": 1,
-                        "functionName": "L5_MM_03_store_peer_list_1",
+                        "functionName": "L5_MM_03_save_peer_list_1",
                         "id": "6",
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
-                            "L5_MM_03_store_peer_list": {
+                            "L5_MM_03_save_peer_list": {
                                 "description": "",
                                 "fields": [
                                     {
-                                        "dataTypes": [
-                                            "phantom container id"
-                                        ],
+                                        "dataTypes": [],
                                         "description": "",
-                                        "inputType": "item",
-                                        "label": "container_id",
-                                        "name": "container_id",
+                                        "inputType": "list",
+                                        "label": "peer",
+                                        "name": "peer",
                                         "placeholder": "",
                                         "renderType": "datapath",
                                         "required": false
@@ -199,22 +197,46 @@
                                         "dataTypes": [],
                                         "description": "",
                                         "inputType": "list",
-                                        "label": "peer_list",
-                                        "name": "peer_list",
+                                        "label": "priority",
+                                        "name": "priority",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "count",
+                                        "name": "count",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "phantom container id"
+                                        ],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "container_id",
+                                        "name": "container_id",
                                         "placeholder": "",
                                         "renderType": "datapath",
                                         "required": false
                                     }
                                 ],
-                                "label": "L5_MM_03_store_peer_list",
-                                "name": "L5_MM_03_store_peer_list"
+                                "label": "L5_MM_03_save_peer_list",
+                                "name": "L5_MM_03_save_peer_list"
                             }
                         },
                         "utilityType": "custom_function",
                         "values": {
-                            "L5_MM_03_store_peer_list": {
+                            "L5_MM_03_save_peer_list": {
                                 "container_id": "container:id",
-                                "peer_list": "run_query_1:action_result.data"
+                                "count": "run_query_1:action_result.data.*.count",
+                                "peer": "run_query_1:action_result.data.*.peer",
+                                "priority": "run_query_1:action_result.data.*.priority"
                             }
                         }
                     },
@@ -234,7 +256,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-09-30T20:18:51.211801+00:00",
+    "create_time": "2022-09-30T20:23:25.525347+00:00",
     "draft_mode": false,
     "labels": [
         "malware"
