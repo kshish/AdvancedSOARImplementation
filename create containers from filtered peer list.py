@@ -54,7 +54,7 @@ def l5_cf_filter_list_soar53_2(action=None, success=None, container=None, result
     parameters = []
 
     parameters.append({
-        "filter_items": "high",
+        "filter_items": "critical",
         "list_obj": l5_mm_retrievelist_1_data_listcontents,
     })
 

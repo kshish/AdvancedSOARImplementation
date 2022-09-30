@@ -21,7 +21,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "a396d1cb8d3f7c8740870c7ad397280fedde7cbe",
+            "hash": "55c22d5cda5169c7d6e7ce3732487edbe660fb60",
             "nodes": {
                 "0": {
                     "data": {
@@ -149,7 +149,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "L5_CF_Filter_List_SOAR53": {
-                                "filter_items": "high",
+                                "filter_items": "critical",
                                 "list_obj": "l5_mm_retrievelist_1:custom_function_result.data.listContents"
                             }
                         }
@@ -176,7 +176,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-09-30T20:27:27.956010+00:00",
+    "create_time": "2022-09-30T20:31:06.871605+00:00",
     "draft_mode": false,
     "labels": [
         "*"
