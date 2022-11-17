@@ -33,9 +33,28 @@
                     "sourcePort": "5_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_8",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_8_to_port_9",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
                 }
             ],
-            "hash": "13fbfe81550700c041c6a91e4c41f530b052904b",
+            "hash": "b7507dcbaede8832882a11fea2412a5a91492b57",
             "nodes": {
                 "0": {
                     "data": {
@@ -67,7 +86,7 @@
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
                     "x": 1000,
-                    "y": 1160
+                    "y": 1320
                 },
                 "2": {
                     "data": {
@@ -164,14 +183,95 @@
                             "format_3:formatted_data"
                         ],
                         "responseTime": 30,
-                        "responses": [],
+                        "responses": [
+                            {
+                                "responseOptions": [
+                                    "Yes",
+                                    "No"
+                                ],
+                                "responsePrompt": "WOuld you like to change status to In Progress",
+                                "responseType": "yes/no"
+                            },
+                            {
+                                "responsePrompt": "Please assign owner if yes",
+                                "responseType": "message"
+                            }
+                        ],
                         "type": "prompt"
                     },
                     "errors": {},
                     "id": "6",
                     "type": "prompt",
                     "x": 1060,
-                    "y": 944.5
+                    "y": 920
+                },
+                "8": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "prompt_1:action_result.summary.responses.0",
+                                        "value": "Yes"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "decision_1",
+                        "id": "8",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "decision",
+                    "x": 1060,
+                    "y": 1064.5
+                },
+                "9": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunk100"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_event_1",
+                        "id": "9",
+                        "parameters": {
+                            "comment": "format_3:formatted_data",
+                            "event_ids": "artifact:*.cef.notableId",
+                            "owner": "prompt_1:action_result.summary.responses.1",
+                            "status": "in progress"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "action",
+                    "x": 980,
+                    "y": 1244.5
                 }
             },
             "notes": ""
@@ -183,7 +283,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-11-17T19:16:06.622019+00:00",
+    "create_time": "2022-11-17T19:28:49.588442+00:00",
     "draft_mode": false,
     "labels": [
         "malware"
