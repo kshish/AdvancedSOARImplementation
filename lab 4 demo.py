@@ -49,7 +49,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_1() called")
 
-    template = """index=main dest={0}\n"""
+    template = """earliest=-1h index=main dest={0}\n"""
 
     # parameter list for template variable replacement
     parameters = [
