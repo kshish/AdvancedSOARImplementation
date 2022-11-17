@@ -19,9 +19,16 @@
                     "sourcePort": "3_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_4",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "b8130b840ea51954d8cd3762a92c93134fcd5660",
+            "hash": "f8494883ce43ef8dae3d4a37123191bdd92c516f",
             "nodes": {
                 "0": {
                     "data": {
@@ -52,8 +59,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 1000,
-                    "y": 1000
+                    "x": 1020,
+                    "y": 1120
                 },
                 "2": {
                     "data": {
@@ -113,6 +120,37 @@
                     "type": "format",
                     "x": 980,
                     "y": 524.5
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.dest_bunit": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.dest_bunit",
+                                    "value": "run_query_1:action_result.data.*.dest_bunit"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "4",
+                        "parameters": [
+                            "run_query_1:action_result.data.*.dest_asset",
+                            "run_query_1:action_result.data.*.dest_bunit"
+                        ],
+                        "template": "%%\nDestination Asset is: {0}\nDestination Bussiness Unit: {1}\n%%\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "format",
+                    "x": 960,
+                    "y": 824.5
                 }
             },
             "notes": ""
@@ -124,7 +162,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-11-17T18:50:13.215593+00:00",
+    "create_time": "2022-11-17T18:56:43.689581+00:00",
     "draft_mode": false,
     "labels": [
         "malware"
