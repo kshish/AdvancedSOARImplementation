@@ -26,9 +26,16 @@
                     "sourcePort": "2_out",
                     "targetNode": "4",
                     "targetPort": "4_in"
+                },
+                {
+                    "id": "port_4_to_port_5",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
                 }
             ],
-            "hash": "f8494883ce43ef8dae3d4a37123191bdd92c516f",
+            "hash": "10e7c11ceb6ae24c739b7e55b29cc26d4abe4da2",
             "nodes": {
                 "0": {
                     "data": {
@@ -151,6 +158,29 @@
                     "type": "format",
                     "x": 960,
                     "y": 824.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": "admin",
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "5",
+                        "message": "{0}",
+                        "parameters": [
+                            "format_2:formatted_data"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "prompt",
+                    "x": 1040,
+                    "y": 964.5
                 }
             },
             "notes": ""
@@ -162,7 +192,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-11-17T18:56:43.689581+00:00",
+    "create_time": "2022-11-17T18:57:37.418328+00:00",
     "draft_mode": false,
     "labels": [
         "malware"
