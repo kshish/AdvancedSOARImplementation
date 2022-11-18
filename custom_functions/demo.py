@@ -17,9 +17,8 @@ def demo(myIp=None, somevalue=None, **kwargs):
     outputs = {}
     
     # Write your custom code here...
-    myOutIp = myIp
-    myOut = somevalue
-    outpust = {"myOutIp": myOutIp, "myOut": myOut}
+
+    outputs = {"myOutIp": myIp, "myOut": somevalue}
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
