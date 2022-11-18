@@ -26,9 +26,16 @@
                     "sourcePort": "4_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_6",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "ffbf3258672b4a3c4fb3cd738efcd4b67881f15b",
+            "hash": "d5503c26b8fcae68d287a0e176ba5d4ff4fa569c",
             "nodes": {
                 "0": {
                     "data": {
@@ -284,6 +291,29 @@
                     "type": "format",
                     "x": 980,
                     "y": 544.5
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": "admin",
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "6",
+                        "message": "{0}",
+                        "parameters": [
+                            "get_data_1:action_result.data.*.parsed_response_body.label"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "prompt",
+                    "x": 1320,
+                    "y": 824.5
                 }
             },
             "notes": ""
@@ -295,7 +325,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-11-18T20:00:31.798673+00:00",
+    "create_time": "2022-11-18T20:02:23.463019+00:00",
     "draft_mode": false,
     "labels": [
         "*"

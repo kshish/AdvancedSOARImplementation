@@ -41,7 +41,18 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["soar100"], callback=debug_1)
+    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["soar100"], callback=get_data_1_callback)
+
+    return
+
+
+def get_data_1_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("get_data_1_callback() called")
+
+    
+    debug_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+    prompt_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=filtered_artifacts, filtered_results=filtered_results)
+
 
     return
 
@@ -109,6 +120,24 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     phantom.format(container=container, template=template, parameters=parameters, name="format_1")
 
     get_data_1(container=container)
+
+    return
+
+
+def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("prompt_1() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = "admin"
+    message = """{0}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "get_data_1:action_result.data.*.parsed_response_body.label"
+    ]
+
+    phantom.prompt2(container=container, user=user, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
 
     return
 
