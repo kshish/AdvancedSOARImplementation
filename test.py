@@ -19,12 +19,16 @@ def on_start(container):
 def demo_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("demo_1() called")
 
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destinationAddress","artifact:*.cef.destinationHostName","artifact:*.id"])
+
     parameters = []
 
-    parameters.append({
-        "myIp": 1,
-        "somevalue": 2,
-    })
+    # build parameters list for 'demo_1' call
+    for container_artifact_item in container_artifact_data:
+        parameters.append({
+            "myIp": container_artifact_item[0],
+            "somevalue": container_artifact_item[1],
+        })
 
     ################################################################################
     ## Custom Code Start

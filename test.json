@@ -21,7 +21,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "9b8410548a61e76ec9126fb254bf309536efa2fc",
+            "hash": "6fe8d01d8e82f0b0a2554906b320eb99e751407d",
             "nodes": {
                 "0": {
                     "data": {
@@ -104,8 +104,8 @@
                         "utilityType": "custom_function",
                         "values": {
                             "demo": {
-                                "myIp": "1",
-                                "somevalue": "2"
+                                "myIp": "artifact:*.cef.destinationAddress",
+                                "somevalue": "artifact:*.cef.destinationHostName"
                             }
                         }
                     },
@@ -149,7 +149,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-11-18T18:54:09.928930+00:00",
+    "create_time": "2022-11-18T18:56:14.842399+00:00",
     "draft_mode": false,
     "labels": [
         "*"
