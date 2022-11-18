@@ -19,9 +19,23 @@
                     "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
+                },
+                {
+                    "id": "port_0_to_port_4",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_4_to_port_3",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
                 }
             ],
-            "hash": "6fe8d01d8e82f0b0a2554906b320eb99e751407d",
+            "hash": "54ebd7183c71562539ba8339f637740b0246210e",
             "nodes": {
                 "0": {
                     "data": {
@@ -124,10 +138,12 @@
                         "functionId": 1,
                         "functionName": "prompt_1",
                         "id": "3",
-                        "message": "{0}\n{1}",
+                        "message": "{0}\n{1}\n{2}\n{3}\n",
                         "parameters": [
                             "demo_1:custom_function_result.data.myOutIP",
-                            "demo_1:custom_function_result.data.myout"
+                            "demo_1:custom_function_result.data.myout",
+                            "samplecf_2:custom_function_result.data.myoutIP",
+                            "samplecf_2:custom_function_result.data.someValueOut"
                         ],
                         "responseTime": 30,
                         "responses": [],
@@ -137,7 +153,67 @@
                     "id": "3",
                     "type": "prompt",
                     "x": 1060,
-                    "y": 824.5
+                    "y": 820
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "sampleCF",
+                            "repoName": "chris"
+                        },
+                        "functionId": 2,
+                        "functionName": "sampleCF_2",
+                        "id": "4",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "sampleCF": {
+                                "description": "this is a demo",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "ip"
+                                        ],
+                                        "description": "Map an IP or IP list here",
+                                        "inputType": "list",
+                                        "label": "myIP",
+                                        "name": "myIP",
+                                        "placeholder": "111.222.33.44",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "somevalue",
+                                        "name": "somevalue",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "sampleCF",
+                                "name": "sampleCF"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "sampleCF": {
+                                "myIP": "artifact:*.cef.destinationAddress",
+                                "somevalue": "artifact:*.cef.destinationHostName"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "utility",
+                    "x": 1240,
+                    "y": 584.5
                 }
             },
             "notes": ""
@@ -149,7 +225,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-11-18T18:56:14.842399+00:00",
+    "create_time": "2022-11-18T18:58:27.471418+00:00",
     "draft_mode": false,
     "labels": [
         "*"

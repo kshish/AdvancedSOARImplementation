@@ -13,6 +13,8 @@ def on_start(container):
 
     # call 'demo_1' block
     demo_1(container=container)
+    # call 'samplecf_2' block
+    samplecf_2(container=container)
 
     return
 
@@ -40,7 +42,17 @@ def demo_1(action=None, success=None, container=None, results=None, handle=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="chris/demo", parameters=parameters, name="demo_1", callback=prompt_1)
+    phantom.custom_function(custom_function="chris/demo", parameters=parameters, name="demo_1", callback=join_prompt_1)
+
+    return
+
+
+def join_prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("join_prompt_1() called")
+
+    if phantom.completed(custom_function_names=["demo_1", "samplecf_2"]):
+        # call connected block "prompt_1"
+        prompt_1(container=container, handle=handle)
 
     return
 
@@ -51,15 +63,47 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
     # set user and message variables for phantom.prompt call
 
     user = "admin"
-    message = """{0}\n{1}"""
+    message = """{0}\n{1}\n{2}\n{3}\n"""
 
     # parameter list for template variable replacement
     parameters = [
         "demo_1:custom_function_result.data.myOutIP",
-        "demo_1:custom_function_result.data.myout"
+        "demo_1:custom_function_result.data.myout",
+        "samplecf_2:custom_function_result.data.myoutIP",
+        "samplecf_2:custom_function_result.data.someValueOut"
     ]
 
     phantom.prompt2(container=container, user=user, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
+
+    return
+
+
+def samplecf_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("samplecf_2() called")
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destinationAddress","artifact:*.cef.destinationHostName","artifact:*.id"])
+
+    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
+    container_artifact_cef_item_1 = [item[1] for item in container_artifact_data]
+
+    parameters = []
+
+    parameters.append({
+        "myIP": container_artifact_cef_item_0,
+        "somevalue": container_artifact_cef_item_1,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="chris/sampleCF", parameters=parameters, name="samplecf_2", callback=join_prompt_1)
 
     return
 
