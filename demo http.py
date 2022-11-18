@@ -24,7 +24,7 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     parameters = []
 
     parameters.append({
-        "location": "container",
+        "location": "container/19655",
         "verify_certificate": False,
     })
 
@@ -38,7 +38,7 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["mylocalsoar"], callback=debug_1)
+    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["soar100"], callback=debug_1)
 
     return
 
@@ -46,7 +46,7 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
 def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_1() called")
 
-    get_data_1_result_data = phantom.collect2(container=container, datapath=["get_data_1:action_result.data","get_data_1:action_result.parameter.context.artifact_id"], action_results=results)
+    get_data_1_result_data = phantom.collect2(container=container, datapath=["get_data_1:action_result.data.*.response_body","get_data_1:action_result.parameter.context.artifact_id"], action_results=results)
 
     get_data_1_result_item_0 = [item[0] for item in get_data_1_result_data]
 
