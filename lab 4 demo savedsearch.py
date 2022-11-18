@@ -54,8 +54,8 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     if format_1 is not None:
         parameters.append({
-            "command": "savedsearch",
             "query": format_1,
+            "command": "savedsearch",
         })
 
     ################################################################################
@@ -191,7 +191,55 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["splunk100"])
+    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["splunk100"], callback=demo_1)
+
+    return
+
+
+def demo_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("demo_1() called")
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destinationAddress","artifact:*.cef.destinationHostName","artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'demo_1' call
+    for container_artifact_item in container_artifact_data:
+        parameters.append({
+            "myIp": container_artifact_item[0],
+            "somevalue": container_artifact_item[1],
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="chris/demo", parameters=parameters, name="demo_1", callback=prompt_2)
+
+    return
+
+
+def prompt_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("prompt_2() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = "admin"
+    message = """{0}\n{1}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "demo_1:custom_function_result.data.myOutIP",
+        "demo_1:custom_function_result.data.myout"
+    ]
+
+    phantom.prompt2(container=container, user=user, message=message, respond_in_mins=30, name="prompt_2", parameters=parameters)
 
     return
 
