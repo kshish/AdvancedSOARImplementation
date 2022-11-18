@@ -7,21 +7,28 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
-                },
-                {
                     "id": "port_2_to_port_3",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
+                },
+                {
+                    "id": "port_0_to_port_4",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_4_to_port_2",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
                 }
             ],
-            "hash": "9db7be826a453d581f632dcc455b412ce6789ba8",
+            "hash": "3f72693a8d1eca8e5a884152dec798dbf2a5e0a9",
             "nodes": {
                 "0": {
                     "data": {
@@ -72,7 +79,7 @@
                         "functionName": "get_data_1",
                         "id": "2",
                         "parameters": {
-                            "location": "container/19655"
+                            "location": "format_1:formatted_data"
                         },
                         "requiredParameters": [
                             {
@@ -90,7 +97,7 @@
                     "id": "2",
                     "type": "action",
                     "x": 980,
-                    "y": 604.5
+                    "y": 680
                 },
                 "3": {
                     "data": {
@@ -257,6 +264,26 @@
                     "type": "utility",
                     "x": 980,
                     "y": 780
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "format_1",
+                        "id": "4",
+                        "parameters": [
+                            "container:id"
+                        ],
+                        "template": "container/{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "format",
+                    "x": 980,
+                    "y": 544.5
                 }
             },
             "notes": ""
@@ -268,7 +295,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2022-11-18T19:54:42.535104+00:00",
+    "create_time": "2022-11-18T19:56:57.752789+00:00",
     "draft_mode": false,
     "labels": [
         "*"
