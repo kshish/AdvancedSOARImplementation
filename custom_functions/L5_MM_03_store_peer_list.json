@@ -1,7 +1,7 @@
 {
-    "create_time": "2022-09-30T15:27:20.894241+00:00",
-    "custom_function_id": "1143451d6152759ba47291f1d55a0bf7ffab2087",
-    "description": "",
+    "create_time": "2023-01-13T21:01:00.752554+00:00",
+    "custom_function_id": "963a8678d95d4f4cce0cc9cf78ec5a5c20a4f93f",
+    "description": "Use this only if you know python very well. Otherwise use \"L5_MM_03_save_peer_list\" custom function instead",
     "draft_mode": false,
     "inputs": [
         {

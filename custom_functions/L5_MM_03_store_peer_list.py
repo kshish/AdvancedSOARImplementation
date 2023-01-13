@@ -1,5 +1,7 @@
 def L5_MM_03_store_peer_list(container_id=None, peer_list=None, **kwargs):
     """
+    Use this only if you know python very well. Otherwise use "L5_MM_03_save_peer_list" custom function instead
+    
     Args:
         container_id (CEF type: phantom container id)
         peer_list
