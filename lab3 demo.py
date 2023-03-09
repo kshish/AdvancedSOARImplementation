@@ -99,9 +99,9 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
     # parameter list for template variable replacement
     parameters = [
         "artifact:*.cef.destinationHostName",
-        "run_query_1:action_result.data.*.peer",
-        "run_query_1:action_result.data.*.severity",
-        "run_query_1:action_result.data.*.count"
+        "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.peer",
+        "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.priority",
+        "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.count"
     ]
 
     ################################################################################

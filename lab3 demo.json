@@ -66,7 +66,7 @@
                     "targetPort": "8_in"
                 }
             ],
-            "hash": "9da8cf281a18ea8b3df570afb7a7b1e60918f0ad",
+            "hash": "1633b2ef67bf94a52cd3f6fa928891c244b9f644",
             "nodes": {
                 "0": {
                     "data": {
@@ -199,9 +199,9 @@
                         "id": "5",
                         "parameters": [
                             "artifact:*.cef.destinationHostName",
-                            "run_query_1:action_result.data.*.peer",
-                            "run_query_1:action_result.data.*.severity",
-                            "run_query_1:action_result.data.*.count"
+                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.peer",
+                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.priority",
+                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.count"
                         ],
                         "template": "%%\nPeer: {0} communicated with {1}, with severity {2}, {3} times\n%%",
                         "type": "format"
@@ -321,7 +321,7 @@
         "schema": "5.0.6",
         "version": "5.3.0.84310"
     },
-    "create_time": "2023-03-09T20:14:20.500530+00:00",
+    "create_time": "2023-03-09T20:19:06.647528+00:00",
     "draft_mode": false,
     "labels": [
         "*"
