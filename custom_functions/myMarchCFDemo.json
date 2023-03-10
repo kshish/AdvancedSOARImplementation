@@ -1,0 +1,40 @@
+{
+    "create_time": "2023-03-10T18:18:20.139898+00:00",
+    "custom_function_id": "ab54c6fbc470536c426b824794e899e7db037636",
+    "description": "chris wuz here demoing",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "description": "More info",
+            "input_type": "item",
+            "name": "myIP",
+            "placeholder": "Please map one or more IP's here"
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "someString",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "data_path": "myOutIP",
+            "description": "this has none, one, or more IPs "
+        },
+        {
+            "contains_type": [],
+            "data_path": "myoutputString",
+            "description": ""
+        }
+    ],
+    "platform_version": "5.3.0.84310",
+    "python_version": "3"
+}
