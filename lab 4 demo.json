@@ -7,35 +7,35 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_3",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
+                    "id": "port_2_to_port_3",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
                 },
                 {
-                    "id": "port_3_to_port_2",
+                    "id": "port_3_to_port_6",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_8",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_0_to_port_2",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
-                },
-                {
-                    "id": "port_2_to_port_4",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
-                },
-                {
-                    "id": "port_4_to_port_5",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
                 }
             ],
-            "hash": "10e7c11ceb6ae24c739b7e55b29cc26d4abe4da2",
+            "hash": "2a8d946d17ebb187dba2cdb5d37d1517571cd6e5",
             "nodes": {
                 "0": {
                     "data": {
@@ -49,15 +49,15 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
+                    "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 379.9999999999999
                 },
                 "1": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
-                        "functionId": 1,
                         "functionName": "on_finish",
                         "id": "1",
                         "type": "end"
@@ -65,11 +65,32 @@
                     "errors": {},
                     "id": "1",
                     "type": "end",
-                    "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 1020,
-                    "y": 1120
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 1360
                 },
                 "2": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "format_1",
+                        "id": "2",
+                        "parameters": [
+                            "artifact:*.cef.destinationHostName"
+                        ],
+                        "template": "find_peers server=\"{0}\"\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 640
+                },
+                "3": {
                     "data": {
                         "action": "run query",
                         "actionType": "investigate",
@@ -84,10 +105,11 @@
                         "connectorVersion": "v1",
                         "functionId": 1,
                         "functionName": "run_query_1",
-                        "id": "2",
+                        "id": "3",
                         "parameters": {
-                            "command": "search",
-                            "query": "format_1:formatted_data"
+                            "command": "savedsearch",
+                            "query": "format_1:formatted_data",
+                            "search_mode": "smart"
                         },
                         "requiredParameters": [
                             {
@@ -98,89 +120,94 @@
                                 "data_type": "string",
                                 "default": "search",
                                 "field": "command"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "smart",
+                                "field": "search_mode"
                             }
                         ],
                         "type": "action"
                     },
                     "errors": {},
-                    "id": "2",
-                    "type": "action",
-                    "x": 960,
-                    "y": 700
-                },
-                "3": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "format_1",
-                        "id": "3",
-                        "parameters": [
-                            "artifact:*.cef.destination"
-                        ],
-                        "template": "earliest=-1h index=main dest={0}\n",
-                        "type": "format"
-                    },
-                    "errors": {},
                     "id": "3",
-                    "type": "format",
+                    "type": "action",
+                    "warnings": {},
                     "x": 980,
-                    "y": 524.5
+                    "y": 784.5
                 },
-                "4": {
+                "6": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
                         "customDatapaths": {
                             "run_query_1": {
-                                "action_result.data.*.dest_bunit": {
+                                "action_result.data.*.priority": {
                                     "contains": [],
                                     "isCustomDatapath": true,
-                                    "label": "action_result.data.*.dest_bunit",
-                                    "value": "run_query_1:action_result.data.*.dest_bunit"
+                                    "label": "action_result.data.*.priority",
+                                    "value": "run_query_1:action_result.data.*.priority"
                                 }
                             }
                         },
                         "functionId": 2,
                         "functionName": "format_2",
-                        "id": "4",
+                        "id": "6",
                         "parameters": [
-                            "run_query_1:action_result.data.*.dest_asset",
-                            "run_query_1:action_result.data.*.dest_bunit"
+                            "run_query_1:action_result.data.*.peer",
+                            "run_query_1:action_result.data.*.priority",
+                            "run_query_1:action_result.data.*.count"
                         ],
-                        "template": "%%\nDestination Asset is: {0}\nDestination Bussiness Unit: {1}\n%%\n",
+                        "template": "%%\nPeer: {0} Priority: {1} communicated  {2} times\n%%",
                         "type": "format"
                     },
                     "errors": {},
-                    "id": "4",
+                    "id": "6",
                     "type": "format",
-                    "x": 960,
-                    "y": 824.5
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath configuration."
+                        ]
+                    },
+                    "x": 980,
+                    "y": 980
                 },
-                "5": {
+                "8": {
                     "data": {
+                        "action": "update event",
+                        "actionType": "generic",
                         "advanced": {
                             "join": []
                         },
-                        "approver": "admin",
-                        "functionId": 1,
-                        "functionName": "prompt_1",
-                        "id": "5",
-                        "message": "{0}",
-                        "parameters": [
-                            "format_2:formatted_data"
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunk100"
                         ],
-                        "responseTime": 30,
-                        "responses": [],
-                        "type": "prompt"
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_event_1",
+                        "id": "8",
+                        "parameters": {
+                            "comment": "format_2:formatted_data",
+                            "event_ids": "artifact:*.cef.notableId",
+                            "status": "in progress"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
                     },
                     "errors": {},
-                    "id": "5",
-                    "type": "prompt",
-                    "x": 1040,
-                    "y": 964.5
+                    "id": "8",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1164.5
                 }
             },
             "notes": ""
@@ -189,10 +216,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.6",
-        "version": "5.3.0.84310"
+        "schema": "5.0.8",
+        "version": "5.5.0.108488"
     },
-    "create_time": "2022-11-17T18:57:37.418328+00:00",
+    "create_time": "2023-05-11T20:00:18.882283+00:00",
     "draft_mode": false,
     "labels": [
         "malware"
