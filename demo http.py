@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,6 +17,7 @@ def on_start(container):
 
     return
 
+@phantom.playbook_block()
 def get_data_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("get_data_1() called")
 
@@ -28,7 +30,6 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     if format_1 is not None:
         parameters.append({
             "location": format_1,
-            "verify_certificate": False,
         })
 
     ################################################################################
@@ -41,11 +42,12 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["soar100"], callback=get_data_1_callback)
+    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["mysoar100"], callback=get_data_1_callback)
 
     return
 
 
+@phantom.playbook_block()
 def get_data_1_callback(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("get_data_1_callback() called")
 
@@ -57,6 +59,7 @@ def get_data_1_callback(action=None, success=None, container=None, results=None,
     return
 
 
+@phantom.playbook_block()
 def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("debug_1() called")
 
@@ -97,6 +100,7 @@ def debug_1(action=None, success=None, container=None, results=None, handle=None
     return
 
 
+@phantom.playbook_block()
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_1() called")
 
@@ -124,12 +128,14 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     return
 
 
+@phantom.playbook_block()
 def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("prompt_1() called")
 
     # set user and message variables for phantom.prompt call
 
-    user = "admin"
+    user = "undefined"
+    role = "undefined"
     message = """{0}"""
 
     # parameter list for template variable replacement
@@ -137,11 +143,12 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
         "get_data_1:action_result.data.*.parsed_response_body.label"
     ]
 
-    phantom.prompt2(container=container, user=user, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
 
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 

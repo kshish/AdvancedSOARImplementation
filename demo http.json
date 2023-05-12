@@ -35,7 +35,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "d5503c26b8fcae68d287a0e176ba5d4ff4fa569c",
+            "hash": "410e3405aee4dc7a8791d9fa40f1b61f9dd3b14a",
             "nodes": {
                 "0": {
                     "data": {
@@ -49,8 +49,9 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
+                    "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999966
+                    "y": 419.99999999999955
                 },
                 "1": {
                     "data": {
@@ -66,6 +67,7 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
+                    "warnings": {},
                     "x": 1000,
                     "y": 1000
                 },
@@ -78,7 +80,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "soar100"
+                            "mysoar100"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -92,10 +94,6 @@
                             {
                                 "data_type": "string",
                                 "field": "location"
-                            },
-                            {
-                                "data_type": "boolean",
-                                "field": "verify_certificate"
                             }
                         ],
                         "type": "action"
@@ -103,6 +101,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "action",
+                    "warnings": {},
                     "x": 980,
                     "y": 680
                 },
@@ -269,6 +268,7 @@
                     "errors": {},
                     "id": "3",
                     "type": "utility",
+                    "warnings": {},
                     "x": 980,
                     "y": 780
                 },
@@ -289,6 +289,7 @@
                     "errors": {},
                     "id": "4",
                     "type": "format",
+                    "warnings": {},
                     "x": 980,
                     "y": 544.5
                 },
@@ -309,9 +310,16 @@
                         "responses": [],
                         "type": "prompt"
                     },
-                    "errors": {},
+                    "errors": {
+                        "approver": "approver must be a `object` type, but the final value was: `null` (cast from the value `\"admin\"`).\n If \"null\" is intended as an empty value be sure to mark the schema as `.nullable()`"
+                    },
                     "id": "6",
                     "type": "prompt",
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath configuration."
+                        ]
+                    },
                     "x": 1320,
                     "y": 824.5
                 }
@@ -322,10 +330,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.6",
-        "version": "5.3.0.84310"
+        "schema": "5.0.8",
+        "version": "5.5.0.108488"
     },
-    "create_time": "2022-11-18T20:02:23.463019+00:00",
+    "create_time": "2023-05-12T18:51:02.146235+00:00",
     "draft_mode": false,
     "labels": [
         "*"
