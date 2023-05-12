@@ -35,7 +35,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "410e3405aee4dc7a8791d9fa40f1b61f9dd3b14a",
+            "hash": "82d78120d6708d383da38d09fd4ea0e46ed6529b",
             "nodes": {
                 "0": {
                     "data": {
@@ -298,7 +298,10 @@
                         "advanced": {
                             "join": []
                         },
-                        "approver": "admin",
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
                         "functionId": 1,
                         "functionName": "prompt_1",
                         "id": "6",
@@ -333,7 +336,7 @@
         "schema": "5.0.8",
         "version": "5.5.0.108488"
     },
-    "create_time": "2023-05-12T18:51:02.146235+00:00",
+    "create_time": "2023-05-12T18:51:40.020385+00:00",
     "draft_mode": false,
     "labels": [
         "*"

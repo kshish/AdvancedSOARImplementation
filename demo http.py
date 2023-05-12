@@ -134,8 +134,8 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
 
     # set user and message variables for phantom.prompt call
 
-    user = "undefined"
-    role = "undefined"
+    user = None
+    role = "Administrator"
     message = """{0}"""
 
     # parameter list for template variable replacement
