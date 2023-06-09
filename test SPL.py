@@ -93,6 +93,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
         format_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        junedemo_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -213,6 +214,57 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.act("update event", parameters=parameters, name="update_event_1", assets=["splunk100"])
+
+    return
+
+
+@phantom.playbook_block()
+def junedemo_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("junedemo_1() called")
+
+    filtered_result_0_data_filter_1 = phantom.collect2(container=container, datapath=["filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.peer","filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.priority"])
+
+    parameters = []
+
+    # build parameters list for 'junedemo_1' call
+    for filtered_result_0_item_filter_1 in filtered_result_0_data_filter_1:
+        parameters.append({
+            "someIp": filtered_result_0_item_filter_1[0],
+            "someString": filtered_result_0_item_filter_1[1],
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="chris/junedemo", parameters=parameters, name="junedemo_1", callback=prompt_5)
+
+    return
+
+
+@phantom.playbook_block()
+def prompt_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("prompt_5() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = None
+    role = "Administrator"
+    message = """%%\nip/host {0} priority {1}\n%%"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "junedemo_1:custom_function_result.data.outputIP",
+        "junedemo_1:custom_function_result.data.outputstring"
+    ]
+
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_5", parameters=parameters)
 
     return
 

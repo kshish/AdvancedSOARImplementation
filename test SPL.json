@@ -64,9 +64,28 @@
                     "sourcePort": "10_out",
                     "targetNode": "11",
                     "targetPort": "11_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_6_to_port_13",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
+                },
+                {
+                    "id": "port_13_to_port_14",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "14",
+                    "targetPort": "14_in"
                 }
             ],
-            "hash": "336c79e5b6f9d36d4a1b412052877eb4ca9dea7f",
+            "hash": "4f42ff672d6b833fec36ee5149110d5ab5c1fe39",
             "nodes": {
                 "0": {
                     "data": {
@@ -168,6 +187,95 @@
                     "warnings": {},
                     "x": 1000,
                     "y": 1560
+                },
+                "13": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "junedemo",
+                            "repoName": "chris"
+                        },
+                        "functionId": 1,
+                        "functionName": "junedemo_1",
+                        "id": "13",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "junedemo": {
+                                "description": "demo",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "ip"
+                                        ],
+                                        "description": "Map IP(s) into this input",
+                                        "inputType": "item",
+                                        "label": "someIp",
+                                        "name": "someIp",
+                                        "placeholder": "111.22.33.44",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "someString",
+                                        "name": "someString",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "junedemo",
+                                "name": "junedemo"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "junedemo": {
+                                "someIp": "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.peer",
+                                "someString": "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.priority"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "13",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 640,
+                    "y": 1000
+                },
+                "14": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 5,
+                        "functionName": "prompt_5",
+                        "id": "14",
+                        "message": "%%\nip/host {0} priority {1}\n%%",
+                        "parameters": [
+                            "junedemo_1:custom_function_result.data.outputIP",
+                            "junedemo_1:custom_function_result.data.outputstring"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "14",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 720,
+                    "y": 1224.5
                 },
                 "2": {
                     "data": {
@@ -346,7 +454,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-06-08T20:19:16.931756+00:00",
+    "create_time": "2023-06-09T17:26:20.224824+00:00",
     "draft_mode": false,
     "labels": [
         "*"
