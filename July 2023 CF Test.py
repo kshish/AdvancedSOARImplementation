@@ -114,7 +114,29 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["soar100"])
+    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["soar100"], callback=prompt_2)
+
+    return
+
+
+@phantom.playbook_block()
+def prompt_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("prompt_2() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = ""
+    role = None
+    message = """name: {0}\ndescription: {1}\nResponse body \n{2}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "get_data_1:action_result.data.*.response_body.name",
+        "get_data_1:action_result.data.*.parsed_response_body.description",
+        "get_data_1:action_result.data.*.parsed_response_body"
+    ]
+
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_2", parameters=parameters)
 
     return
 

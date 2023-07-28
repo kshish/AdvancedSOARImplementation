@@ -26,9 +26,16 @@
                     "sourcePort": "4_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "91f654da51cfc234f04bda88b547245fb93cf555",
+            "hash": "23d94b9eda674e610df2a243b570d449985b8168",
             "nodes": {
                 "0": {
                     "data": {
@@ -195,6 +202,45 @@
                     "warnings": {},
                     "x": 980,
                     "y": 904.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "user",
+                            "value": ""
+                        },
+                        "customDatapaths": {
+                            "get_data_1": {
+                                "action_result.data.*.parsed_response_body.description": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.parsed_response_body.description",
+                                    "value": "get_data_1:action_result.data.*.parsed_response_body.description"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "prompt_2",
+                        "id": "7",
+                        "message": "name: {0}\ndescription: {1}\nResponse body \n{2}",
+                        "parameters": [
+                            "get_data_1:action_result.data.*.response_body.name",
+                            "get_data_1:action_result.data.*.parsed_response_body.description",
+                            "get_data_1:action_result.data.*.parsed_response_body"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1070,
+                    "y": 1064.5
                 }
             },
             "notes": ""
@@ -206,7 +252,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-07-28T18:40:57.505162+00:00",
+    "create_time": "2023-07-28T18:47:00.453839+00:00",
     "draft_mode": false,
     "labels": [
         "*"
