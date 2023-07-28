@@ -125,8 +125,8 @@ def prompt_2(action=None, success=None, container=None, results=None, handle=Non
 
     # set user and message variables for phantom.prompt call
 
-    user = ""
-    role = None
+    user = None
+    role = "Administrator"
     message = """name: {0}\ndescription: {1}\nResponse body \n{2}"""
 
     # parameter list for template variable replacement
