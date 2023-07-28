@@ -20,7 +20,7 @@ def july2023demo(someIP=None, someString=None, **kwargs):
     outputIP=someIP
     outputString=someString
     
-    oputputs = {"outputIP": outputIP, "outputString": someString}
+    outputs = {"outputIP": outputIP, "outputString": someString}
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
