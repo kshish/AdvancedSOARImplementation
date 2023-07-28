@@ -1,0 +1,41 @@
+{
+    "create_time": "2023-07-28T16:28:19.025777+00:00",
+    "custom_function_id": "77db828b1417e2117dc05cc156be89eb2e07c33d",
+    "description": "demo",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "description": "Map a IP(s) here",
+            "input_type": "item",
+            "name": "someIP",
+            "placeholder": "111.222.33.44"
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "someString",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "data_path": "outputIP",
+            "description": "This is the resulting IP output from CF"
+        },
+        {
+            "contains_type": [],
+            "data_path": "outputString",
+            "description": ""
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.0.1.123902",
+    "python_version": "3"
+}
