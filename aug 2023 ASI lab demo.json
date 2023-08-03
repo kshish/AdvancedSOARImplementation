@@ -1,0 +1,282 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "",
+            "edges": [
+                {
+                    "id": "port_0_to_port_3",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_2",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_5_to_port_4",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_2_to_port_6",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_6_to_port_5",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                }
+            ],
+            "hash": "9b177d5e1c8008031ac693cc17b4c939543abccb",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 419.99999999999966
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 1220
+                },
+                "2": {
+                    "data": {
+                        "action": "run query",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "es100"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "run_query_1",
+                        "id": "2",
+                        "parameters": {
+                            "command": "search",
+                            "query": "format_1:formatted_data",
+                            "search_mode": "verbose",
+                            "start_time": "-30m"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "query"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "search",
+                                "field": "command"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "smart",
+                                "field": "search_mode"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 700
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "format_1",
+                        "id": "3",
+                        "parameters": [
+                            "artifact:*.cef.destination"
+                        ],
+                        "template": "index=main dest=\"{0}\" | fields  src  process \n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 600
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "user",
+                            "value": "soardev"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "4",
+                        "message": "{0}",
+                        "parameters": [
+                            "format_2:formatted_data"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 1080
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "filter_1": {
+                                "condition_1:run_query_1:action_result.data.*.src": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "condition_1:run_query_1:action_result.data.*.src",
+                                    "value": "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.src"
+                                }
+                            },
+                            "run_query_1": {
+                                "action_result.data.*.process": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.process",
+                                    "value": "run_query_1:action_result.data.*.process"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "5",
+                        "parameters": [
+                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.src",
+                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.process"
+                        ],
+                        "template": "%%\nsource: {0} process: {1}\n%%",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 980
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "!=",
+                                        "param": "run_query_1:action_result.data.*.src",
+                                        "value": "None"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "and"
+                            }
+                        ],
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.process": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.process",
+                                    "value": "run_query_1:action_result.data.*.process"
+                                },
+                                "action_result.data.*.src": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.src",
+                                    "value": "run_query_1:action_result.data.*.src"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "filter_1",
+                        "id": "6",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 1040,
+                    "y": 820
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_type": "automation",
+        "python_version": "3",
+        "schema": "5.0.10",
+        "version": "6.0.1.123902"
+    },
+    "create_time": "2023-08-03T16:38:52.244145+00:00",
+    "draft_mode": false,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
