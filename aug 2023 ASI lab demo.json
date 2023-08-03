@@ -45,9 +45,21 @@
                     "sourcePort": "6_out",
                     "targetNode": "5",
                     "targetPort": "5_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "9b177d5e1c8008031ac693cc17b4c939543abccb",
+            "hash": "fb700c278c287efbb44f531035b98d25af1bebff",
             "nodes": {
                 "0": {
                     "data": {
@@ -63,7 +75,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999966
+                    "y": 520
                 },
                 "1": {
                     "data": {
@@ -99,7 +111,7 @@
                         "id": "2",
                         "parameters": {
                             "command": "search",
-                            "query": "format_1:formatted_data",
+                            "query": "format_spl:formatted_data",
                             "search_mode": "verbose",
                             "start_time": "-30m"
                         },
@@ -131,10 +143,12 @@
                 "3": {
                     "data": {
                         "advanced": {
+                            "customName": "Format SPL",
+                            "customNameId": 0,
                             "join": []
                         },
                         "functionId": 1,
-                        "functionName": "format_1",
+                        "functionName": "format_spl",
                         "id": "3",
                         "parameters": [
                             "artifact:*.cef.destination"
@@ -163,7 +177,7 @@
                         "id": "4",
                         "message": "{0}",
                         "parameters": [
-                            "format_2:formatted_data"
+                            "format_search_results_for_prompt:formatted_data"
                         ],
                         "responseTime": 30,
                         "responses": [],
@@ -172,13 +186,19 @@
                     "errors": {},
                     "id": "4",
                     "type": "prompt",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1060,
                     "y": 1080
                 },
                 "5": {
                     "data": {
                         "advanced": {
+                            "customName": "Format Search Results for Prompt",
+                            "customNameId": 0,
                             "join": []
                         },
                         "customDatapaths": {
@@ -200,11 +220,11 @@
                             }
                         },
                         "functionId": 2,
-                        "functionName": "format_2",
+                        "functionName": "format_search_results_for_prompt",
                         "id": "5",
                         "parameters": [
-                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.src",
-                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.process"
+                            "filtered-data:filter_null_src:condition_1:run_query_1:action_result.data.*.src",
+                            "filtered-data:filter_null_src:condition_1:run_query_1:action_result.data.*.process"
                         ],
                         "template": "%%\nsource: {0} process: {1}\n%%",
                         "type": "format"
@@ -219,6 +239,8 @@
                 "6": {
                     "data": {
                         "advanced": {
+                            "customName": "Filter null src",
+                            "customNameId": 0,
                             "join": []
                         },
                         "conditions": [
@@ -232,6 +254,20 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "customName": "src has value",
+                                "logic": "and"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 1,
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.src",
+                                        "value": "None"
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "src is empty",
                                 "logic": "and"
                             }
                         ],
@@ -252,7 +288,7 @@
                             }
                         },
                         "functionId": 1,
-                        "functionName": "filter_1",
+                        "functionName": "filter_null_src",
                         "id": "6",
                         "type": "filter"
                     },
@@ -261,7 +297,34 @@
                     "type": "filter",
                     "warnings": {},
                     "x": 1040,
-                    "y": 820
+                    "y": 780
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "user",
+                            "value": ""
+                        },
+                        "functionId": 2,
+                        "functionName": "prompt_2",
+                        "id": "7",
+                        "message": "",
+                        "parameters": [],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {
+                        "message": "Add message content."
+                    },
+                    "id": "7",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1340,
+                    "y": 1000
                 }
             },
             "notes": ""
@@ -273,7 +336,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-08-03T16:38:52.244145+00:00",
+    "create_time": "2023-08-03T21:31:36.561907+00:00",
     "draft_mode": false,
     "labels": [
         "*"
