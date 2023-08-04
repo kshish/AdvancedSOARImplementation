@@ -25,7 +25,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 
     # parameter list for template variable replacement
     parameters = [
-        "artifact:*.cef.destinationAddress"
+        "artifact:*.cef.destination"
     ]
 
     ################################################################################
