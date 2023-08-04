@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,6 +17,7 @@ def on_start(container):
 
     return
 
+@phantom.playbook_block()
 def get_data_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("get_data_1() called")
 
@@ -28,7 +30,6 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     if format_1 is not None:
         parameters.append({
             "location": format_1,
-            "verify_certificate": False,
         })
 
     ################################################################################
@@ -46,6 +47,7 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     return
 
 
+@phantom.playbook_block()
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_1() called")
 
@@ -73,6 +75,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 
