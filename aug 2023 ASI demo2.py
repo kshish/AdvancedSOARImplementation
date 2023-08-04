@@ -60,7 +60,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
             "query": format_1,
             "command": "savedsearch",
             "start_time": "-30m",
-            "search_mode": "fast",
+            "search_mode": "verbose",
         })
 
     ################################################################################
