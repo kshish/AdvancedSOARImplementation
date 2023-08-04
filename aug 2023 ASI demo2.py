@@ -59,8 +59,8 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
         parameters.append({
             "query": format_1,
             "command": "savedsearch",
-            "start_time": "-30h",
-            "search_mode": "verbose",
+            "start_time": "-30m",
+            "search_mode": "fast",
         })
 
     ################################################################################
@@ -85,6 +85,7 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
     container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.event_id","artifact:*.id"])
+    format_spl_results = phantom.get_format_data(name="format_spl_results")
 
     parameters = []
 
@@ -93,7 +94,7 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
         if container_artifact_item[0] is not None:
             parameters.append({
                 "status": "in progress",
-                "comment": "Chris Wuz here",
+                "comment": format_spl_results,
                 "event_ids": container_artifact_item[0],
                 "context": {'artifact_id': container_artifact_item[1]},
             })
@@ -117,11 +118,13 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
 def format_spl_results(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_spl_results() called")
 
-    template = """Peer: {0}\n"""
+    template = """%%\nPeer: {0} with priority: {1} communicated {2}\n%%"""
 
     # parameter list for template variable replacement
     parameters = [
-        "run_query_1:action_result.data.*.peer"
+        "run_query_1:action_result.data.*.peer",
+        "run_query_1:action_result.data.*.priority",
+        "run_query_1:action_result.data.*.count"
     ]
 
     ################################################################################
@@ -135,6 +138,8 @@ def format_spl_results(action=None, success=None, container=None, results=None, 
     ################################################################################
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_spl_results")
+
+    update_event_1(container=container)
 
     return
 
