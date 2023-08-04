@@ -35,7 +35,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "d6295c53bae1dbe2342de3f58c82a48020b375b5",
+            "hash": "e21f015f6590851cad7fcdfbdca8bd3672cf2931",
             "nodes": {
                 "0": {
                     "data": {
@@ -80,7 +80,7 @@
                         "parameters": [
                             "artifact:*.cef.destination"
                         ],
-                        "template": "find_peers server={0}\n",
+                        "template": "find_peers2 server={0}\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -224,7 +224,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-08-04T13:26:13.909883+00:00",
+    "create_time": "2023-08-04T13:37:25.890119+00:00",
     "draft_mode": false,
     "labels": [
         "*"

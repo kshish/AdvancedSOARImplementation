@@ -21,7 +21,7 @@ def on_start(container):
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("format_1() called")
 
-    template = """find_peers server={0}\n"""
+    template = """find_peers2 server={0}\n"""
 
     # parameter list for template variable replacement
     parameters = [
