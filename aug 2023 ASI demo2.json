@@ -33,9 +33,23 @@
                     "sourcePort": "5_out",
                     "targetNode": "4",
                     "targetPort": "4_in"
+                },
+                {
+                    "id": "port_4_to_port_6",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "e21f015f6590851cad7fcdfbdca8bd3672cf2931",
+            "hash": "6d21d1def73fc1d0c39f47124654e3dee7b402f0",
             "nodes": {
                 "0": {
                     "data": {
@@ -66,8 +80,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1020,
-                    "y": 1360
+                    "x": 580,
+                    "y": 1540
                 },
                 "2": {
                     "data": {
@@ -213,6 +227,95 @@
                     "warnings": {},
                     "x": 980,
                     "y": 960
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "demo_noop_aug_2023",
+                            "repoName": "ASI"
+                        },
+                        "functionId": 1,
+                        "functionName": "demo_noop_aug_2023_1",
+                        "id": "6",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "demo_noop_aug_2023": {
+                                "description": "nice description",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "ip"
+                                        ],
+                                        "description": "Map an IP (list) in here",
+                                        "inputType": "item",
+                                        "label": "someIp",
+                                        "name": "someIp",
+                                        "placeholder": "111.22.33.44",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "someString",
+                                        "name": "someString",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "demo_noop_aug_2023",
+                                "name": "demo_noop_aug_2023"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "demo_noop_aug_2023": {
+                                "someIp": "artifact:*.cef.destination",
+                                "someString": "container:label"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1264.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "7",
+                        "message": "output IP {0}\nstring: {1}",
+                        "parameters": [
+                            "demo_noop_aug_2023_1:custom_function_result.data.outputIp",
+                            "demo_noop_aug_2023_1:custom_function_result.data.outputString"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 1484.5
                 }
             },
             "notes": ""
@@ -224,7 +327,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-08-04T13:37:25.890119+00:00",
+    "create_time": "2023-08-04T14:12:31.801695+00:00",
     "draft_mode": false,
     "labels": [
         "*"

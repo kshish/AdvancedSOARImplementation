@@ -109,7 +109,7 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["es100"])
+    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["es100"], callback=demo_noop_aug_2023_1)
 
     return
 
@@ -140,6 +140,58 @@ def format_spl_results(action=None, success=None, container=None, results=None, 
     phantom.format(container=container, template=template, parameters=parameters, name="format_spl_results")
 
     update_event_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def demo_noop_aug_2023_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("demo_noop_aug_2023_1() called")
+
+    label_value = container.get("label", None)
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destination","artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'demo_noop_aug_2023_1' call
+    for container_artifact_item in container_artifact_data:
+        parameters.append({
+            "someIp": container_artifact_item[0],
+            "someString": label_value,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="ASI/demo_noop_aug_2023", parameters=parameters, name="demo_noop_aug_2023_1", callback=prompt_1)
+
+    return
+
+
+@phantom.playbook_block()
+def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("prompt_1() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = None
+    role = "Administrator"
+    message = """output IP {0}\nstring: {1}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "demo_noop_aug_2023_1:custom_function_result.data.outputIp",
+        "demo_noop_aug_2023_1:custom_function_result.data.outputString"
+    ]
+
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
 
     return
 
