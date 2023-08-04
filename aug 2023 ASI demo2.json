@@ -21,14 +21,14 @@
                     "targetPort": "3_in"
                 },
                 {
-                    "id": "port_3_to_port_4",
+                    "id": "port_3_to_port_5",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
+                    "targetNode": "5",
+                    "targetPort": "5_in"
                 }
             ],
-            "hash": "ae815042916ceaecb226186b4cb3c65c91dbc1c8",
+            "hash": "e0a53a253a05b5449b6ad0f3df8cbf2a5f5641c0",
             "nodes": {
                 "0": {
                     "data": {
@@ -162,9 +162,46 @@
                     "errors": {},
                     "id": "4",
                     "type": "action",
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 980,
+                    "y": 1100
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format SPL results",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.peer": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.peer",
+                                    "value": "run_query_1:action_result.data.*.peer"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "format_spl_results",
+                        "id": "5",
+                        "parameters": [
+                            "run_query_1:action_result.data.*.peer"
+                        ],
+                        "template": "Peer: {0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
                     "warnings": {},
                     "x": 990,
-                    "y": 984.5
+                    "y": 944.5
                 }
             },
             "notes": ""
@@ -176,7 +213,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-08-03T16:39:21.918901+00:00",
+    "create_time": "2023-08-04T13:14:29.936480+00:00",
     "draft_mode": false,
     "labels": [
         "*"
