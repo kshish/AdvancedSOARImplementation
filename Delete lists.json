@@ -44,7 +44,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 340
+                    "y": 339.9999999999999
                 },
                 "1": {
                     "data": {
@@ -164,7 +164,7 @@
     "create_time": "2023-08-04T18:34:01.588543+00:00",
     "draft_mode": false,
     "labels": [
-        "*"
+        "mytimer"
     ],
     "tags": []
 }
