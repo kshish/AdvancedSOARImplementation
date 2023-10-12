@@ -41,6 +41,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     phantom.format(container=container, template=template, parameters=parameters, name="format_1")
 
     run_query_1(container=container)
+    samplecf_5(container=container)
 
     return
 
@@ -188,6 +189,58 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.act("update event", parameters=parameters, name="update_event_1", assets=["splunk100"])
+
+    return
+
+
+@phantom.playbook_block()
+def samplecf_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("samplecf_5() called")
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destinationAddress","artifact:*.cef.destinationHostName","artifact:*.id"])
+
+    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
+    container_artifact_cef_item_1 = [item[1] for item in container_artifact_data]
+
+    parameters = []
+
+    parameters.append({
+        "myIP": container_artifact_cef_item_0,
+        "somevalue": container_artifact_cef_item_1,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="Chris/sampleCF", parameters=parameters, name="samplecf_5", callback=prompt_4)
+
+    return
+
+
+@phantom.playbook_block()
+def prompt_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("prompt_4() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = None
+    role = "Administrator"
+    message = """{0}{1}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "samplecf_5:custom_function_result.data.myoutIP",
+        "samplecf_5:custom_function_result.data.someValueOut"
+    ]
+
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_4", parameters=parameters)
 
     return
 

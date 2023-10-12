@@ -57,9 +57,23 @@
                     "sourcePort": "6_out",
                     "targetNode": "7",
                     "targetPort": "7_in"
+                },
+                {
+                    "id": "port_2_to_port_8",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_9",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
                 }
             ],
-            "hash": "b8c270849f061a26df325846849b31e789c830be",
+            "hash": "3c39a766c426baf6cf281c063fd252d5967946ae",
             "nodes": {
                 "0": {
                     "data": {
@@ -156,7 +170,11 @@
                     "errors": {},
                     "id": "3",
                     "type": "action",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 980,
                     "y": 784.5
                 },
@@ -273,7 +291,11 @@
                     "errors": {},
                     "id": "6",
                     "type": "decision",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1060,
                     "y": 1464.5
                 },
@@ -312,6 +334,99 @@
                     "warnings": {},
                     "x": 980,
                     "y": 1644.5
+                },
+                "8": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "sampleCF",
+                            "repoName": "Chris"
+                        },
+                        "functionId": 5,
+                        "functionName": "sampleCF_5",
+                        "id": "8",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "sampleCF": {
+                                "description": "this is a demo",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "ip"
+                                        ],
+                                        "description": "Map an IP or IP list here",
+                                        "inputType": "list",
+                                        "label": "myIP",
+                                        "name": "myIP",
+                                        "placeholder": "111.222.33.44",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "list",
+                                        "label": "somevalue",
+                                        "name": "somevalue",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "sampleCF",
+                                "name": "sampleCF"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "sampleCF": {
+                                "myIP": [
+                                    "artifact:*.cef.destinationAddress"
+                                ],
+                                "somevalue": [
+                                    "artifact:*.cef.destinationHostName"
+                                ]
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 1400,
+                    "y": 800
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 4,
+                        "functionName": "prompt_4",
+                        "id": "9",
+                        "message": "{0}{1}",
+                        "parameters": [
+                            "samplecf_5:custom_function_result.data.myoutIP",
+                            "samplecf_5:custom_function_result.data.someValueOut"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1480,
+                    "y": 1000
                 }
             },
             "notes": ""
@@ -323,7 +438,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-10-12T19:31:00.168495+00:00",
+    "create_time": "2023-10-12T20:27:26.912176+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",
