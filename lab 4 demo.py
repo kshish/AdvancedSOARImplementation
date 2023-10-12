@@ -25,7 +25,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 
     # parameter list for template variable replacement
     parameters = [
-        "artifact:*.cef.destinationHostName"
+        "artifact:*.cef.destination"
     ]
 
     ################################################################################
@@ -72,37 +72,85 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.act("run query", parameters=parameters, name="run_query_1", assets=["splunk100"], callback=format_2)
+    phantom.act("run query", parameters=parameters, name="run_query_1", assets=["splunk100"], callback=filter_1)
 
     return
 
 
 @phantom.playbook_block()
-def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_2() called")
+def filter_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("filter_1() called")
 
-    template = """%%\nPeer: {0} Priority: {1} communicated  {2} times\n%%"""
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        logical_operator="or",
+        conditions=[
+            ["run_query_1:action_result.data.*.priority", "==", "high"],
+            ["run_query_1:action_result.data.priority", "==", "unknown"]
+        ],
+        name="filter_1:condition_1",
+        delimiter=None)
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        prompt_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+@phantom.playbook_block()
+def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("prompt_1() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = None
+    role = "Administrator"
+    message = """The host {0} communicated with the follow high priority peers:\n\n{1} number of times {2}"""
 
     # parameter list for template variable replacement
     parameters = [
+        "artifact:*.cef.destination",
         "run_query_1:action_result.data.*.peer",
-        "run_query_1:action_result.data.*.priority",
         "run_query_1:action_result.data.*.count"
     ]
 
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
+    # responses
+    response_types = [
+        {
+            "prompt": "Would you like change status of the notable event",
+            "options": {
+                "type": "list",
+                "choices": [
+                    "Yes",
+                    "No"
+                ],
+            },
+        }
+    ]
 
-    # Write your custom code here...
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters, response_types=response_types, callback=decision_1)
 
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
+    return
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_2")
 
-    update_event_1(container=container)
+@phantom.playbook_block()
+def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("decision_1() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["prompt_1:action_result.summary.responses.0", "==", "Yes"]
+        ],
+        delimiter=None)
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        update_event_1(action=action, success=success, container=container, results=results, handle=handle)
+        return
 
     return
 
@@ -113,20 +161,21 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.notableId","artifact:*.id"])
-    format_2 = phantom.get_format_data(name="format_2")
+    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.summary.total_events","run_query_1:action_result.parameter.context.artifact_id"], action_results=results)
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.event_id","artifact:*.id"])
 
     parameters = []
 
     # build parameters list for 'update_event_1' call
-    for container_artifact_item in container_artifact_data:
-        if container_artifact_item[0] is not None:
-            parameters.append({
-                "status": "in progress",
-                "comment": format_2,
-                "event_ids": container_artifact_item[0],
-                "context": {'artifact_id': container_artifact_item[1]},
-            })
+    for run_query_1_result_item in run_query_1_result_data:
+        for container_artifact_item in container_artifact_data:
+            if container_artifact_item[0] is not None:
+                parameters.append({
+                    "status": "in progress",
+                    "comment": run_query_1_result_item[0],
+                    "event_ids": container_artifact_item[0],
+                    "context": {'artifact_id': container_artifact_item[1]},
+                })
 
     ################################################################################
     ## Custom Code Start

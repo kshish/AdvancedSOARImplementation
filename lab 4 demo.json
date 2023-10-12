@@ -7,6 +7,13 @@
             "description": "",
             "edges": [
                 {
+                    "id": "port_0_to_port_2",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
                     "id": "port_2_to_port_3",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
@@ -14,28 +21,45 @@
                     "targetPort": "3_in"
                 },
                 {
-                    "id": "port_3_to_port_6",
+                    "id": "port_3_to_port_4",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_4_to_port_5",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
                 },
                 {
-                    "id": "port_6_to_port_8",
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_6_to_port_7",
                     "sourceNode": "6",
                     "sourcePort": "6_out",
-                    "targetNode": "8",
-                    "targetPort": "8_in"
-                },
-                {
-                    "id": "port_0_to_port_2",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "2a8d946d17ebb187dba2cdb5d37d1517571cd6e5",
+            "hash": "b8c270849f061a26df325846849b31e789c830be",
             "nodes": {
                 "0": {
                     "data": {
@@ -51,7 +75,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 379.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -66,8 +90,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1360
+                    "x": 1260,
+                    "y": 1600
                 },
                 "2": {
                     "data": {
@@ -78,7 +102,7 @@
                         "functionName": "format_1",
                         "id": "2",
                         "parameters": [
-                            "artifact:*.cef.destinationHostName"
+                            "artifact:*.cef.destination"
                         ],
                         "template": "find_peers server=\"{0}\"\n",
                         "type": "format"
@@ -88,7 +112,7 @@
                     "type": "format",
                     "warnings": {},
                     "x": 980,
-                    "y": 640
+                    "y": 604.5
                 },
                 "3": {
                     "data": {
@@ -136,11 +160,30 @@
                     "x": 980,
                     "y": 784.5
                 },
-                "6": {
+                "4": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.priority",
+                                        "value": "high"
+                                    },
+                                    {
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.priority",
+                                        "value": "unknown"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "or"
+                            }
+                        ],
                         "customDatapaths": {
                             "run_query_1": {
                                 "action_result.data.*.priority": {
@@ -151,29 +194,90 @@
                                 }
                             }
                         },
-                        "functionId": 2,
-                        "functionName": "format_2",
-                        "id": "6",
+                        "functionId": 1,
+                        "functionName": "filter_1",
+                        "id": "4",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 1040,
+                    "y": 964.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "5",
+                        "message": "The host {0} communicated with the follow high priority peers:\n\n{1} number of times {2}",
                         "parameters": [
+                            "artifact:*.cef.destination",
                             "run_query_1:action_result.data.*.peer",
-                            "run_query_1:action_result.data.*.priority",
                             "run_query_1:action_result.data.*.count"
                         ],
-                        "template": "%%\nPeer: {0} Priority: {1} communicated  {2} times\n%%",
-                        "type": "format"
+                        "responseTime": 30,
+                        "responses": [
+                            {
+                                "responseOptions": [
+                                    "Yes",
+                                    "No"
+                                ],
+                                "responsePrompt": "Would you like change status of the notable event",
+                                "responseType": "yes/no"
+                            }
+                        ],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 1260
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "prompt_1:action_result.summary.responses.0",
+                                        "value": "Yes"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "decision_1",
+                        "id": "6",
+                        "type": "decision"
                     },
                     "errors": {},
                     "id": "6",
-                    "type": "format",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath configuration."
-                        ]
-                    },
-                    "x": 980,
-                    "y": 980
+                    "type": "decision",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 1464.5
                 },
-                "8": {
+                "7": {
                     "data": {
                         "action": "update event",
                         "actionType": "generic",
@@ -188,10 +292,10 @@
                         "connectorVersion": "v1",
                         "functionId": 1,
                         "functionName": "update_event_1",
-                        "id": "8",
+                        "id": "7",
                         "parameters": {
-                            "comment": "format_2:formatted_data",
-                            "event_ids": "artifact:*.cef.notableId",
+                            "comment": "run_query_1:action_result.summary.total_events",
+                            "event_ids": "artifact:*.cef.event_id",
                             "status": "in progress"
                         },
                         "requiredParameters": [
@@ -203,11 +307,11 @@
                         "type": "action"
                     },
                     "errors": {},
-                    "id": "8",
+                    "id": "7",
                     "type": "action",
                     "warnings": {},
                     "x": 980,
-                    "y": 1164.5
+                    "y": 1644.5
                 }
             },
             "notes": ""
@@ -216,12 +320,13 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.8",
-        "version": "5.5.0.108488"
+        "schema": "5.0.10",
+        "version": "6.0.1.123902"
     },
-    "create_time": "2023-05-11T20:01:25.001569+00:00",
+    "create_time": "2023-10-12T19:31:00.168495+00:00",
     "draft_mode": false,
     "labels": [
+        "migrated_malware",
         "malware"
     ],
     "tags": []
