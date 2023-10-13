@@ -140,7 +140,7 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
 
     # parameter list for template variable replacement
     parameters = [
-        "get_data_1:action_result.data.*.parsed_response_body"
+        "get_data_1:action_result.data.*.parsed_response_body.name"
     ]
 
     phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)

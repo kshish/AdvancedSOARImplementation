@@ -35,7 +35,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "20ca512e04dad2aa02d63bcf3e3a6ecd19e25438",
+            "hash": "e5cff46a8a0f3e888ab8ef90b2f71d63a05a547c",
             "nodes": {
                 "0": {
                     "data": {
@@ -302,12 +302,22 @@
                             "type": "role",
                             "value": "Administrator"
                         },
+                        "customDatapaths": {
+                            "get_data_1": {
+                                "action_result.data.*.parsed_response_body.name": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.parsed_response_body.name",
+                                    "value": "get_data_1:action_result.data.*.parsed_response_body.name"
+                                }
+                            }
+                        },
                         "functionId": 1,
                         "functionName": "prompt_1",
                         "id": "6",
                         "message": "{0}",
                         "parameters": [
-                            "get_data_1:action_result.data.*.parsed_response_body"
+                            "get_data_1:action_result.data.*.parsed_response_body.name"
                         ],
                         "responseTime": 30,
                         "responses": [],
@@ -332,7 +342,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-10-13T18:22:12.639358+00:00",
+    "create_time": "2023-10-13T18:23:49.991301+00:00",
     "draft_mode": false,
     "labels": [
         "*"
