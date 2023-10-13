@@ -35,7 +35,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "e5cff46a8a0f3e888ab8ef90b2f71d63a05a547c",
+            "hash": "b9e8c1eeda947b3150a83525c6bec5792066ffdb",
             "nodes": {
                 "0": {
                     "data": {
@@ -317,15 +317,13 @@
                         "id": "6",
                         "message": "{0}",
                         "parameters": [
-                            "get_data_1:action_result.data.*.parsed_response_body.name"
+                            "get_data_1:action_result.data.*.parsed_response_body.data.data_field1"
                         ],
                         "responseTime": 30,
                         "responses": [],
                         "type": "prompt"
                     },
-                    "errors": {
-                        "approver": "approver must be a `object` type, but the final value was: `null` (cast from the value `\"admin\"`).\n If \"null\" is intended as an empty value be sure to mark the schema as `.nullable()`"
-                    },
+                    "errors": {},
                     "id": "6",
                     "type": "prompt",
                     "warnings": {},
@@ -342,7 +340,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-10-13T18:23:49.991301+00:00",
+    "create_time": "2023-10-13T18:24:48.935780+00:00",
     "draft_mode": false,
     "labels": [
         "*"
