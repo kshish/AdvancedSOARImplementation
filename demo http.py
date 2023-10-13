@@ -42,7 +42,7 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["mysoar100"], callback=get_data_1_callback)
+    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["soar100"], callback=get_data_1_callback)
 
     return
 
@@ -140,7 +140,7 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
 
     # parameter list for template variable replacement
     parameters = [
-        "get_data_1:action_result.data.*.parsed_response_body.label"
+        "get_data_1:action_result.data.*.parsed_response_body"
     ]
 
     phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)

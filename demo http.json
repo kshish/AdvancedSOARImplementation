@@ -35,7 +35,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "82d78120d6708d383da38d09fd4ea0e46ed6529b",
+            "hash": "20ca512e04dad2aa02d63bcf3e3a6ecd19e25438",
             "nodes": {
                 "0": {
                     "data": {
@@ -51,7 +51,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999955
+                    "y": 419.99999999999943
                 },
                 "1": {
                     "data": {
@@ -80,7 +80,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "mysoar100"
+                            "soar100"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -307,7 +307,7 @@
                         "id": "6",
                         "message": "{0}",
                         "parameters": [
-                            "get_data_1:action_result.data.*.parsed_response_body.label"
+                            "get_data_1:action_result.data.*.parsed_response_body"
                         ],
                         "responseTime": 30,
                         "responses": [],
@@ -318,13 +318,9 @@
                     },
                     "id": "6",
                     "type": "prompt",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath configuration."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 1320,
-                    "y": 824.5
+                    "y": 820
                 }
             },
             "notes": ""
@@ -333,10 +329,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.8",
-        "version": "5.5.0.108488"
+        "schema": "5.0.10",
+        "version": "6.0.1.123902"
     },
-    "create_time": "2023-05-12T18:51:40.020385+00:00",
+    "create_time": "2023-10-13T18:22:12.639358+00:00",
     "draft_mode": false,
     "labels": [
         "*"
