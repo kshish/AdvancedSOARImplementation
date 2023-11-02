@@ -19,9 +19,49 @@
                     "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_4",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_4_to_port_5",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_7_to_port_8",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
                 }
             ],
-            "hash": "f6be93e16951e858d3a9de58b12d57b95e2e43f3",
+            "hash": "d5440660b8197815de5177eb13bc4ff5709d5249",
             "nodes": {
                 "0": {
                     "data": {
@@ -52,8 +92,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1000
+                    "x": 1380,
+                    "y": 1220
                 },
                 "2": {
                     "data": {
@@ -120,7 +160,166 @@
                     "type": "action",
                     "warnings": {},
                     "x": 980,
-                    "y": 764.5
+                    "y": 700
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "4",
+                        "parameters": [
+                            "run_query_1:action_result.summary.total_events"
+                        ],
+                        "template": "Total peers: {0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 864.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.severity": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.severity",
+                                    "value": "run_query_1:action_result.data.*.severity"
+                                }
+                            }
+                        },
+                        "functionId": 3,
+                        "functionName": "format_3",
+                        "id": "5",
+                        "parameters": [
+                            "run_query_1:action_result.data.*.peer",
+                            "run_query_1:action_result.data.*.severity",
+                            "run_query_1:action_result.data.*.count"
+                        ],
+                        "template": "%%\npeer: {0} with severity {1} communicated {2} times\n%%",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1004.5
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "6",
+                        "message": "{0}",
+                        "parameters": [
+                            "format_3:formatted_data"
+                        ],
+                        "responseTime": 30,
+                        "responses": [
+                            {
+                                "responseOptions": [
+                                    "Yes",
+                                    "No"
+                                ],
+                                "responsePrompt": "would to change notable status to open and add query results",
+                                "responseType": "yes/no"
+                            }
+                        ],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 1124.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "prompt_1:action_result.summary.responses.0",
+                                        "value": "Yes"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "decision_1",
+                        "id": "7",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "decision",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 1364.5
+                },
+                "8": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunk100"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_event_1",
+                        "id": "8",
+                        "parameters": {
+                            "comment": "format_2:formatted_data",
+                            "event_ids": "artifact:*.cef.notableId",
+                            "status": "in progress"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 1100,
+                    "y": 1564.5
                 }
             },
             "notes": ""
@@ -132,7 +331,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-11-02T18:08:25.262132+00:00",
+    "create_time": "2023-11-02T18:17:28.611248+00:00",
     "draft_mode": false,
     "labels": [
         "old_malware",
