@@ -114,7 +114,7 @@ def format_3(action=None, success=None, container=None, results=None, handle=Non
     # parameter list for template variable replacement
     parameters = [
         "run_query_1:action_result.data.*.peer",
-        "run_query_1:action_result.data.*.severity",
+        "run_query_1:action_result.data.*.priority",
         "run_query_1:action_result.data.*.count"
     ]
 

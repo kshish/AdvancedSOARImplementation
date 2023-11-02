@@ -61,7 +61,7 @@
                     "targetPort": "8_in"
                 }
             ],
-            "hash": "d5440660b8197815de5177eb13bc4ff5709d5249",
+            "hash": "9d6aa844400053c0b4e9aa7755e5abf90bebbe44",
             "nodes": {
                 "0": {
                     "data": {
@@ -203,7 +203,7 @@
                         "id": "5",
                         "parameters": [
                             "run_query_1:action_result.data.*.peer",
-                            "run_query_1:action_result.data.*.severity",
+                            "run_query_1:action_result.data.*.priority",
                             "run_query_1:action_result.data.*.count"
                         ],
                         "template": "%%\npeer: {0} with severity {1} communicated {2} times\n%%",
@@ -331,7 +331,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2023-11-02T18:17:28.611248+00:00",
+    "create_time": "2023-11-02T18:19:07.304046+00:00",
     "draft_mode": false,
     "labels": [
         "old_malware",
