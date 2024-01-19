@@ -19,9 +19,16 @@
                     "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_4",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "f2cb7695313ce763f3844506baac65beb81b74a3",
+            "hash": "d2421640b0e4c7f2d4b737f2841a1d63423663c9",
             "nodes": {
                 "0": {
                     "data": {
@@ -53,7 +60,7 @@
                     "type": "end",
                     "warnings": {},
                     "x": 1000,
-                    "y": 1000
+                    "y": 1120
                 },
                 "2": {
                     "data": {
@@ -107,6 +114,50 @@
                     "warnings": {},
                     "x": 990,
                     "y": 784.5
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "customDatapaths": {
+                            "get_data_1": {
+                                "action_result.data.*.parsed_response_body.data": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.parsed_response_body.data",
+                                    "value": "get_data_1:action_result.data.*.parsed_response_body.data"
+                                },
+                                "action_result.data.*.parsed_response_body.data.username": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.parsed_response_body.data.username",
+                                    "value": "get_data_1:action_result.data.*.parsed_response_body.data.username"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "4",
+                        "message": "body {0}\n\nuser name {1}",
+                        "parameters": [
+                            "get_data_1:action_result.data.*.parsed_response_body",
+                            "get_data_1:action_result.data.*.parsed_response_body.data.*.username"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1090,
+                    "y": 944.5
                 }
             },
             "notes": ""
@@ -118,7 +169,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2024-01-19T20:10:05.688257+00:00",
+    "create_time": "2024-01-19T20:14:31.589079+00:00",
     "draft_mode": false,
     "labels": [
         "*"
