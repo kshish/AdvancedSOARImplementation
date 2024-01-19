@@ -21,7 +21,7 @@ def demopassthrough(someIp=None, someString=None, **kwargs):
     
     
     
-    ouputs = {"outputIp": someIp, "outputString": someString}
+    outputs = {"outputIp": someIp, "outputString": someString}
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
