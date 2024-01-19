@@ -24,9 +24,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     template = """ph_user"""
 
     # parameter list for template variable replacement
-    parameters = [
-        ""
-    ]
+    parameters = []
 
     ################################################################################
     ## Custom Code Start
