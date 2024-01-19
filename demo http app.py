@@ -18,6 +18,34 @@ def on_start(container):
     return
 
 @phantom.playbook_block()
+def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("format_1() called")
+
+    template = """ph_user"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        ""
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_1")
+
+    get_data_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
 def get_data_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
     phantom.debug("get_data_1() called")
 
@@ -42,84 +70,7 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["soar100"], callback=format_2)
-
-    return
-
-
-@phantom.playbook_block()
-def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_1() called")
-
-    template = """container/{0}\n"""
-
-    # parameter list for template variable replacement
-    parameters = [
-        "container:id"
-    ]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.format(container=container, template=template, parameters=parameters, name="format_1")
-
-    get_data_1(container=container)
-
-    return
-
-
-@phantom.playbook_block()
-def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("format_2() called")
-
-    template = """Name: {0}\nLabel: {1}"""
-
-    # parameter list for template variable replacement
-    parameters = [
-        "get_data_1:action_result.data.*.response_body.name",
-        "get_data_1:action_result.data.*.parsed_response_body.label"
-    ]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.format(container=container, template=template, parameters=parameters, name="format_2")
-
-    prompt_1(container=container)
-
-    return
-
-
-@phantom.playbook_block()
-def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("prompt_1() called")
-
-    # set user and message variables for phantom.prompt call
-
-    user = "soardev"
-    role = None
-    message = """{0}"""
-
-    # parameter list for template variable replacement
-    parameters = [
-        "format_2:formatted_data"
-    ]
-
-    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
+    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["soar100"])
 
     return
 
@@ -132,16 +83,7 @@ def on_finish(container, summary):
     ## Custom Code Start
     ################################################################################
 
-    # This function is called after all actions are completed.
-    # summary of all the action and/or all details of actions
-    # can be collected here.
-
-    # summary_json = phantom.get_summary()
-    # if 'result' in summary_json:
-        # for action_result in summary_json['result']:
-            # if 'action_run_id' in action_result:
-                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)
-                # phantom.debug(action_results)
+    # Write your custom code here...
 
     ################################################################################
     ## Custom Code End
