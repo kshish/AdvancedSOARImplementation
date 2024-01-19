@@ -1,0 +1,163 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "",
+            "edges": [
+                {
+                    "id": "port_0_to_port_2",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_3",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                }
+            ],
+            "hash": "aff166a8c560f355bd71589c95b679fd2a38267f",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 419.9999999999999
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 1000
+                },
+                "2": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "demopassthrough",
+                            "repoName": "chris"
+                        },
+                        "functionId": 1,
+                        "functionName": "demopassthrough_1",
+                        "id": "2",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "demopassthrough": {
+                                "description": "demo",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "ip"
+                                        ],
+                                        "description": "Map an IP into this input parameter",
+                                        "inputType": "item",
+                                        "label": "someIp",
+                                        "name": "someIp",
+                                        "placeholder": "111.222.33.44",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "someString",
+                                        "name": "someString",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "demopassthrough",
+                                "name": "demopassthrough"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "demopassthrough": {
+                                "someIp": "artifact:*.cef.destinationAddress",
+                                "someString": "container:name"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 624.5
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "3",
+                        "message": "IP {0}\nstring {1}",
+                        "parameters": [
+                            "demopassthrough_1:custom_function_result.data.outputIp",
+                            "demopassthrough_1:custom_function_result.data.outputString"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 764.5
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_type": "automation",
+        "python_version": "3",
+        "schema": "5.0.10",
+        "version": "6.0.1.123902"
+    },
+    "create_time": "2024-01-19T17:39:45.508776+00:00",
+    "draft_mode": false,
+    "labels": [
+        "malware"
+    ],
+    "tags": []
+}
