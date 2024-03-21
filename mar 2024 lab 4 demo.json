@@ -61,7 +61,7 @@
                     "targetPort": "9_in"
                 }
             ],
-            "hash": "1706ef86e469ccca723340a3672574030361bbd3",
+            "hash": "01389e161511fb51bc1886d26c2e155aa446a961",
             "nodes": {
                 "0": {
                     "data": {
@@ -77,7 +77,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -136,7 +136,7 @@
                             "command": "savedsearch",
                             "query": "format_1:formatted_data",
                             "search_mode": "smart",
-                            "start_time": "-10m"
+                            "start_time": "-60m"
                         },
                         "requiredParameters": [
                             {
@@ -159,7 +159,11 @@
                     "errors": {},
                     "id": "3",
                     "type": "action",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1010,
                     "y": 824.5
                 },
@@ -290,7 +294,11 @@
                     "errors": {},
                     "id": "8",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1020,
                     "y": 1560
                 },
@@ -327,7 +335,11 @@
                     "errors": {},
                     "id": "9",
                     "type": "action",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1020,
                     "y": 1684.5
                 }
@@ -341,7 +353,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2024-03-21T16:06:15.367325+00:00",
+    "create_time": "2024-03-21T16:15:01.421362+00:00",
     "draft_mode": false,
     "labels": [
         "splunk",
