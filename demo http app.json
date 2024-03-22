@@ -7,21 +7,35 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
-                },
-                {
                     "id": "port_2_to_port_3",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
+                },
+                {
+                    "id": "port_0_to_port_4",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_4_to_port_2",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_3_to_port_1",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "7fbb05c3b2b57d4ec9713534ed4aff2defa9c3c9",
+            "hash": "30852ee2bd2f2357585d01424a51da5780c99d66",
             "nodes": {
                 "0": {
                     "data": {
@@ -64,17 +78,17 @@
                         "functionName": "format_1",
                         "id": "2",
                         "parameters": [
-                            ""
+                            "prompt_1:action_result.summary.responses.0"
                         ],
-                        "template": "ph_user",
+                        "template": "cef?filter_type={0}\n",
                         "type": "format"
                     },
                     "errors": {},
                     "id": "2",
                     "type": "format",
                     "warnings": {},
-                    "x": 986,
-                    "y": 563.5
+                    "x": 980,
+                    "y": 660
                 },
                 "3": {
                     "data": {
@@ -107,8 +121,44 @@
                     "id": "3",
                     "type": "action",
                     "warnings": {},
-                    "x": 990,
-                    "y": 784.5
+                    "x": 980,
+                    "y": 840
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "4",
+                        "message": "",
+                        "parameters": [],
+                        "responseTime": 30,
+                        "responses": [
+                            {
+                                "responseOptions": [
+                                    "custom",
+                                    "default"
+                                ],
+                                "responsePrompt": "What type of CEF fields would you like to see",
+                                "responseType": "customList"
+                            }
+                        ],
+                        "type": "prompt"
+                    },
+                    "errors": {
+                        "message": "Add message content."
+                    },
+                    "id": "4",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 520
                 }
             },
             "notes": ""
@@ -120,7 +170,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2024-01-19T20:09:19.775102+00:00",
+    "create_time": "2024-03-22T16:19:28.773331+00:00",
     "draft_mode": false,
     "labels": [
         "*"
