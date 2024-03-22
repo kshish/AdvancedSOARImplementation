@@ -28,14 +28,21 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_3_to_port_1",
+                    "id": "port_3_to_port_5",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "d5674ab67c79e915780fa1a52fd4bfc482e4359c",
+            "hash": "f0e0fb916170a18f80e52fa80c1836507669bfd1",
             "nodes": {
                 "0": {
                     "data": {
@@ -66,8 +73,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1000
+                    "x": 1020,
+                    "y": 1260
                 },
                 "2": {
                     "data": {
@@ -159,6 +166,70 @@
                     "warnings": {},
                     "x": 1060,
                     "y": 520
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "get_data_1": {
+                                "action_result.data.*.parsed_response_body.data": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.parsed_response_body.data",
+                                    "value": "get_data_1:action_result.data.*.parsed_response_body.data"
+                                },
+                                "action_result.data.*.parsed_response_body.data.name": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.parsed_response_body.data.name",
+                                    "value": "get_data_1:action_result.data.*.parsed_response_body.data.name"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "5",
+                        "parameters": [
+                            "get_data_1:action_result.data.*.parsed_response_body"
+                        ],
+                        "template": "%%\nCustom CEF field name: {0}\n%%",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 984.5
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 2,
+                        "functionName": "prompt_2",
+                        "id": "6",
+                        "message": "{0}",
+                        "parameters": [
+                            "format_2:formatted_data"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 1144.5
                 }
             },
             "notes": ""
@@ -170,7 +241,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2024-03-22T16:23:23.177671+00:00",
+    "create_time": "2024-03-22T16:26:07.546787+00:00",
     "draft_mode": false,
     "labels": [
         "*"
