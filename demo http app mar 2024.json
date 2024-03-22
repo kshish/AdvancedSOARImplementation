@@ -35,7 +35,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "e1b6803d3ce377011a034b346653c20cb3a57803",
+            "hash": "d5674ab67c79e915780fa1a52fd4bfc482e4359c",
             "nodes": {
                 "0": {
                     "data": {
@@ -80,7 +80,7 @@
                         "parameters": [
                             "prompt_1:action_result.summary.responses.0"
                         ],
-                        "template": "cef?_filter_type={0}\n",
+                        "template": "cef?_filter_type=\"{0}\"\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -170,7 +170,7 @@
         "schema": "5.0.10",
         "version": "6.0.1.123902"
     },
-    "create_time": "2024-03-22T16:22:27.605646+00:00",
+    "create_time": "2024-03-22T16:23:23.177671+00:00",
     "draft_mode": false,
     "labels": [
         "*"
