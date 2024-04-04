@@ -153,28 +153,52 @@ def format_list(action=None, success=None, container=None, results=None, handle=
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_list")
 
-    prompt_1(container=container)
+    update_event_1(container=container)
 
     return
 
 
 @phantom.playbook_block()
-def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("prompt_1() called")
+def update_event_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("update_event_1() called")
 
-    # set user and message variables for phantom.prompt call
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    user = None
-    role = "Administrator"
-    message = """{0}\n{1}"""
+    comment_formatted_string = phantom.format(
+        container=container,
+        template="""{0}\n{1}""",
+        parameters=[
+            "format_message:formatted_data",
+            "format_list:formatted_data"
+        ])
 
-    # parameter list for template variable replacement
-    parameters = [
-        "format_message:formatted_data",
-        "format_list:formatted_data"
-    ]
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.notableId","artifact:*.id"])
+    format_message = phantom.get_format_data(name="format_message")
+    format_list = phantom.get_format_data(name="format_list")
 
-    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
+    parameters = []
+
+    # build parameters list for 'update_event_1' call
+    for container_artifact_item in container_artifact_data:
+        if container_artifact_item[0] is not None:
+            parameters.append({
+                "event_ids": container_artifact_item[0],
+                "status": "in progress",
+                "comment": comment_formatted_string,
+                "context": {'artifact_id': container_artifact_item[1]},
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["splunk_instructor"])
 
     return
 

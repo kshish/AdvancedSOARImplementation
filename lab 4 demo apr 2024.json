@@ -47,14 +47,14 @@
                     "targetPort": "7_in"
                 },
                 {
-                    "id": "port_7_to_port_8",
+                    "id": "port_7_to_port_9",
                     "sourceNode": "7",
                     "sourcePort": "7_out",
-                    "targetNode": "8",
-                    "targetPort": "8_in"
+                    "targetNode": "9",
+                    "targetPort": "9_in"
                 }
             ],
-            "hash": "09aa525ac20a6b998b07364bde6c4eebc8a9854f",
+            "hash": "2fc2fcbb4250b301f20b1335398df62bed64be9f",
             "nodes": {
                 "0": {
                     "data": {
@@ -70,7 +70,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -85,8 +85,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1020,
-                    "y": 1820
+                    "x": 980,
+                    "y": 1920
                 },
                 "3": {
                     "data": {
@@ -160,7 +160,11 @@
                     "errors": {},
                     "id": "4",
                     "type": "action",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 980,
                     "y": 780
                 },
@@ -179,6 +183,7 @@
                                         "value": "critical"
                                     },
                                     {
+                                        "conditionIndex": 0,
                                         "op": "==",
                                         "param": "run_query_1:action_result.data.*.priority",
                                         "value": "high"
@@ -208,7 +213,7 @@
                     "type": "filter",
                     "warnings": {},
                     "x": 1040,
-                    "y": 964.5
+                    "y": 960
                 },
                 "6": {
                     "data": {
@@ -275,33 +280,56 @@
                     "x": 980,
                     "y": 1380
                 },
-                "8": {
+                "9": {
                     "data": {
+                        "action": "update event",
+                        "actionType": "generic",
                         "advanced": {
                             "join": []
                         },
-                        "approver": {
-                            "type": "role",
-                            "value": "Administrator"
-                        },
-                        "functionId": 1,
-                        "functionName": "prompt_1",
-                        "id": "8",
-                        "message": "{0}\n{1}",
-                        "parameters": [
-                            "format_message:formatted_data",
-                            "format_list:formatted_data"
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunk_instructor"
                         ],
-                        "responseTime": 30,
-                        "responses": [],
-                        "type": "prompt"
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_event_1",
+                        "id": "9",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": {
+                                "parameters": [
+                                    "format_message:formatted_data",
+                                    "format_list:formatted_data"
+                                ],
+                                "template": "{0}\n{1}"
+                            },
+                            "event_ids": "artifact:*.cef.notableId",
+                            "status": "in progress"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
                     },
                     "errors": {},
-                    "id": "8",
-                    "type": "prompt",
+                    "id": "9",
+                    "type": "action",
                     "warnings": {},
-                    "x": 1040,
-                    "y": 1580
+                    "x": 980,
+                    "y": 1600
                 }
             },
             "notes": ""
@@ -313,7 +341,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-04T16:34:09.685323+00:00",
+    "create_time": "2024-04-04T16:41:09.528140+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",
