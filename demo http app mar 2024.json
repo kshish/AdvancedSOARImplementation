@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "c87e5255d31ba28de600df128712e50fda522090",
+            "hash": "0187a1b4e616ddd5103b62d39592dcd440b69b75",
             "nodes": {
                 "0": {
                     "data": {
@@ -58,7 +58,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -106,13 +106,22 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "soar100"
+                            "soarinstructorhttp"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
                         "functionId": 1,
                         "functionName": "get_data_1",
                         "id": "3",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "parameters": {
                             "location": "format_1:formatted_data"
                         },
@@ -238,10 +247,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.10",
-        "version": "6.0.1.123902"
+        "schema": "5.0.11",
+        "version": "6.2.0.355"
     },
-    "create_time": "2024-03-22T16:28:08.401341+00:00",
+    "create_time": "2024-04-05T16:44:08.953915+00:00",
     "draft_mode": false,
     "labels": [
         "*"
