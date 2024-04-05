@@ -1,0 +1,41 @@
+{
+    "create_time": "2024-04-05T14:09:03.706706+00:00",
+    "custom_function_id": "b33abea86d7a4e6fb3559d37c586ebc05a8ad551",
+    "description": "This is a demo of a cf\n\n\n",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "description": "map an ip in here to get passed through as output",
+            "input_type": "item",
+            "name": "my_ip_used_for_something",
+            "placeholder": "111.22.33.44"
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "myString",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "data_path": "outputIP",
+            "description": ""
+        },
+        {
+            "contains_type": [],
+            "data_path": "myOutputString",
+            "description": ""
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.2.0.355",
+    "python_version": "3"
+}
