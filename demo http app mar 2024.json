@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "0187a1b4e616ddd5103b62d39592dcd440b69b75",
+            "hash": "5819a0591c5eae92c495363e0ef31adb26f98f30",
             "nodes": {
                 "0": {
                     "data": {
@@ -87,7 +87,7 @@
                         "parameters": [
                             "prompt_1:action_result.summary.responses.0"
                         ],
-                        "template": "cef?_filter_type=\"{0}\"\n",
+                        "template": "cef?_filter_type=\"{0}\"&page_size=200\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -250,7 +250,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-05T16:44:08.953915+00:00",
+    "create_time": "2024-04-05T16:45:19.445891+00:00",
     "draft_mode": false,
     "labels": [
         "*"

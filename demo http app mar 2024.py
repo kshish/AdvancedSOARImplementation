@@ -21,7 +21,7 @@ def on_start(container):
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_1() called")
 
-    template = """cef?_filter_type=\"{0}\"\n"""
+    template = """cef?_filter_type=\"{0}\"&page_size=200\n"""
 
     # parameter list for template variable replacement
     parameters = [
