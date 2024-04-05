@@ -26,7 +26,7 @@ def demo_cf_passthrough(my_ip_used_for_something=None, myString=None, **kwargs):
     
     
     
-    ouputs={"outputIP": myvar, "myOutputString": myothervar}
+    outputs={"outputIP": myvar, "myOutputString": myothervar}
     
     
     # Return a JSON-serializable object
