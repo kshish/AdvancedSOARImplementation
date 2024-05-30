@@ -1,0 +1,295 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "",
+            "edges": [
+                {
+                    "id": "port_0_to_port_3",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_2",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_4",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_4_to_port_6",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                }
+            ],
+            "hash": "58461772dd6c4efbe90425e8e6413d1bbff26241",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 419.9999999999998
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 1300
+                },
+                "2": {
+                    "data": {
+                        "action": "run query",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "myes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "run_query_1",
+                        "id": "2",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "search",
+                            "query": "format_1:formatted_data",
+                            "search_mode": "smart",
+                            "start_time": "-1h"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "query"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "search",
+                                "field": "command"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "smart",
+                                "field": "search_mode"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 740
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "format_1",
+                        "id": "3",
+                        "parameters": [
+                            "artifact:*.cef.destination"
+                        ],
+                        "template": "`notable` |search dest=\"{0}\" \n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 584.5
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.severities",
+                                        "value": "high"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "and"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 1,
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.severities",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "logic": "and"
+                            }
+                        ],
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.severities": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.severities",
+                                    "value": "run_query_1:action_result.data.*.severities"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "filter_1",
+                        "id": "4",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 1040,
+                    "y": 904.5
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.dest_risk_score": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.dest_risk_score",
+                                    "value": "run_query_1:action_result.data.*.dest_risk_score"
+                                },
+                                "action_result.data.*.security_domain": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.security_domain",
+                                    "value": "run_query_1:action_result.data.*.security_domain"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "6",
+                        "parameters": [
+                            "run_query_1:action_result.data.*.dest_risk_score",
+                            "run_query_1:action_result.data.*.security_domain"
+                        ],
+                        "template": "%%\nrisk score: {0} in {1}\n%%",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1084.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "7",
+                        "message": "{0}",
+                        "parameters": [
+                            "format_2:formatted_data"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1060,
+                    "y": 1204.5
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_type": "automation",
+        "python_version": "3",
+        "schema": "5.0.11",
+        "version": "6.2.0.355"
+    },
+    "create_time": "2024-05-30T19:26:26.601160+00:00",
+    "draft_mode": false,
+    "labels": [
+        "malware"
+    ],
+    "tags": []
+}
