@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "5819a0591c5eae92c495363e0ef31adb26f98f30",
+            "hash": "a89fa4cf4d09723bce27e817369e881787b98d6e",
             "nodes": {
                 "0": {
                     "data": {
@@ -58,7 +58,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999998
+                    "y": 419.99999999999966
                 },
                 "1": {
                     "data": {
@@ -93,7 +93,11 @@
                     "errors": {},
                     "id": "2",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 980,
                     "y": 660
                 },
@@ -106,7 +110,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "soarinstructorhttp"
+                            "my soar instance"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -136,7 +140,11 @@
                     "errors": {},
                     "id": "3",
                     "type": "action",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 980,
                     "y": 840
                 },
@@ -236,7 +244,11 @@
                     "errors": {},
                     "id": "6",
                     "type": "prompt",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1060,
                     "y": 1144.5
                 }
@@ -250,7 +262,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-05T16:45:19.445891+00:00",
+    "create_time": "2024-05-31T19:03:17.181969+00:00",
     "draft_mode": false,
     "labels": [
         "*"
