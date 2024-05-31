@@ -52,7 +52,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 
     # parameter list for template variable replacement
     parameters = [
-        "get_data_1:action_result.data.*.parsed_response_body.username"
+        "get_data_1:action_result.data.*.parsed_response_body.*.username"
     ]
 
     ################################################################################
