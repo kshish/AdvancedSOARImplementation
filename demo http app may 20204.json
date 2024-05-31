@@ -35,7 +35,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "5ba26d84d2a0dc73418084848faf585088880c5c",
+            "hash": "e868365f678011852f88aa8288a69d9d56556887",
             "nodes": {
                 "0": {
                     "data": {
@@ -131,9 +131,10 @@
                         "functionName": "format_1",
                         "id": "3",
                         "parameters": [
-                            "get_data_1:action_result.data.*.parsed_response_body.data.*.username"
+                            "get_data_1:action_result.data.*.parsed_response_body.data.*.username",
+                            "get_data_1:action_result.data.*.parsed_response_body.data.*.is_superuser"
                         ],
-                        "template": "{0}\n",
+                        "template": "{0}\nsuperuser: {1}",
                         "type": "format"
                     },
                     "errors": {},
@@ -358,7 +359,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-31T18:56:59.916387+00:00",
+    "create_time": "2024-05-31T18:59:24.714372+00:00",
     "draft_mode": false,
     "labels": [
         "*"

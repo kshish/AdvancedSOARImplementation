@@ -60,11 +60,12 @@ def get_data_1_callback(action=None, success=None, container=None, results=None,
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_1() called")
 
-    template = """{0}\n"""
+    template = """{0}\nsuperuser: {1}"""
 
     # parameter list for template variable replacement
     parameters = [
-        "get_data_1:action_result.data.*.parsed_response_body.data.*.username"
+        "get_data_1:action_result.data.*.parsed_response_body.data.*.username",
+        "get_data_1:action_result.data.*.parsed_response_body.data.*.is_superuser"
     ]
 
     ################################################################################
