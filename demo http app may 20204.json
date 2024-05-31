@@ -35,7 +35,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "e868365f678011852f88aa8288a69d9d56556887",
+            "hash": "db90b9369f9f54cd21691d78ff5fe2e0dc5f982c",
             "nodes": {
                 "0": {
                     "data": {
@@ -134,7 +134,7 @@
                             "get_data_1:action_result.data.*.parsed_response_body.data.*.username",
                             "get_data_1:action_result.data.*.parsed_response_body.data.*.is_superuser"
                         ],
-                        "template": "{0}\nsuperuser: {1}",
+                        "template": "%%\n{0}\nsuperuser: {1}\n%%",
                         "type": "format"
                     },
                     "errors": {},
@@ -359,7 +359,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-31T18:59:24.714372+00:00",
+    "create_time": "2024-05-31T18:59:55.188091+00:00",
     "draft_mode": false,
     "labels": [
         "*"

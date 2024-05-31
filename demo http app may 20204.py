@@ -60,7 +60,7 @@ def get_data_1_callback(action=None, success=None, container=None, results=None,
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_1() called")
 
-    template = """{0}\nsuperuser: {1}"""
+    template = """%%\n{0}\nsuperuser: {1}\n%%"""
 
     # parameter list for template variable replacement
     parameters = [
