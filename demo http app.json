@@ -7,35 +7,14 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_2_to_port_3",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
-                },
-                {
-                    "id": "port_0_to_port_4",
+                    "id": "port_0_to_port_2",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
-                },
-                {
-                    "id": "port_4_to_port_2",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
-                },
-                {
-                    "id": "port_3_to_port_1",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
                 }
             ],
-            "hash": "30852ee2bd2f2357585d01424a51da5780c99d66",
+            "hash": "f1becd21307eca25237351ad3d18a34f43653533",
             "nodes": {
                 "0": {
                     "data": {
@@ -51,7 +30,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 500
                 },
                 "1": {
                     "data": {
@@ -71,27 +50,6 @@
                 },
                 "2": {
                     "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "format_1",
-                        "id": "2",
-                        "parameters": [
-                            "prompt_1:action_result.summary.responses.0"
-                        ],
-                        "template": "cef?filter_type={0}\n",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "2",
-                    "type": "format",
-                    "warnings": {},
-                    "x": 980,
-                    "y": 660
-                },
-                "3": {
-                    "data": {
                         "action": "get data",
                         "actionType": "investigate",
                         "advanced": {
@@ -99,15 +57,24 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "soar100"
+                            "my soar instance"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
                         "functionId": 1,
                         "functionName": "get_data_1",
-                        "id": "3",
+                        "id": "2",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "parameters": {
-                            "location": "format_1:formatted_data"
+                            "location": "ph_user"
                         },
                         "requiredParameters": [
                             {
@@ -118,47 +85,11 @@
                         "type": "action"
                     },
                     "errors": {},
-                    "id": "3",
+                    "id": "2",
                     "type": "action",
                     "warnings": {},
-                    "x": 980,
-                    "y": 840
-                },
-                "4": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "approver": {
-                            "type": "role",
-                            "value": "Administrator"
-                        },
-                        "functionId": 1,
-                        "functionName": "prompt_1",
-                        "id": "4",
-                        "message": "",
-                        "parameters": [],
-                        "responseTime": 30,
-                        "responses": [
-                            {
-                                "responseOptions": [
-                                    "custom",
-                                    "default"
-                                ],
-                                "responsePrompt": "What type of CEF fields would you like to see",
-                                "responseType": "customList"
-                            }
-                        ],
-                        "type": "prompt"
-                    },
-                    "errors": {
-                        "message": "Add message content."
-                    },
-                    "id": "4",
-                    "type": "prompt",
-                    "warnings": {},
-                    "x": 1060,
-                    "y": 520
+                    "x": 945,
+                    "y": 766.5
                 }
             },
             "notes": ""
@@ -167,10 +98,10 @@
         "output_spec": null,
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.10",
-        "version": "6.0.1.123902"
+        "schema": "5.0.11",
+        "version": "6.2.0.355"
     },
-    "create_time": "2024-03-22T16:19:28.773331+00:00",
+    "create_time": "2024-05-31T18:44:25.838703+00:00",
     "draft_mode": false,
     "labels": [
         "*"
