@@ -12,9 +12,23 @@
                     "sourcePort": "0_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_3",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_4",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "f1becd21307eca25237351ad3d18a34f43653533",
+            "hash": "a6c42890442a4596311032a23b8b1f6c5902f27e",
             "nodes": {
                 "0": {
                     "data": {
@@ -45,8 +59,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1000
+                    "x": 1020,
+                    "y": 1120
                 },
                 "2": {
                     "data": {
@@ -90,6 +104,64 @@
                     "warnings": {},
                     "x": 945,
                     "y": 766.5
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "get_data_1": {
+                                "action_result.data.*.parsed_response_body.username": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.parsed_response_body.username",
+                                    "value": "get_data_1:action_result.data.*.parsed_response_body.username"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "format_1",
+                        "id": "3",
+                        "parameters": [
+                            "get_data_1:action_result.data.*.parsed_response_body.username"
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 960,
+                    "y": 864.5
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "4",
+                        "message": "{0}",
+                        "parameters": [
+                            "format_1:formatted_data"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1040,
+                    "y": 1024.5
                 }
             },
             "notes": ""
@@ -101,7 +173,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-31T18:44:37.624126+00:00",
+    "create_time": "2024-05-31T18:48:49.316549+00:00",
     "draft_mode": false,
     "labels": [
         "*"
