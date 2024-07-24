@@ -21,7 +21,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "ef46caf610086e781ef52badfc498867e552bafd",
+            "hash": "24a5d81e0dd9e33c79bbdb1bb0985199152fa95b",
             "nodes": {
                 "0": {
                     "data": {
@@ -136,7 +136,7 @@
                         },
                         "approver": {
                             "type": "user",
-                            "value": ""
+                            "value": "soardev"
                         },
                         "functionId": 1,
                         "functionName": "prompt_1",
@@ -168,7 +168,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-07-24T17:38:18.730995+00:00",
+    "create_time": "2024-07-24T17:39:43.824529+00:00",
     "draft_mode": false,
     "labels": [
         "*"

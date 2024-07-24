@@ -54,7 +54,7 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
 
     # set user and message variables for phantom.prompt call
 
-    user = ""
+    user = "soardev"
     role = None
     message = """ip: {0}\nstring: {1}"""
 
