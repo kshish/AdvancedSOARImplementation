@@ -61,7 +61,7 @@
                     "targetPort": "8_in"
                 }
             ],
-            "hash": "e2d66b111b1e1fcf96b0dda2fdbf5a74a3ae3425",
+            "hash": "0d2fc7e1461c7de8074faa4c64f450fbbaf04788",
             "nodes": {
                 "0": {
                     "data": {
@@ -98,10 +98,12 @@
                 "2": {
                     "data": {
                         "advanced": {
+                            "customName": "format SPL",
+                            "customNameId": 0,
                             "join": []
                         },
                         "functionId": 1,
-                        "functionName": "format_1",
+                        "functionName": "format_spl",
                         "id": "2",
                         "parameters": [
                             "artifact:*.cef.destination"
@@ -143,7 +145,7 @@
                         },
                         "parameters": {
                             "command": "savedsearch",
-                            "query": "format_1:formatted_data",
+                            "query": "format_spl:formatted_data",
                             "search_mode": "smart"
                         },
                         "requiredParameters": [
@@ -361,7 +363,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-08-15T04:16:38.488276+00:00",
+    "create_time": "2024-08-15T05:07:51.713185+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
