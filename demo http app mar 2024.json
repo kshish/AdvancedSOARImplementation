@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "a89fa4cf4d09723bce27e817369e881787b98d6e",
+            "hash": "c1858060c7e6a086365a57be0d632f236c395240",
             "nodes": {
                 "0": {
                     "data": {
@@ -58,7 +58,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999966
+                    "y": 419.99999999999955
                 },
                 "1": {
                     "data": {
@@ -93,11 +93,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "format",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 980,
                     "y": 660
                 },
@@ -110,7 +106,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "my soar instance"
+                            "chris lab soar"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -140,11 +136,7 @@
                     "errors": {},
                     "id": "3",
                     "type": "action",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 980,
                     "y": 840
                 },
@@ -160,7 +152,7 @@
                         "functionId": 1,
                         "functionName": "prompt_1",
                         "id": "4",
-                        "message": "",
+                        "message": "Hi.",
                         "parameters": [],
                         "responseTime": 30,
                         "responses": [
@@ -175,9 +167,7 @@
                         ],
                         "type": "prompt"
                     },
-                    "errors": {
-                        "message": "Add message content."
-                    },
+                    "errors": {},
                     "id": "4",
                     "type": "prompt",
                     "warnings": {},
@@ -244,11 +234,7 @@
                     "errors": {},
                     "id": "6",
                     "type": "prompt",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 1060,
                     "y": 1144.5
                 }
@@ -262,7 +248,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-31T19:03:17.181969+00:00",
+    "create_time": "2024-08-16T04:30:23.877383+00:00",
     "draft_mode": false,
     "labels": [
         "*"
