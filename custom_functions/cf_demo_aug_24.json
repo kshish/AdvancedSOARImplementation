@@ -1,0 +1,41 @@
+{
+    "create_time": "2024-08-16T01:42:47.800280+00:00",
+    "custom_function_id": "0edddad869af5a2bebe8377f0ba50f05e400b4d8",
+    "description": "demo",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "description": "provide an IP or list of IPs",
+            "input_type": "item",
+            "name": "someIP",
+            "placeholder": "111.22.33.44"
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "item",
+            "name": "someString",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "data_path": "outputIP",
+            "description": "this is output IP from demo cf"
+        },
+        {
+            "contains_type": [],
+            "data_path": "outputString",
+            "description": ""
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.2.0.355",
+    "python_version": "3"
+}
