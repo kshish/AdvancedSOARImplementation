@@ -22,7 +22,7 @@ def cf_demo_aug_24(someIP=None, someString=None, **kwargs):
     outputString=someString
     
     
-    outputs = {"outputIP" : outputIP   , "outputsString": outputString   }
+    outputs = {"outputIP" : outputIP   , "outputString": outputString   }
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
