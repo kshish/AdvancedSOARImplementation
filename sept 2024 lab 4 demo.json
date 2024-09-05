@@ -28,7 +28,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "aad71cd1267752ef7719fbe1f59f60e80ec3f119",
+            "hash": "c8a79c705b4a929461b00feaf52373f5bd4cf881",
             "nodes": {
                 "0": {
                     "data": {
@@ -44,7 +44,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 360
+                    "y": 359.9999999999999
                 },
                 "1": {
                     "data": {
@@ -71,7 +71,7 @@
                         "functionName": "format_1",
                         "id": "2",
                         "parameters": [
-                            ""
+                            "list_merge_1:custom_function_result.data.item"
                         ],
                         "template": "find_peers server=\"{0}\"\n",
                         "type": "format"
@@ -81,7 +81,7 @@
                     "type": "format",
                     "warnings": {},
                     "x": 980,
-                    "y": 604.5
+                    "y": 600
                 },
                 "3": {
                     "data": {
@@ -110,6 +110,7 @@
                         },
                         "parameters": {
                             "command": "savedsearch",
+                            "query": "format_1:formatted_data",
                             "search_mode": "smart"
                         },
                         "requiredParameters": [
@@ -135,7 +136,7 @@
                     "type": "action",
                     "warnings": {},
                     "x": 980,
-                    "y": 804.5
+                    "y": 800
                 },
                 "4": {
                     "data": {
@@ -328,7 +329,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-09-05T18:53:15.940109+00:00",
+    "create_time": "2024-09-05T18:55:59.530185+00:00",
     "draft_mode": false,
     "labels": [
         "malware",

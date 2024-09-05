@@ -25,7 +25,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 
     # parameter list for template variable replacement
     parameters = [
-        ""
+        "list_merge_1:custom_function_result.data.item"
     ]
 
     ################################################################################
@@ -51,13 +51,16 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
+    format_1 = phantom.get_format_data(name="format_1")
+
     parameters = []
 
-    parameters.append({
-        "command": "savedsearch",
-        "search_mode": "smart",
-        "query": "",
-    })
+    if format_1 is not None:
+        parameters.append({
+            "command": "savedsearch",
+            "search_mode": "smart",
+            "query": format_1,
+        })
 
     ################################################################################
     ## Custom Code Start
