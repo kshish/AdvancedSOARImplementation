@@ -135,6 +135,21 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
     if matched_artifacts_1 or matched_results_1:
         format_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
+    # collect filtered artifact ids and results for 'if' condition 2
+    matched_artifacts_2, matched_results_2 = phantom.condition(
+        container=container,
+        logical_operator="and",
+        conditions=[
+            ["run_query_1:action_result.data.*.priority", "!=", "ciritical"],
+            ["run_query_1:action_result.data.*.priority", "!=", "high"]
+        ],
+        name="filter_1:condition_2",
+        delimiter=None)
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_2 or matched_results_2:
+        update_event_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_2, filtered_results=matched_results_2)
+
     return
 
 
@@ -282,6 +297,41 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.act("update event", parameters=parameters, name="update_event_1", assets=["splunk_instructor"])
+
+    return
+
+
+@phantom.playbook_block()
+def update_event_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("update_event_2() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.notableId","artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'update_event_2' call
+    for container_artifact_item in container_artifact_data:
+        if container_artifact_item[0] is not None:
+            parameters.append({
+                "event_ids": container_artifact_item[0],
+                "status": "resolved",
+                "urgency": "low",
+                "context": {'artifact_id': container_artifact_item[1]},
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update event", parameters=parameters, name="update_event_2", assets=["splunk_instructor"])
 
     return
 
