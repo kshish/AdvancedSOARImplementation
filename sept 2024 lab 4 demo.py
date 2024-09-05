@@ -57,9 +57,9 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     if format_1 is not None:
         parameters.append({
+            "query": format_1,
             "command": "savedsearch",
             "search_mode": "smart",
-            "query": format_1,
         })
 
     ################################################################################
@@ -255,11 +255,21 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.notableId","artifact:*.id"])
+    format_4 = phantom.get_format_data(name="format_4")
+
     parameters = []
 
-    parameters.append({
-        "event_ids": "",
-    })
+    # build parameters list for 'update_event_1' call
+    for container_artifact_item in container_artifact_data:
+        if container_artifact_item[0] is not None:
+            parameters.append({
+                "event_ids": container_artifact_item[0],
+                "status": "in progress",
+                "urgency": "critical",
+                "comment": format_4,
+                "context": {'artifact_id': container_artifact_item[1]},
+            })
 
     ################################################################################
     ## Custom Code Start

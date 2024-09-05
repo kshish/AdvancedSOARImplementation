@@ -75,7 +75,7 @@
                     "targetPort": "10_in"
                 }
             ],
-            "hash": "ce383520cb371d2a60feca2e128de789081d6388",
+            "hash": "57869fb42a2c5b6b23b8326bb39c3da09ad3df30",
             "nodes": {
                 "0": {
                     "data": {
@@ -91,7 +91,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 359.9999999999999
+                    "y": 359.9999999999998
                 },
                 "1": {
                     "data": {
@@ -134,7 +134,12 @@
                             "pauseUnit": "m",
                             "pauseValue": 2
                         },
-                        "parameters": {},
+                        "parameters": {
+                            "comment": "format_4:formatted_data",
+                            "event_ids": "artifact:*.cef.notableId",
+                            "status": "in progress",
+                            "urgency": "critical"
+                        },
                         "requiredParameters": [
                             {
                                 "data_type": "string",
@@ -623,7 +628,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-09-05T19:29:14.638837+00:00",
+    "create_time": "2024-09-05T19:31:20.529209+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
