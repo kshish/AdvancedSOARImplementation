@@ -73,21 +73,9 @@
                     "sourcePort": "9_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "index": 1
-                        }
-                    ],
-                    "id": "port_5_to_port_11",
-                    "sourceNode": "5",
-                    "sourcePort": "5_out",
-                    "targetNode": "11",
-                    "targetPort": "11_in"
                 }
             ],
-            "hash": "144db4bee6d172f5bd7561557441c6f8fec2be81",
+            "hash": "7038e9c940f0e5540b4c6ac497a30308cac494df",
             "nodes": {
                 "0": {
                     "data": {
@@ -208,7 +196,11 @@
                     "errors": {},
                     "id": "11",
                     "type": "action",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 1480,
                     "y": 1224.5
                 },
@@ -495,11 +487,13 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "!=",
                                         "param": "run_query_1:action_result.data.*.priority",
                                         "value": "ciritical"
                                     },
                                     {
+                                        "conditionIndex": 1,
                                         "op": "!=",
                                         "param": "run_query_1:action_result.data.*.priority",
                                         "value": "high"
@@ -702,7 +696,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-09-05T19:33:43.121654+00:00",
+    "create_time": "2024-09-05T19:40:36.617664+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
