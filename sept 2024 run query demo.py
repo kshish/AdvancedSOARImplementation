@@ -56,7 +56,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["run_query_1:action_result.data.*.domain", "==", "ACMETECH"]
+            ["run_query_1:action_result.data.*.Domain", "==", "ACMETECH"]
         ],
         delimiter=None)
 

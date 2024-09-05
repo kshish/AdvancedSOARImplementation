@@ -45,7 +45,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "6d186993c446f3654a89e7bc6276da01a1ec7825",
+            "hash": "a6b22ae138ec07cbb9a24a5819e7913b4d27b495",
             "nodes": {
                 "0": {
                     "data": {
@@ -147,7 +147,7 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "==",
-                                        "param": "run_query_1:action_result.data.*.domain",
+                                        "param": "run_query_1:action_result.data.*.Domain",
                                         "value": "ACMETECH"
                                     }
                                 ],
@@ -159,6 +159,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -437,7 +438,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-09-05T18:33:50.931384+00:00",
+    "create_time": "2024-09-05T18:37:02.494444+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
