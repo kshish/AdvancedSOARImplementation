@@ -56,7 +56,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["run_query_1:action_result.data.*.Domain", "==", "ACMETECH"]
+            ["run_query_1:action_result.data.*.Reason", "==", "Unknown user name or bad password"]
         ],
         delimiter=None)
 
@@ -75,26 +75,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
 def pin_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("pin_1() called")
 
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.pin(container=container, message="ACMETECH", pin_style="blue", pin_type="card")
-
-    return
-
-
-@phantom.playbook_block()
-def pin_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("pin_2() called")
-
-    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.data.*.domain"], action_results=results)
+    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.data.*.Reason"], action_results=results)
 
     run_query_1_result_item_0 = [item[0] for item in run_query_1_result_data]
 
@@ -108,7 +89,30 @@ def pin_2(action=None, success=None, container=None, results=None, handle=None, 
     ## Custom Code End
     ################################################################################
 
-    phantom.pin(container=container, data=run_query_1_result_item_0, message="NOT ACMETECH", pin_style="red", pin_type="card")
+    phantom.pin(container=container, data=run_query_1_result_item_0, message="Reason", pin_style="blue", pin_type="card")
+
+    return
+
+
+@phantom.playbook_block()
+def pin_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("pin_2() called")
+
+    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.data.*.Reason"], action_results=results)
+
+    run_query_1_result_item_0 = [item[0] for item in run_query_1_result_data]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.pin(container=container, data=run_query_1_result_item_0, message="whatever", pin_style="red", pin_type="card")
 
     return
 

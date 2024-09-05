@@ -45,7 +45,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "a6b22ae138ec07cbb9a24a5819e7913b4d27b495",
+            "hash": "cdda069d9ce9a963d3e2d96c9dbf9e1ed8a08846",
             "nodes": {
                 "0": {
                     "data": {
@@ -147,8 +147,8 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "==",
-                                        "param": "run_query_1:action_result.data.*.Domain",
-                                        "value": "ACMETECH"
+                                        "param": "run_query_1:action_result.data.*.Reason",
+                                        "value": "Unknown user name or bad password"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -171,6 +171,16 @@
                                 "type": "else"
                             }
                         ],
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.Reason": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.Reason",
+                                    "value": "run_query_1:action_result.data.*.Reason"
+                                }
+                            }
+                        },
                         "functionId": 1,
                         "functionName": "decision_1",
                         "id": "3",
@@ -187,6 +197,16 @@
                     "data": {
                         "advanced": {
                             "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.Reason": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.Reason",
+                                    "value": "run_query_1:action_result.data.*.Reason"
+                                }
+                            }
                         },
                         "functionId": 1,
                         "functionName": "pin_1",
@@ -290,8 +310,8 @@
                                     "truncate",
                                     "trace"
                                 ],
-                                "data": null,
-                                "message": "ACMETECH",
+                                "data": "run_query_1:action_result.data.*.Reason",
+                                "message": "Reason",
                                 "name": null,
                                 "pin_style": "blue",
                                 "pin_type": "card"
@@ -303,12 +323,22 @@
                     "type": "utility",
                     "warnings": {},
                     "x": 780,
-                    "y": 1004.5
+                    "y": 1000
                 },
                 "5": {
                     "data": {
                         "advanced": {
                             "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.Reason": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.Reason",
+                                    "value": "run_query_1:action_result.data.*.Reason"
+                                }
+                            }
                         },
                         "functionId": 2,
                         "functionName": "pin_2",
@@ -412,8 +442,8 @@
                                     "truncate",
                                     "trace"
                                 ],
-                                "data": "run_query_1:action_result.data.*.domain",
-                                "message": "NOT ACMETECH",
+                                "data": "run_query_1:action_result.data.*.Reason",
+                                "message": "whatever",
                                 "name": null,
                                 "pin_style": "red",
                                 "pin_type": "card"
@@ -438,7 +468,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-09-05T18:37:02.494444+00:00",
+    "create_time": "2024-09-05T18:41:43.897200+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
