@@ -1,0 +1,41 @@
+{
+    "create_time": "2024-09-06T17:33:20.159593+00:00",
+    "custom_function_id": "87bba78b464fd2a887498bad12cd3d9c8e1d9c69",
+    "description": "demo passthrough",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "description": "map some ip into this variable",
+            "input_type": "list",
+            "name": "someIp",
+            "placeholder": "111.222.33.44"
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "list",
+            "name": "someString",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "data_path": "outputIP",
+            "description": "this is the ip from the input"
+        },
+        {
+            "contains_type": [],
+            "data_path": "outputString",
+            "description": ""
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.2.2.123",
+    "python_version": "3"
+}
