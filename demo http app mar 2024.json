@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "c1858060c7e6a086365a57be0d632f236c395240",
+            "hash": "c029b43ac0d02f9e19c0502034e2dea82fa2e9e0",
             "nodes": {
                 "0": {
                     "data": {
@@ -58,7 +58,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999955
+                    "y": 419.99999999999943
                 },
                 "1": {
                     "data": {
@@ -106,7 +106,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "chris lab soar"
+                            "instructorsoarinstance"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -243,12 +243,13 @@
         },
         "input_spec": null,
         "output_spec": null,
+        "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
         "python_version": "3",
-        "schema": "5.0.11",
-        "version": "6.2.0.355"
+        "schema": "5.0.12",
+        "version": "6.2.2.123"
     },
-    "create_time": "2024-08-16T04:30:23.877383+00:00",
+    "create_time": "2024-09-06T19:35:59.527672+00:00",
     "draft_mode": false,
     "labels": [
         "*"
