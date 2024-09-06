@@ -111,11 +111,12 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
 def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_2() called")
 
-    template = """%%\nCustom CEF field name: {0}\n%%"""
+    template = """%%\n{1}C CEF field name: {0}\n%%"""
 
     # parameter list for template variable replacement
     parameters = [
-        "get_data_1:action_result.data.*.parsed_response_body.data.*.name"
+        "get_data_1:action_result.data.*.parsed_response_body.data.*.name",
+        "prompt_1:action_result.summary.responses.0"
     ]
 
     ################################################################################
