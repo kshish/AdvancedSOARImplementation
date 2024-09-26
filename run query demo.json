@@ -26,9 +26,23 @@
                     "sourcePort": "3_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_5",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_7",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "6e568bc053fecd7dcc632b6c1cf32d70caec2ef1",
+            "hash": "45d75358153cd73ebdf01bd1fa0dd15f30533474",
             "nodes": {
                 "0": {
                     "data": {
@@ -60,7 +74,7 @@
                     "type": "end",
                     "warnings": {},
                     "x": 1020,
-                    "y": 1060
+                    "y": 1500
                 },
                 "2": {
                     "data": {
@@ -318,6 +332,66 @@
                     "warnings": {},
                     "x": 1000,
                     "y": 504.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.process": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.process",
+                                    "value": "run_query_1:action_result.data.*.process"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "5",
+                        "parameters": [
+                            "run_query_1:action_result.data.*.name",
+                            "run_query_1:action_result.data.*.source",
+                            "run_query_1:action_result.data.*.process"
+                        ],
+                        "template": "%%\nName: {0} Source: {1} Process: {2}\n%%",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 984.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "7",
+                        "message": "Here's the query results\n\n{0}",
+                        "parameters": [
+                            "format_2:formatted_data"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1080,
+                    "y": 1144.5
                 }
             },
             "notes": ""
@@ -330,7 +404,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-09-26T18:18:26.712870+00:00",
+    "create_time": "2024-09-26T18:27:42.672730+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",
