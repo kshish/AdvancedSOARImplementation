@@ -28,7 +28,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "9a830229f5e0d054cee9a5c751f6a5f00f9c6061",
+            "hash": "6e568bc053fecd7dcc632b6c1cf32d70caec2ef1",
             "nodes": {
                 "0": {
                     "data": {
@@ -90,7 +90,8 @@
                         "parameters": {
                             "command": "search",
                             "query": "format_1:formatted_data",
-                            "search_mode": "smart"
+                            "search_mode": "smart",
+                            "start_time": "-1h"
                         },
                         "requiredParameters": [
                             {
@@ -329,7 +330,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-09-26T18:16:24.464013+00:00",
+    "create_time": "2024-09-26T18:18:26.712870+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",

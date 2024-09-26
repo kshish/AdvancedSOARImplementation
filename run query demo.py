@@ -32,6 +32,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
             "command": "search",
             "search_mode": "smart",
             "query": format_1,
+            "start_time": "-1h",
         })
 
     ################################################################################
