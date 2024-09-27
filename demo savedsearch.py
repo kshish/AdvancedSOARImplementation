@@ -12,14 +12,14 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'format_1' block
-    format_1(container=container)
+    # call 'format_spl_query' block
+    format_spl_query(container=container)
 
     return
 
 @phantom.playbook_block()
-def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("format_1() called")
+def format_spl_query(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_spl_query() called")
 
     template = """find_peers server=\"{0}\"\n"""
 
@@ -33,12 +33,12 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     ################################################################################
 
     # Write your custom code here...
-
+    phantom.debug(parameters)
     ################################################################################
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_1")
+    phantom.format(container=container, template=template, parameters=parameters, name="format_spl_query")
 
     run_query_1(container=container)
 
@@ -51,15 +51,15 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    format_1 = phantom.get_format_data(name="format_1")
+    format_spl_query = phantom.get_format_data(name="format_spl_query")
 
     parameters = []
 
-    if format_1 is not None:
+    if format_spl_query is not None:
         parameters.append({
+            "query": format_spl_query,
             "command": "savedsearch",
             "search_mode": "smart",
-            "query": format_1,
         })
 
     ################################################################################
@@ -94,14 +94,14 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        format_2(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        format_first_part_of_msg(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
 
 @phantom.playbook_block()
-def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("format_2() called")
+def format_first_part_of_msg(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_first_part_of_msg() called")
 
     template = """{0} communicated with {1} systems.\n\nHere is a list of the high and critical priority systems:\n\n\n"""
 
@@ -121,7 +121,7 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_2")
+    phantom.format(container=container, template=template, parameters=parameters, name="format_first_part_of_msg")
 
     format_list(container=container)
 
@@ -166,7 +166,7 @@ def format_complete_msg(action=None, success=None, container=None, results=None,
 
     # parameter list for template variable replacement
     parameters = [
-        "format_2:formatted_data",
+        "format_first_part_of_msg:formatted_data",
         "format_list:formatted_data"
     ]
 
@@ -225,10 +225,11 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     for container_artifact_item in container_artifact_data:
         if container_artifact_item[0] is not None:
             parameters.append({
-                "event_ids": container_artifact_item[0],
                 "status": "in progress",
                 "comment": format_complete_msg,
-                "urgency": "critical",
+                "urgency": "medium",
+                "event_ids": container_artifact_item[0],
+                "owner": "admin",
                 "context": {'artifact_id': container_artifact_item[1]},
             })
 
