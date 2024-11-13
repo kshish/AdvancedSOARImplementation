@@ -158,7 +158,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
 def format_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_3() called")
 
-    template = """%%\nPeer host: {0} communicated {1}\n%%"""
+    template = """%%\nPeer host: {0} communicated {1} times\n%%"""
 
     # parameter list for template variable replacement
     parameters = [

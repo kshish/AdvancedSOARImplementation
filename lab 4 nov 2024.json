@@ -80,6 +80,7 @@
                     "targetPort": "11_in"
                 }
             ],
+            "hash": "88c6b091c881296ebef9ba9ee82fb10401b5dd1b",
             "nodes": {
                 "0": {
                     "data": {
@@ -525,7 +526,7 @@
                             "run_query_1:action_result.data.*.peer",
                             "run_query_1:action_result.data.*.count"
                         ],
-                        "template": "%%\nPeer host: {0} communicated {1}\n%%",
+                        "template": "%%\nPeer host: {0} communicated {1} times\n%%",
                         "type": "format"
                     },
                     "errors": {},
@@ -567,7 +568,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-11-13T20:26:18.180681+00:00",
+    "create_time": "2024-11-13T20:30:42.443646+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",
