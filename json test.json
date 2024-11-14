@@ -21,7 +21,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "4959601cc510b5cd65febc66dc4369ae5b0d0197",
+            "hash": "6dbdcf25c3733fcfa51e42e0ad0de545cbddeab1",
             "nodes": {
                 "0": {
                     "data": {
@@ -62,6 +62,12 @@
                         },
                         "customDatapaths": {
                             "artifacts": {
+                                "artifact:*.cef.\"web-app.servlet-mapping.cofaxAdmin\"": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.\"web-app.servlet-mapping.cofaxAdmin\"",
+                                    "value": "artifact:*.cef.\"web-app.servlet-mapping.cofaxAdmin\""
+                                },
                                 "artifact:*.cef.web-app.servlet-mapping.cofaxAdmin": {
                                     "contains": [],
                                     "isCustomDatapath": true,
@@ -74,7 +80,7 @@
                         "functionName": "format_1",
                         "id": "2",
                         "parameters": [
-                            "artifact:*.cef.web-app.servlet-mapping.cofaxAdmin"
+                            "artifact:*.cef.\"web-app.servlet-mapping.cofaxAdmin\""
                         ],
                         "template": "{0}\n",
                         "type": "format"
@@ -84,7 +90,7 @@
                     "type": "format",
                     "warnings": {},
                     "x": 1000,
-                    "y": 704.5
+                    "y": 700
                 },
                 "3": {
                     "data": {
@@ -168,7 +174,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-11-14T19:42:36.871302+00:00",
+    "create_time": "2024-11-14T19:45:32.169605+00:00",
     "draft_mode": false,
     "labels": [
         "*"

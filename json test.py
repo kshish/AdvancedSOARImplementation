@@ -25,7 +25,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 
     # parameter list for template variable replacement
     parameters = [
-        "artifact:*.cef.web-app.servlet-mapping.cofaxAdmin"
+        "artifact:*.cef.\"web-app.servlet-mapping.cofaxAdmin\""
     ]
 
     ################################################################################
