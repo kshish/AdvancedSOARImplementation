@@ -60,6 +60,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
             "command": "savedsearch",
             "search_mode": "smart",
             "query": format_1,
+            "start_time": "-15m",
         })
 
     ################################################################################
