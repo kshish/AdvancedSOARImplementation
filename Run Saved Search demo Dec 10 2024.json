@@ -19,9 +19,44 @@
                     "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_6",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_8",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_9",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "id": "port_9_to_port_10",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 }
             ],
-            "hash": "9bc4a0c098cbea4615b50d6395a0fe0b5d1af492",
+            "hash": "52c3fb991d7868c59f99724a16f0c271c3ced239",
             "nodes": {
                 "0": {
                     "data": {
@@ -53,7 +88,53 @@
                     "type": "end",
                     "warnings": {},
                     "x": 1000,
-                    "y": 1000
+                    "y": 1680
+                },
+                "10": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "instructor splunk"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_event_1",
+                        "id": "10",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": "format_4:formatted_data",
+                            "event_ids": "artifact:*.cef.notableId",
+                            "status": "in progress",
+                            "urgency": "critical"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1460
                 },
                 "2": {
                     "data": {
@@ -131,6 +212,205 @@
                     "warnings": {},
                     "x": 988,
                     "y": 736.5
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Format list",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.peer": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.peer",
+                                    "value": "run_query_1:action_result.data.*.peer"
+                                },
+                                "action_result.data.*.priority": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.priority",
+                                    "value": "run_query_1:action_result.data.*.priority"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "format_list",
+                        "id": "6",
+                        "parameters": [
+                            "run_query_1:action_result.data.*.peer",
+                            "run_query_1:action_result.data.*.count",
+                            "run_query_1:action_result.data.*.priority"
+                        ],
+                        "template": "%%Peer: {0} Communicated: {1} times with severity: {2}\n%%",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 900
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 3,
+                        "functionName": "format_3",
+                        "id": "7",
+                        "parameters": [
+                            "artifact:*.cef.destination",
+                            "run_query_1:action_result.summary.total_events"
+                        ],
+                        "template": "The host {0} communicated with {1} other servers.\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1004.5
+                },
+                "8": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 4,
+                        "functionName": "format_4",
+                        "id": "8",
+                        "parameters": [
+                            "format_3:formatted_data",
+                            "format_list:formatted_data"
+                        ],
+                        "template": "{0}\n\n{1}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1144.5
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 3,
+                        "functionName": "add_note_3",
+                        "id": "9",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "add_note": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "title",
+                                        "name": "title",
+                                        "placeholder": "Enter a note title",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "label": "content",
+                                        "name": "content",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "choices": [
+                                            "markdown",
+                                            "html"
+                                        ],
+                                        "default": "markdown",
+                                        "description": "",
+                                        "label": "note format",
+                                        "name": "note_format",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "dropdown",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": "general",
+                                        "hidden": true,
+                                        "name": "note_type",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "event_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "task_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add note",
+                                "name": "add_note"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "add_note": {
+                                "_internal": [
+                                    "container",
+                                    "note_type",
+                                    "author",
+                                    "event_id",
+                                    "task_id",
+                                    "trace"
+                                ],
+                                "content": "format_list:formatted_data",
+                                "note_format": "markdown",
+                                "note_type": "general",
+                                "title": "format_3:formatted_data"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1284.5
                 }
             },
             "notes": ""
@@ -143,7 +423,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-12-10T20:34:25.345443+00:00",
+    "create_time": "2024-12-10T20:42:19.129157+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
