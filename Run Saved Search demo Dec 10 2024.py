@@ -41,6 +41,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     phantom.format(container=container, template=template, parameters=parameters, name="format_1")
 
     run_query_1(container=container)
+    debug_2(container=container)
 
     return
 
@@ -252,6 +253,42 @@ def dec11_trim_last_3_1(action=None, success=None, container=None, results=None,
     ################################################################################
 
     phantom.custom_function(custom_function="chris/dec11_trim_last_3", parameters=parameters, name="dec11_trim_last_3_1", callback=format_1)
+
+    return
+
+
+@phantom.playbook_block()
+def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("debug_2() called")
+
+    format_1 = phantom.get_format_data(name="format_1")
+
+    parameters = []
+
+    parameters.append({
+        "input_1": format_1,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
 
     return
 
