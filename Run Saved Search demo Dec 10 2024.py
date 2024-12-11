@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'format_1' block
-    format_1(container=container)
+    # call 'dec11_trim_last_3_1' block
+    dec11_trim_last_3_1(container=container)
 
     return
 
@@ -21,11 +21,11 @@ def on_start(container):
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_1() called")
 
-    template = """find_peers server=\"{0}\"\n"""
+    template = """find_peers server=\"{0}*\"\n"""
 
     # parameter list for template variable replacement
     parameters = [
-        "artifact:*.cef.destination"
+        "dec11_trim_last_3_1:custom_function_result.data.trimmed_string"
     ]
 
     ################################################################################
@@ -57,10 +57,10 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     if format_1 is not None:
         parameters.append({
-            "command": "savedsearch",
-            "search_mode": "smart",
             "query": format_1,
+            "command": "savedsearch",
             "start_time": "-15m",
+            "search_mode": "smart",
         })
 
     ################################################################################
@@ -205,10 +205,10 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     for container_artifact_item in container_artifact_data:
         if container_artifact_item[0] is not None:
             parameters.append({
-                "event_ids": container_artifact_item[0],
-                "comment": format_4,
                 "status": "in progress",
+                "comment": format_4,
                 "urgency": "critical",
+                "event_ids": container_artifact_item[0],
                 "context": {'artifact_id': container_artifact_item[1]},
             })
 
@@ -223,6 +223,35 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.act("update event", parameters=parameters, name="update_event_1", assets=["instructor splunk"])
+
+    return
+
+
+@phantom.playbook_block()
+def dec11_trim_last_3_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("dec11_trim_last_3_1() called")
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destinationHostName","artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'dec11_trim_last_3_1' call
+    for container_artifact_item in container_artifact_data:
+        parameters.append({
+            "stringvar": container_artifact_item[0],
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="chris/dec11_trim_last_3", parameters=parameters, name="dec11_trim_last_3_1", callback=format_1)
 
     return
 

@@ -7,13 +7,6 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_2",
-                    "sourceNode": "0",
-                    "sourcePort": "0_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
-                },
-                {
                     "id": "port_2_to_port_3",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
@@ -54,9 +47,23 @@
                     "sourcePort": "9_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
+                },
+                {
+                    "id": "port_0_to_port_11",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_11_to_port_2",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
                 }
             ],
-            "hash": "422fc83475eaff84f6e799c7f7bd1e1edcbfbe8c",
+            "hash": "d949521328f91e7ebecca98ecedeeae4b9c3118f",
             "nodes": {
                 "0": {
                     "data": {
@@ -72,7 +79,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 220
                 },
                 "1": {
                     "data": {
@@ -136,6 +143,63 @@
                     "x": 980,
                     "y": 1460
                 },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "dec11_trim_last_3",
+                            "repoName": "chris"
+                        },
+                        "functionId": 1,
+                        "functionName": "dec11_trim_last_3_1",
+                        "id": "11",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "dec11_trim_last_3": {
+                                "description": "This CF will trim the last three character off the input parameter.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The input will have last three characters stripped out.",
+                                        "inputType": "item",
+                                        "label": "stringvar",
+                                        "name": "stringvar",
+                                        "placeholder": "ops-sys-001",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "dec11_trim_last_3",
+                                "name": "dec11_trim_last_3"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "dec11_trim_last_3": {
+                                "stringvar": "artifact:*.cef.destinationHostName"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 384.5
+                },
                 "2": {
                     "data": {
                         "advanced": {
@@ -145,9 +209,9 @@
                         "functionName": "format_1",
                         "id": "2",
                         "parameters": [
-                            "artifact:*.cef.destination"
+                            "dec11_trim_last_3_1:custom_function_result.data.trimmed_string"
                         ],
-                        "template": "find_peers server=\"{0}\"\n",
+                        "template": "find_peers server=\"{0}*\"\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -423,7 +487,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2024-12-10T20:43:28.323955+00:00",
+    "create_time": "2024-12-11T18:41:54.375597+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
