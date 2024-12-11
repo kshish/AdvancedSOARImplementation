@@ -1,0 +1,25 @@
+{
+    "create_time": "2024-12-11T18:36:37.559510+00:00",
+    "custom_function_id": "025e6f2feae5fa447a0a1c5e40861e75aab16bc4",
+    "description": "This CF will trim the last three character off the input parameter.",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "The input will have last three characters stripped out.",
+            "input_type": "item",
+            "name": "stringvar",
+            "placeholder": "ops-sys-001"
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "trimmed_string",
+            "description": "Trimmed off last three character"
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.2.2.123",
+    "python_version": "3"
+}
