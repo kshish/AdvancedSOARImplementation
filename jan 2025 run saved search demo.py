@@ -81,7 +81,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_2() called")
 
-    template = """Peer: {0} with {2} priority communicated {1} times\n"""
+    template = """%%\nPeer: {0} with {2} priority communicated {1} times\n%%"""
 
     # parameter list for template variable replacement
     parameters = [

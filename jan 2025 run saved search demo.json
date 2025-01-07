@@ -35,7 +35,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "1af19afbeab05ad36dd692624eb12cb224ddb747",
+            "hash": "f4e77010b84aaa55f846a9eedb95a05834845659",
             "nodes": {
                 "0": {
                     "data": {
@@ -174,7 +174,7 @@
                             "run_query_1:action_result.data.*.count",
                             "run_query_1:action_result.data.*.priority"
                         ],
-                        "template": "Peer: {0} with {2} priority communicated {1} times\n",
+                        "template": "%%\nPeer: {0} with {2} priority communicated {1} times\n%%",
                         "type": "format"
                     },
                     "errors": {},
@@ -182,7 +182,7 @@
                     "type": "format",
                     "warnings": {},
                     "x": 960,
-                    "y": 944.5
+                    "y": 940
                 },
                 "5": {
                     "data": {
@@ -266,7 +266,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-01-07T20:28:42.472700+00:00",
+    "create_time": "2025-01-07T20:29:42.435578+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
