@@ -75,7 +75,7 @@
                     "targetPort": "10_in"
                 }
             ],
-            "hash": "4367d949208fa84ed394f26ec5a28245e616e8a6",
+            "hash": "a17dc04725ceead1a0866ec1c52443e443be6fd3",
             "nodes": {
                 "0": {
                     "data": {
@@ -415,6 +415,20 @@
                             "join": []
                         },
                         "customDatapaths": {
+                            "filter_1": {
+                                "condition_1:run_query_1:action_result.data.*.peer": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "condition_1:run_query_1:action_result.data.*.peer",
+                                    "value": "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.peer"
+                                },
+                                "condition_1:run_query_1:action_result.data.*.priority": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "condition_1:run_query_1:action_result.data.*.priority",
+                                    "value": "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.priority"
+                                }
+                            },
                             "run_query_1": {
                                 "action_result.data.*.peer": {
                                     "contains": [],
@@ -434,8 +448,8 @@
                         "functionName": "format_4",
                         "id": "8",
                         "parameters": [
-                            "run_query_1:action_result.data.*.peer",
-                            "run_query_1:action_result.data.*.priority"
+                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.peer",
+                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.priority"
                         ],
                         "template": "%%\npeer {0} priority {1}\n%%",
                         "type": "format"
@@ -480,7 +494,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-01-07T20:39:46.853561+00:00",
+    "create_time": "2025-01-07T20:42:25.891263+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
