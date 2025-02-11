@@ -19,9 +19,35 @@
                     "sourcePort": "3_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_4",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_4_to_port_5",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "cf76bb38854a3e18f2b07417826f5d4b57867f12",
+            "hash": "0214f0a4e4b1c94cb87d399b110bbb70d5bb1fb1",
             "nodes": {
                 "0": {
                     "data": {
@@ -52,8 +78,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1000
+                    "x": 660,
+                    "y": 1140
                 },
                 "2": {
                     "data": {
@@ -131,6 +157,115 @@
                     "warnings": {},
                     "x": 954,
                     "y": 564
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.tty",
+                                        "value": "ssh"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            }
+                        ],
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.tty": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.tty",
+                                    "value": "run_query_1:action_result.data.*.tty"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "decision_1",
+                        "id": "4",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "decision",
+                    "warnings": {},
+                    "x": 1040,
+                    "y": 900
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.pid": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.pid",
+                                    "value": "run_query_1:action_result.data.*.pid"
+                                },
+                                "action_result.data.*.tty": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.tty",
+                                    "value": "run_query_1:action_result.data.*.tty"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "5",
+                        "parameters": [
+                            "run_query_1:action_result.data.*.pid",
+                            "run_query_1:action_result.data.*.tty",
+                            "run_query_1:action_result.summary.total_events"
+                        ],
+                        "template": "PID: {0} TTY: {1}\n\nTotal events: {2}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 1140,
+                    "y": 1064.5
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "6",
+                        "message": "{0}\n",
+                        "parameters": [
+                            "format_2:formatted_data"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 1220,
+                    "y": 1184.5
                 }
             },
             "notes": ""
@@ -143,7 +278,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-02-11T19:20:37.372725+00:00",
+    "create_time": "2025-02-11T19:28:45.870572+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
