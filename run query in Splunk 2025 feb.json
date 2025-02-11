@@ -47,7 +47,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "0214f0a4e4b1c94cb87d399b110bbb70d5bb1fb1",
+            "hash": "1cb7f9beb9ff5d74d3970cc085fede6e96971918",
             "nodes": {
                 "0": {
                     "data": {
@@ -169,8 +169,8 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "==",
-                                        "param": "run_query_1:action_result.data.*.tty",
-                                        "value": "ssh"
+                                        "param": "run_query_1:action_result.data.*. src_category",
+                                        "value": "pci"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -278,7 +278,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-02-11T19:28:45.870572+00:00",
+    "create_time": "2025-02-11T19:31:01.995686+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
