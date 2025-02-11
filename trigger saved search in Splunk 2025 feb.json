@@ -66,9 +66,16 @@
                     "sourcePort": "9_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
+                },
+                {
+                    "id": "port_8_to_port_10",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 }
             ],
-            "hash": "72d332783e8b94803fe67105392ace712b5682bd",
+            "hash": "c04247604606f14d5c9e7ea34ce63d51e31e1967",
             "nodes": {
                 "0": {
                     "data": {
@@ -101,6 +108,52 @@
                     "warnings": {},
                     "x": 840,
                     "y": 1720
+                },
+                "10": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "instructors splunk lab"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_event_1",
+                        "id": "10",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": "format_4:formatted_data",
+                            "event_ids": "artifact:*.cef.notable_id",
+                            "status": "in progress",
+                            "urgency": "critical"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 1020,
+                    "y": 1744.5
                 },
                 "2": {
                     "data": {
@@ -578,7 +631,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-02-11T19:58:21.590819+00:00",
+    "create_time": "2025-02-11T20:01:00.097481+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",

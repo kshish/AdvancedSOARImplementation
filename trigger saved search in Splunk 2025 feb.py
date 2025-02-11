@@ -208,6 +208,8 @@ def add_comment_1(action=None, success=None, container=None, results=None, handl
 
     phantom.comment(container=container, comment=format_4)
 
+    update_event_1(container=container)
+
     return
 
 
@@ -246,6 +248,43 @@ def list_merge_2(action=None, success=None, container=None, results=None, handle
     ################################################################################
 
     phantom.custom_function(custom_function="community/list_merge", parameters=parameters, name="list_merge_2", callback=format_1)
+
+    return
+
+
+@phantom.playbook_block()
+def update_event_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("update_event_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.notable_id","artifact:*.id"])
+    format_4 = phantom.get_format_data(name="format_4")
+
+    parameters = []
+
+    # build parameters list for 'update_event_1' call
+    for container_artifact_item in container_artifact_data:
+        if container_artifact_item[0] is not None:
+            parameters.append({
+                "event_ids": container_artifact_item[0],
+                "status": "in progress",
+                "urgency": "critical",
+                "comment": format_4,
+                "context": {'artifact_id': container_artifact_item[1]},
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["instructors splunk lab"])
 
     return
 
