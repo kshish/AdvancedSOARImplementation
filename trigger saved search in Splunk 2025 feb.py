@@ -21,7 +21,7 @@ def on_start(container):
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_1() called")
 
-    template = """find_peers server=\"{0}\"\n"""
+    template = """find_peers2 server=\"{0}\"\n"""
 
     # parameter list for template variable replacement
     parameters = [
@@ -106,12 +106,13 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
 def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_2() called")
 
-    template = """HOST: {0} communicated with {1} other machines. Here is a list of the medium, high, and critical priority machines:\n"""
+    template = """HOST: {0} communicated with {1} other machines. Here is a list of the medium, high, and critical priority machines:\n{2}\n"""
 
     # parameter list for template variable replacement
     parameters = [
         "artifact:*.cef.destination",
-        "run_query_1:action_result.summary.total_events"
+        "run_query_1:action_result.summary.total_events",
+        "run_query_1:action_result.data.*.priority"
     ]
 
     ################################################################################

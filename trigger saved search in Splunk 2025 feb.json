@@ -75,7 +75,7 @@
                     "targetPort": "10_in"
                 }
             ],
-            "hash": "c04247604606f14d5c9e7ea34ce63d51e31e1967",
+            "hash": "fe36c40e11f9f9f71575500224797cfe2ab3d50a",
             "nodes": {
                 "0": {
                     "data": {
@@ -166,7 +166,7 @@
                         "parameters": [
                             "list_merge_2:custom_function_result.data.item"
                         ],
-                        "template": "find_peers server=\"{0}\"\n",
+                        "template": "find_peers2 server=\"{0}\"\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -291,14 +291,25 @@
                         "advanced": {
                             "join": []
                         },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.peer": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.peer",
+                                    "value": "run_query_1:action_result.data.*.peer"
+                                }
+                            }
+                        },
                         "functionId": 2,
                         "functionName": "format_2",
                         "id": "5",
                         "parameters": [
                             "artifact:*.cef.destination",
-                            "run_query_1:action_result.summary.total_events"
+                            "run_query_1:action_result.summary.total_events",
+                            "run_query_1:action_result.data.*.priority"
                         ],
-                        "template": "HOST: {0} communicated with {1} other machines. Here is a list of the medium, high, and critical priority machines:\n",
+                        "template": "HOST: {0} communicated with {1} other machines. Here is a list of the medium, high, and critical priority machines:\n{2}\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -631,7 +642,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-02-11T20:01:00.097481+00:00",
+    "create_time": "2025-02-12T17:20:16.765680+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",
