@@ -1,0 +1,41 @@
+{
+    "create_time": "2025-02-12T18:47:19.064133+00:00",
+    "custom_function_id": "fc38908307f1464dddef1de98da2ab0c380b502a",
+    "description": "this will pass values through input to the output",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "description": "map an IP address into this input",
+            "input_type": "list",
+            "name": "Ip_input",
+            "placeholder": "111.22.33.44"
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "list",
+            "name": "someString_input",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "data_path": "Ip_output",
+            "description": "this is the same ip as was passed in"
+        },
+        {
+            "contains_type": [],
+            "data_path": "string_output",
+            "description": ""
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.2.2.123",
+    "python_version": "3"
+}
