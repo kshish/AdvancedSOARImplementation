@@ -20,7 +20,7 @@ def passthrough_2025_feb(Ip_input=None, someString_input=None, **kwargs):
     some_ip=Ip_input
     some_string=someString_input
     
-    ouputs={"Ip_output": some_ip, "string_output": some_string}
+    outputs={"Ip_output": some_ip, "string_output": some_string}
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
     return outputs
