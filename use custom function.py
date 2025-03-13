@@ -72,11 +72,15 @@ def add_comment_2(action=None, success=None, container=None, results=None, handl
 def dec11_trim_last_3_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("dec11_trim_last_3_3() called")
 
+    prompt_1_result_data = phantom.collect2(container=container, datapath=["prompt_1:action_result.summary.responses.0","prompt_1:action_result.parameter.context.artifact_id"], action_results=results)
+
     parameters = []
 
-    parameters.append({
-        "stringvar": None,
-    })
+    # build parameters list for 'dec11_trim_last_3_3' call
+    for prompt_1_result_item in prompt_1_result_data:
+        parameters.append({
+            "stringvar": prompt_1_result_item[0],
+        })
 
     ################################################################################
     ## Custom Code Start

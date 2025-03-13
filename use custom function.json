@@ -28,7 +28,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "41afe46b754c3aae9b98748eb2fcf2eda70a97fc",
+            "hash": "e3f9c3ec44066b59cde698d3f22ef9a6bb372ff6",
             "nodes": {
                 "0": {
                     "data": {
@@ -209,7 +209,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "dec11_trim_last_3": {
-                                "stringvar": null
+                                "stringvar": "prompt_1:action_result.summary.responses.0"
                             }
                         }
                     },
@@ -231,7 +231,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-03-13T17:47:14.620075+00:00",
+    "create_time": "2025-03-13T17:48:05.444638+00:00",
     "draft_mode": false,
     "labels": [
         "*"
