@@ -42,8 +42,8 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
             "prompt": "Provide a negative number",
             "options": {
                 "type": "range",
-                "min": -10,
-                "max": -1,
+                "min": -1,
+                "max": -10,
             },
         }
     ]
