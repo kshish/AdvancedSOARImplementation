@@ -14,21 +14,21 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_2_to_port_3",
+                    "id": "port_2_to_port_5",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
+                    "targetNode": "5",
+                    "targetPort": "5_in"
                 },
                 {
-                    "id": "port_3_to_port_4",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
+                    "id": "port_5_to_port_4",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
                     "targetNode": "4",
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "bc8d74d12721a06acdf90247e6a86d65ed768048",
+            "hash": "41afe46b754c3aae9b98748eb2fcf2eda70a97fc",
             "nodes": {
                 "0": {
                     "data": {
@@ -81,14 +81,6 @@
                             {
                                 "responsePrompt": "String to extract characters",
                                 "responseType": "message"
-                            },
-                            {
-                                "responseOptions": [
-                                    -1,
-                                    -10
-                                ],
-                                "responsePrompt": "Provide a negative number",
-                                "responseType": "customRange"
                             }
                         ],
                         "type": "prompt"
@@ -99,80 +91,6 @@
                     "warnings": {},
                     "x": 1060,
                     "y": 584.5
-                },
-                "3": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "last_x_characters",
-                            "repoName": "chris"
-                        },
-                        "functionId": 1,
-                        "functionName": "last_x_characters_1",
-                        "id": "3",
-                        "loop": {
-                            "enabled": false,
-                            "exitAfterUnit": "m",
-                            "exitAfterValue": 10,
-                            "exitConditionEnabled": false,
-                            "exitLoopAfter": 2,
-                            "pauseUnit": "m",
-                            "pauseValue": 2
-                        },
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "last_x_characters": {
-                                "description": "This CF returns the last three characters of a input ",
-                                "fields": [
-                                    {
-                                        "dataTypes": [
-                                            ""
-                                        ],
-                                        "description": "",
-                                        "inputType": "list",
-                                        "label": "someString",
-                                        "name": "someString",
-                                        "placeholder": "somestring",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [],
-                                        "description": "Provide a number of characters from the end of the string that you want returned",
-                                        "inputType": "list",
-                                        "label": "number_of_characters",
-                                        "name": "number_of_characters",
-                                        "placeholder": "3",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "last_x_characters",
-                                "name": "last_x_characters"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "last_x_characters": {
-                                "number_of_characters": [
-                                    "prompt_1:action_result.summary.responses.1"
-                                ],
-                                "someString": [
-                                    "prompt_1:action_result.summary.responses.0"
-                                ]
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "3",
-                    "type": "utility",
-                    "warnings": {},
-                    "x": 990,
-                    "y": 804.5
                 },
                 "4": {
                     "data": {
@@ -234,7 +152,7 @@
                                     "author",
                                     "trace"
                                 ],
-                                "comment": "last_x_characters_1:custom_function_result.data.output_string"
+                                "comment": "dec11_trim_last_3_3:custom_function_result.data.trimmed_string"
                             }
                         }
                     },
@@ -244,6 +162,63 @@
                     "warnings": {},
                     "x": 1010,
                     "y": 984.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "dec11_trim_last_3",
+                            "repoName": "chris"
+                        },
+                        "functionId": 3,
+                        "functionName": "dec11_trim_last_3_3",
+                        "id": "5",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "dec11_trim_last_3": {
+                                "description": "This CF will trim the last three character off the input parameter.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The input will have last three characters stripped out.",
+                                        "inputType": "item",
+                                        "label": "stringvar",
+                                        "name": "stringvar",
+                                        "placeholder": "ops-sys-001",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "dec11_trim_last_3",
+                                "name": "dec11_trim_last_3"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "dec11_trim_last_3": {
+                                "stringvar": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 990,
+                    "y": 784.5
                 }
             },
             "notes": ""
@@ -256,7 +231,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-03-13T17:45:11.676072+00:00",
+    "create_time": "2025-03-13T17:47:14.620075+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -37,36 +37,45 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
             "options": {
                 "type": "message",
             },
-        },
-        {
-            "prompt": "Provide a negative number",
-            "options": {
-                "type": "range",
-                "min": -1,
-                "max": -10,
-            },
         }
     ]
 
-    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters, response_types=response_types, callback=last_x_characters_1)
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters, response_types=response_types, callback=dec11_trim_last_3_3)
 
     return
 
 
 @phantom.playbook_block()
-def last_x_characters_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("last_x_characters_1() called")
+def add_comment_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("add_comment_2() called")
 
-    prompt_1_result_data = phantom.collect2(container=container, datapath=["prompt_1:action_result.summary.responses.0","prompt_1:action_result.summary.responses.1","prompt_1:action_result.parameter.context.artifact_id"], action_results=results)
+    dec11_trim_last_3_3__result = phantom.collect2(container=container, datapath=["dec11_trim_last_3_3:custom_function_result.data.trimmed_string"])
 
-    prompt_1_summary_responses_0 = [item[0] for item in prompt_1_result_data]
-    prompt_1_summary_responses_1 = [item[1] for item in prompt_1_result_data]
+    dec11_trim_last_3_3_data_trimmed_string = [item[0] for item in dec11_trim_last_3_3__result]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment=dec11_trim_last_3_3_data_trimmed_string)
+
+    return
+
+
+@phantom.playbook_block()
+def dec11_trim_last_3_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("dec11_trim_last_3_3() called")
 
     parameters = []
 
     parameters.append({
-        "someString": prompt_1_summary_responses_0,
-        "number_of_characters": prompt_1_summary_responses_1,
+        "stringvar": None,
     })
 
     ################################################################################
@@ -79,30 +88,7 @@ def last_x_characters_1(action=None, success=None, container=None, results=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="chris/last_x_characters", parameters=parameters, name="last_x_characters_1", callback=add_comment_2)
-
-    return
-
-
-@phantom.playbook_block()
-def add_comment_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("add_comment_2() called")
-
-    last_x_characters_1__result = phantom.collect2(container=container, datapath=["last_x_characters_1:custom_function_result.data.output_string"])
-
-    last_x_characters_1_data_output_string = [item[0] for item in last_x_characters_1__result]
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.comment(container=container, comment=last_x_characters_1_data_output_string)
+    phantom.custom_function(custom_function="chris/dec11_trim_last_3", parameters=parameters, name="dec11_trim_last_3_3", callback=add_comment_2)
 
     return
 
