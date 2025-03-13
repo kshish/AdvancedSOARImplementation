@@ -1,0 +1,34 @@
+{
+    "create_time": "2025-03-13T17:39:42.004481+00:00",
+    "custom_function_id": "7904daa3e5bed2afa2f8e6373ed431ce6d5ca2dd",
+    "description": "This CF returns the last three characters of a input ",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                ""
+            ],
+            "description": "",
+            "input_type": "list",
+            "name": "someString",
+            "placeholder": "somestring"
+        },
+        {
+            "contains_type": [],
+            "description": "Provide a number of characters from the end of the string that you want returned",
+            "input_type": "list",
+            "name": "number_of_characters",
+            "placeholder": "3"
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "output_string",
+            "description": "this is the last few character of the input string"
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.2.2.123",
+    "python_version": "3"
+}
