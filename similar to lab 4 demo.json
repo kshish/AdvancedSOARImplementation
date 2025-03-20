@@ -78,9 +78,16 @@
                     "sourcePort": "9_out",
                     "targetNode": "11",
                     "targetPort": "11_in"
+                },
+                {
+                    "id": "port_10_to_port_12",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
                 }
             ],
-            "hash": "9d69d2603123f523fcef20e9b349cad58ffabbe0",
+            "hash": "d72d547628a2c091787b07b3d2137a34949096ab",
             "nodes": {
                 "0": {
                     "data": {
@@ -226,6 +233,50 @@
                     "warnings": {},
                     "x": 1000,
                     "y": 1664.5
+                },
+                "12": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "instructorsplunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 2,
+                        "functionName": "update_event_2",
+                        "id": "12",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "event_ids": "artifact:*.cef.notableId",
+                            "status": "closed"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 1340,
+                    "y": 1884.5
                 },
                 "2": {
                     "data": {
@@ -517,7 +568,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-03-20T04:46:40.056225+00:00",
+    "create_time": "2025-03-20T04:48:35.901600+00:00",
     "draft_mode": false,
     "labels": [
         "malware",

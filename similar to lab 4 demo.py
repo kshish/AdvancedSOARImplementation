@@ -230,6 +230,8 @@ def set_status_3(action=None, success=None, container=None, results=None, handle
 
     container = phantom.get_container(container.get('id', None))
 
+    update_event_2(container=container)
+
     return
 
 
@@ -265,6 +267,40 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.act("update event", parameters=parameters, name="update_event_1", assets=["instructorsplunkes"])
+
+    return
+
+
+@phantom.playbook_block()
+def update_event_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("update_event_2() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.notableId","artifact:*.id"])
+
+    parameters = []
+
+    # build parameters list for 'update_event_2' call
+    for container_artifact_item in container_artifact_data:
+        if container_artifact_item[0] is not None:
+            parameters.append({
+                "event_ids": container_artifact_item[0],
+                "status": "closed",
+                "context": {'artifact_id': container_artifact_item[1]},
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update event", parameters=parameters, name="update_event_2", assets=["instructorsplunkes"])
 
     return
 
