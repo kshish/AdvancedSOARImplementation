@@ -315,7 +315,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
         logical_operator="or",
         conditions=[
             ["run_query_1:action_result.data.*.priority", "==", "high"],
-            ["run_query_1:action_result.data.*.priority", "==", "critical"]
+            ["run_query_1:action_result.data.*.priority", "==", "medium"]
         ],
         name="filter_1:condition_1",
         delimiter=None)

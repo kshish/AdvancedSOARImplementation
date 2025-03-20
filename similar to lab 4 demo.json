@@ -106,7 +106,7 @@
                     "targetPort": "11_in"
                 }
             ],
-            "hash": "88ab3abb612818f198dc0f6d82e9410fea46547e",
+            "hash": "f524855234dc2f4110086d9669fdc34337828500",
             "nodes": {
                 "0": {
                     "data": {
@@ -312,9 +312,10 @@
                                         "value": "high"
                                     },
                                     {
+                                        "conditionIndex": 0,
                                         "op": "==",
                                         "param": "run_query_1:action_result.data.*.priority",
-                                        "value": "critical"
+                                        "value": "medium"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -665,7 +666,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-03-20T04:57:20.967089+00:00",
+    "create_time": "2025-03-20T04:59:33.181570+00:00",
     "draft_mode": false,
     "labels": [
         "malware",
