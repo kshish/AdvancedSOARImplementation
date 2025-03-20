@@ -68,26 +68,45 @@
                     "targetPort": "10_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 1
-                        }
-                    ],
-                    "id": "port_9_to_port_11",
-                    "sourceNode": "9",
-                    "sourcePort": "9_out",
-                    "targetNode": "11",
-                    "targetPort": "11_in"
-                },
-                {
                     "id": "port_10_to_port_12",
                     "sourceNode": "10",
                     "sourcePort": "10_out",
                     "targetNode": "12",
                     "targetPort": "12_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_9_to_port_13",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_13_to_port_14",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "14",
+                    "targetPort": "14_in"
+                },
+                {
+                    "id": "port_14_to_port_11",
+                    "sourceNode": "14",
+                    "sourcePort": "14_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
                 }
             ],
-            "hash": "d72d547628a2c091787b07b3d2137a34949096ab",
+            "hash": "88ab3abb612818f198dc0f6d82e9410fea46547e",
             "nodes": {
                 "0": {
                     "data": {
@@ -118,8 +137,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 980,
-                    "y": 1760
+                    "x": 680,
+                    "y": 2080
                 },
                 "10": {
                     "data": {
@@ -215,7 +234,7 @@
                             "pauseValue": 2
                         },
                         "parameters": {
-                            "comment": "format_whole_msg:formatted_data",
+                            "comment": "format_5:formatted_data",
                             "event_ids": "artifact:*.cef.notableId",
                             "status": "in progress"
                         },
@@ -231,8 +250,8 @@
                     "id": "11",
                     "type": "action",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1664.5
+                    "x": 820,
+                    "y": 1940
                 },
                 "12": {
                     "data": {
@@ -277,6 +296,84 @@
                     "warnings": {},
                     "x": 1340,
                     "y": 1884.5
+                },
+                "13": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.priority",
+                                        "value": "high"
+                                    },
+                                    {
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.priority",
+                                        "value": "critical"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "or"
+                            }
+                        ],
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.priority": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.priority",
+                                    "value": "run_query_1:action_result.data.*.priority"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "filter_1",
+                        "id": "13",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "13",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 880,
+                    "y": 1644.5
+                },
+                "14": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.priority": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.priority",
+                                    "value": "run_query_1:action_result.data.*.priority"
+                                }
+                            }
+                        },
+                        "functionId": 5,
+                        "functionName": "format_5",
+                        "id": "14",
+                        "parameters": [
+                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.peer",
+                            "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.priority"
+                        ],
+                        "template": "{0} with priority {1}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "14",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 820,
+                    "y": 1804.5
                 },
                 "2": {
                     "data": {
@@ -568,7 +665,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-03-20T04:48:35.901600+00:00",
+    "create_time": "2025-03-20T04:57:20.967089+00:00",
     "draft_mode": false,
     "labels": [
         "malware",

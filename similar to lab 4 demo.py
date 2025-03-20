@@ -207,7 +207,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
         return
 
     # check for 'else' condition 2
-    update_event_1(action=action, success=success, container=container, results=results, handle=handle)
+    filter_1(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -242,7 +242,7 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
     container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.notableId","artifact:*.id"])
-    format_whole_msg = phantom.get_format_data(name="format_whole_msg")
+    format_5 = phantom.get_format_data(name="format_5")
 
     parameters = []
 
@@ -252,7 +252,7 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
             parameters.append({
                 "event_ids": container_artifact_item[0],
                 "status": "in progress",
-                "comment": format_whole_msg,
+                "comment": format_5,
                 "context": {'artifact_id': container_artifact_item[1]},
             })
 
@@ -301,6 +301,57 @@ def update_event_2(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.act("update event", parameters=parameters, name="update_event_2", assets=["instructorsplunkes"])
+
+    return
+
+
+@phantom.playbook_block()
+def filter_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("filter_1() called")
+
+    # collect filtered artifact ids and results for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        logical_operator="or",
+        conditions=[
+            ["run_query_1:action_result.data.*.priority", "==", "high"],
+            ["run_query_1:action_result.data.*.priority", "==", "critical"]
+        ],
+        name="filter_1:condition_1",
+        delimiter=None)
+
+    # call connected blocks if filtered artifacts or results
+    if matched_artifacts_1 or matched_results_1:
+        format_5(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+
+    return
+
+
+@phantom.playbook_block()
+def format_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_5() called")
+
+    template = """{0} with priority {1}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.peer",
+        "filtered-data:filter_1:condition_1:run_query_1:action_result.data.*.priority"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_5")
+
+    update_event_1(container=container)
 
     return
 
