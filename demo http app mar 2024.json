@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "922c122b9b5e372c560340c336e8a0bb1e3f92d2",
+            "hash": "56591bb192352688af30ecc942936e4d6962062f",
             "nodes": {
                 "0": {
                     "data": {
@@ -188,6 +188,13 @@
                                     "label": "action_result.data.*.parsed_response_body.data",
                                     "value": "get_data_1:action_result.data.*.parsed_response_body.data"
                                 },
+                                "action_result.data.*.parsed_response_body.data.*.data_type": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "isDatapathArray": true,
+                                    "label": "action_result.data.*.parsed_response_body.data.*.data_type",
+                                    "value": "get_data_1:action_result.data.*.parsed_response_body.data.*.data_type"
+                                },
                                 "action_result.data.*.parsed_response_body.data.*.name": {
                                     "contains": [],
                                     "isCustomDatapath": true,
@@ -200,9 +207,10 @@
                         "functionName": "format_2",
                         "id": "5",
                         "parameters": [
-                            "get_data_1:action_result.data.*.parsed_response_body.data.*.name"
+                            "get_data_1:action_result.data.*.parsed_response_body.data.*.name",
+                            "get_data_1:action_result.data.*.parsed_response_body.data.*.data_type"
                         ],
-                        "template": "%%\n CEF field name: {0}\n%%",
+                        "template": "%%\n CEF field name: {0} of type: {1}\n%%",
                         "type": "format"
                     },
                     "errors": {},
@@ -250,7 +258,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-03-21T04:34:50.908720+00:00",
+    "create_time": "2025-03-21T04:40:23.302069+00:00",
     "draft_mode": false,
     "labels": [
         "*"
