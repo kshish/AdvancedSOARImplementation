@@ -21,7 +21,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "63c9e3fe88426ccfc85bbee12b414225c755e316",
+            "hash": "026655bc51c9200fa1c0a526393ce10755b43837",
             "nodes": {
                 "0": {
                     "data": {
@@ -62,11 +62,11 @@
                         },
                         "customFunction": {
                             "draftMode": false,
-                            "name": "last_x_characters",
+                            "name": "cf_2025_mar_passthrough_demo",
                             "repoName": "chris"
                         },
                         "functionId": 1,
-                        "functionName": "last_x_characters_1",
+                        "functionName": "cf_2025_mar_passthrough_demo_1",
                         "id": "3",
                         "loop": {
                             "enabled": false,
@@ -80,44 +80,44 @@
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
-                            "last_x_characters": {
-                                "description": "This CF returns the last three characters of a input ",
+                            "cf_2025_mar_passthrough_demo": {
+                                "description": "this is a demo",
                                 "fields": [
                                     {
                                         "dataTypes": [
-                                            ""
+                                            "ip"
                                         ],
-                                        "description": "",
+                                        "description": "Provide one or more Ip(s)",
                                         "inputType": "list",
-                                        "label": "someString",
-                                        "name": "someString",
-                                        "placeholder": "somestring",
+                                        "label": "someIp",
+                                        "name": "someIp",
+                                        "placeholder": "111.22.33.44",
                                         "renderType": "datapath",
                                         "required": false
                                     },
                                     {
                                         "dataTypes": [],
-                                        "description": "Provide a number of characters from the end of the string that you want returned",
+                                        "description": "",
                                         "inputType": "list",
-                                        "label": "number_of_characters",
-                                        "name": "number_of_characters",
-                                        "placeholder": "3",
+                                        "label": "someString",
+                                        "name": "someString",
+                                        "placeholder": "",
                                         "renderType": "datapath",
                                         "required": false
                                     }
                                 ],
-                                "label": "last_x_characters",
-                                "name": "last_x_characters"
+                                "label": "cf_2025_mar_passthrough_demo",
+                                "name": "cf_2025_mar_passthrough_demo"
                             }
                         },
                         "utilityType": "custom_function",
                         "values": {
-                            "last_x_characters": {
-                                "number_of_characters": [
-                                    "3"
+                            "cf_2025_mar_passthrough_demo": {
+                                "someIp": [
+                                    "artifact:*.cef.destination"
                                 ],
                                 "someString": [
-                                    "artifact:*.cef.destination"
+                                    "container:name"
                                 ]
                             }
                         }
@@ -167,7 +167,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-05-14T17:42:09.309849+00:00",
+    "create_time": "2025-05-14T17:43:52.441937+00:00",
     "draft_mode": false,
     "labels": [
         "*"

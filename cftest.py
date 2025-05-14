@@ -12,15 +12,16 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'last_x_characters_1' block
-    last_x_characters_1(container=container)
+    # call 'cf_2025_mar_passthrough_demo_1' block
+    cf_2025_mar_passthrough_demo_1(container=container)
 
     return
 
 @phantom.playbook_block()
-def last_x_characters_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("last_x_characters_1() called")
+def cf_2025_mar_passthrough_demo_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("cf_2025_mar_passthrough_demo_1() called")
 
+    name_value = container.get("name", None)
     container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destination","artifact:*.id"])
 
     container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
@@ -28,8 +29,8 @@ def last_x_characters_1(action=None, success=None, container=None, results=None,
     parameters = []
 
     parameters.append({
-        "someString": container_artifact_cef_item_0,
-        "number_of_characters": [3],
+        "someIp": container_artifact_cef_item_0,
+        "someString": name_value,
     })
 
     ################################################################################
@@ -42,7 +43,7 @@ def last_x_characters_1(action=None, success=None, container=None, results=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="chris/last_x_characters", parameters=parameters, name="last_x_characters_1", callback=prompt_1)
+    phantom.custom_function(custom_function="chris/cf_2025_mar_passthrough_demo", parameters=parameters, name="cf_2025_mar_passthrough_demo_1", callback=prompt_1)
 
     return
 
