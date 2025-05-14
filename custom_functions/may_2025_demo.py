@@ -15,7 +15,7 @@ def may_2025_demo(myDestination=None, myPriority=None, **kwargs):
     import phantom.rules as phantom
     
     
-    tempOutDest = myDestination + " validated"
+    tempOutDest = myDestination 
     tempOutPriority = "critical"
     
     
