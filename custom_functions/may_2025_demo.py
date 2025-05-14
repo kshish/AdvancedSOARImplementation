@@ -3,7 +3,7 @@ def may_2025_demo(myDestination=None, myPriority=None, **kwargs):
     simple passthrough demo
     
     Args:
-        myDestination (CEF type: ip): map some ip into this input
+        myDestination: map some ip into this input
         myPriority: map a priority that will get increased to next level
     
     Returns a JSON-serializable object that implements the configured data paths:

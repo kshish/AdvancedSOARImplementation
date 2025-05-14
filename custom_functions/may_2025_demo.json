@@ -1,13 +1,11 @@
 {
-    "create_time": "2025-05-14T17:26:59.550777+00:00",
+    "create_time": "2025-05-14T17:27:45.192005+00:00",
     "custom_function_id": "4d1502bcef36bde63bfba82deaa19bcd32ad3f6a",
     "description": "simple passthrough demo",
     "draft_mode": false,
     "inputs": [
         {
-            "contains_type": [
-                "ip"
-            ],
+            "contains_type": [],
             "description": "map some ip into this input",
             "input_type": "list",
             "name": "myDestination",
