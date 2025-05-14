@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "56591bb192352688af30ecc942936e4d6962062f",
+            "hash": "12840d990540838503804461b5486f0ec2f27b54",
             "nodes": {
                 "0": {
                     "data": {
@@ -58,7 +58,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999886
+                    "y": 419.99999999999875
                 },
                 "1": {
                     "data": {
@@ -106,7 +106,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "mysoarlab"
+                            "instructors soar"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -258,7 +258,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-03-21T04:40:23.302069+00:00",
+    "create_time": "2025-05-14T19:21:14.445441+00:00",
     "draft_mode": false,
     "labels": [
         "*"
