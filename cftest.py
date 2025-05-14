@@ -56,7 +56,7 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
 
     user = "soardev"
     role = None
-    message = """{0}{1}\n"""
+    message = """{0}\n{1}\n"""
 
     # parameter list for template variable replacement
     parameters = [

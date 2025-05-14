@@ -21,7 +21,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "ce182c631f787245ce553ee6a536da6b3d6dcfa7",
+            "hash": "ad662f6d85df2789146df39ae7910e58c31fe66d",
             "nodes": {
                 "0": {
                     "data": {
@@ -141,7 +141,7 @@
                         "functionId": 1,
                         "functionName": "prompt_1",
                         "id": "4",
-                        "message": "{0}{1}\n",
+                        "message": "{0}\n{1}\n",
                         "parameters": [
                             "cf_2025_mar_passthrough_demo_1:custom_function_result.data.outputIp",
                             "cf_2025_mar_passthrough_demo_1:custom_function_result.data.outputString"
@@ -168,7 +168,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-05-14T17:44:37.974422+00:00",
+    "create_time": "2025-05-14T17:45:09.640914+00:00",
     "draft_mode": false,
     "labels": [
         "*"
