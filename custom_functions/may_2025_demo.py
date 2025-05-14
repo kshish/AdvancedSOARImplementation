@@ -7,7 +7,7 @@ def may_2025_demo(myDestination=None, myPriority=None, **kwargs):
         myPriority: map a priority that will get increased to next level
     
     Returns a JSON-serializable object that implements the configured data paths:
-        outputDestination (CEF type: ip)
+        outputDestination
         newPriority: one level higher
     """
     ############################ Custom Code Goes Below This Line #################################
@@ -19,7 +19,8 @@ def may_2025_demo(myDestination=None, myPriority=None, **kwargs):
     tempOutPriority = "critical"
     
     
-    
+    phantom.debug(tempOutDest)
+    phantom.debug(myDestination)
     
     
     
