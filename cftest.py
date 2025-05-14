@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'prompt_2' block
-    prompt_2(container=container)
+    # call 'last_x_characters_1' block
+    last_x_characters_1(container=container)
 
     return
 
@@ -63,34 +63,6 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
     ]
 
     phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
-
-    return
-
-
-@phantom.playbook_block()
-def prompt_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("prompt_2() called")
-
-    # set user and message variables for phantom.prompt call
-
-    user = "soardev"
-    role = None
-    message = """"""
-
-    # parameter list for template variable replacement
-    parameters = []
-
-    # responses
-    response_types = [
-        {
-            "prompt": "how many characters",
-            "options": {
-                "type": "message",
-            },
-        }
-    ]
-
-    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_2", parameters=parameters, response_types=response_types, callback=last_x_characters_1)
 
     return
 

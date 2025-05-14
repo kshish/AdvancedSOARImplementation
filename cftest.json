@@ -14,21 +14,14 @@
                     "targetPort": "4_in"
                 },
                 {
-                    "id": "port_0_to_port_5",
+                    "id": "port_0_to_port_3",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
-                },
-                {
-                    "id": "port_5_to_port_3",
-                    "sourceNode": "5",
-                    "sourcePort": "5_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "aa5bc924b01b00da78c2ef9482d2630c99bdfdea",
+            "hash": "63c9e3fe88426ccfc85bbee12b414225c755e316",
             "nodes": {
                 "0": {
                     "data": {
@@ -162,38 +155,6 @@
                     "warnings": {},
                     "x": 1060,
                     "y": 744.5
-                },
-                "5": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "approver": {
-                            "type": "user",
-                            "value": "soardev"
-                        },
-                        "functionId": 2,
-                        "functionName": "prompt_2",
-                        "id": "5",
-                        "message": "",
-                        "parameters": [],
-                        "responseTime": 30,
-                        "responses": [
-                            {
-                                "responsePrompt": "how many characters",
-                                "responseType": "message"
-                            }
-                        ],
-                        "type": "prompt"
-                    },
-                    "errors": {
-                        "message": "Add message content."
-                    },
-                    "id": "5",
-                    "type": "prompt",
-                    "warnings": {},
-                    "x": 1060,
-                    "y": 504.5
                 }
             },
             "notes": ""
@@ -206,7 +167,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-05-14T17:39:57.737705+00:00",
+    "create_time": "2025-05-14T17:42:09.309849+00:00",
     "draft_mode": false,
     "labels": [
         "*"
