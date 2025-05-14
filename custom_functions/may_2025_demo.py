@@ -29,7 +29,7 @@ def may_2025_demo(myDestination=None, myPriority=None, **kwargs):
     
     
     
-    outputs = {"outputDestination": tempOutDest , "newPriority": tempOutPriority}
+    outputs = {"outputDestination": myDestination , "newPriority": tempOutPriority}
     
     # Write your custom code here...
     
