@@ -56,11 +56,12 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
 
     user = "soardev"
     role = None
-    message = """{0}"""
+    message = """{0}{1}\n"""
 
     # parameter list for template variable replacement
     parameters = [
-        "last_x_characters_1:custom_function_result.data.output_string"
+        "cf_2025_mar_passthrough_demo_1:custom_function_result.data.outputIp",
+        "cf_2025_mar_passthrough_demo_1:custom_function_result.data.outputString"
     ]
 
     phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)

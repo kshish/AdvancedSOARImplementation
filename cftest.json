@@ -21,7 +21,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "026655bc51c9200fa1c0a526393ce10755b43837",
+            "hash": "ce182c631f787245ce553ee6a536da6b3d6dcfa7",
             "nodes": {
                 "0": {
                     "data": {
@@ -141,9 +141,10 @@
                         "functionId": 1,
                         "functionName": "prompt_1",
                         "id": "4",
-                        "message": "{0}",
+                        "message": "{0}{1}\n",
                         "parameters": [
-                            "last_x_characters_1:custom_function_result.data.output_string"
+                            "cf_2025_mar_passthrough_demo_1:custom_function_result.data.outputIp",
+                            "cf_2025_mar_passthrough_demo_1:custom_function_result.data.outputString"
                         ],
                         "responseTime": 30,
                         "responses": [],
@@ -154,7 +155,7 @@
                     "type": "prompt",
                     "warnings": {},
                     "x": 1060,
-                    "y": 744.5
+                    "y": 740
                 }
             },
             "notes": ""
@@ -167,7 +168,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-05-14T17:43:52.441937+00:00",
+    "create_time": "2025-05-14T17:44:37.974422+00:00",
     "draft_mode": false,
     "labels": [
         "*"
