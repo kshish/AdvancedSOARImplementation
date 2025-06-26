@@ -19,9 +19,49 @@
                     "sourcePort": "2_out",
                     "targetNode": "3",
                     "targetPort": "3_in"
+                },
+                {
+                    "id": "port_3_to_port_4",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_3_to_port_5",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_4_to_port_7",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_8",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
                 }
             ],
-            "hash": "d9dba610411a3a55cbf1391cee0bd32447e390b0",
+            "hash": "12b1fc253a05b53bc948c4d49782b228c6d04c1d",
             "nodes": {
                 "0": {
                     "data": {
@@ -53,7 +93,7 @@
                     "type": "end",
                     "warnings": {},
                     "x": 1000,
-                    "y": 1000
+                    "y": 1500
                 },
                 "2": {
                     "data": {
@@ -105,7 +145,7 @@
                             "command": "savedsearch",
                             "query": "format_1:formatted_data",
                             "search_mode": "smart",
-                            "start_time": "-15m"
+                            "start_time": "-60m"
                         },
                         "requiredParameters": [
                             {
@@ -131,6 +171,234 @@
                     "warnings": {},
                     "x": 980,
                     "y": 720
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.priority",
+                                        "value": "medium"
+                                    },
+                                    {
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.priority",
+                                        "value": "high"
+                                    },
+                                    {
+                                        "op": "==",
+                                        "param": "run_query_1:action_result.data.*.priority",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "logic": "or"
+                            }
+                        ],
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.priority": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.priority",
+                                    "value": "run_query_1:action_result.data.*.priority"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "filter_1",
+                        "id": "4",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 1040,
+                    "y": 940
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "format_2",
+                        "id": "5",
+                        "parameters": [
+                            "artifact:*.cef.destination",
+                            "run_query_1:action_result.summary.total_events"
+                        ],
+                        "template": "HOST: {0} communicated with {1} different servers.\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 1310,
+                    "y": 884.5
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "add_comment_1",
+                        "id": "6",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "format_2:formatted_data"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 1300,
+                    "y": 1064.5
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customDatapaths": {
+                            "run_query_1": {
+                                "action_result.data.*.peer": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.peer",
+                                    "value": "run_query_1:action_result.data.*.peer"
+                                },
+                                "action_result.data.*.priority": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "action_result.data.*.priority",
+                                    "value": "run_query_1:action_result.data.*.priority"
+                                }
+                            }
+                        },
+                        "functionId": 3,
+                        "functionName": "format_3",
+                        "id": "7",
+                        "parameters": [
+                            "run_query_1:action_result.data.*.peer",
+                            "run_query_1:action_result.data.*.priority",
+                            "run_query_1:action_result.data.*.count"
+                        ],
+                        "template": "%%\nPeer: {0} with priority{1} communicated {2} times\n%%\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 1184.5
+                },
+                "8": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "mysplunk"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_event_1",
+                        "id": "8",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": "format_3:formatted_data",
+                            "event_ids": "artifact:*.cef.notableId",
+                            "status": "in progress"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1344.5
                 }
             },
             "notes": ""
@@ -143,7 +411,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-06-26T19:45:01.309520+00:00",
+    "create_time": "2025-06-26T19:55:28.079421+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",
