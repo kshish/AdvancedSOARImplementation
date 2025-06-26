@@ -61,7 +61,7 @@
                     "targetPort": "8_in"
                 }
             ],
-            "hash": "8565c94684e716f7ed09f023dc986170663e3d3c",
+            "hash": "52382268510e2b8dd7e038fa4dc6477473f2cb3c",
             "nodes": {
                 "0": {
                     "data": {
@@ -237,7 +237,7 @@
                             "artifact:*.cef.destination",
                             "run_query_1:action_result.summary.total_events"
                         ],
-                        "template": "HOST: {0} communicated with {1} different servers.\n",
+                        "template": "HOST: {0} communicated with {1}  different servers.\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -413,7 +413,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-06-26T19:59:29.411736+00:00",
+    "create_time": "2025-06-26T20:01:32.305988+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",

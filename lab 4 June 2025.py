@@ -117,7 +117,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
 def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_2() called")
 
-    template = """HOST: {0} communicated with {1} different servers.\n"""
+    template = """HOST: {0} communicated with {1}  different servers.\n"""
 
     # parameter list for template variable replacement
     parameters = [
