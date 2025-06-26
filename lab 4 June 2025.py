@@ -101,7 +101,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
         conditions=[
             ["run_query_1:action_result.data.*.priority", "==", "medium"],
             ["run_query_1:action_result.data.*.priority", "==", "high"],
-            ["run_query_1:action_result.data.*.priority", "==", ""]
+            ["run_query_1:action_result.data.*.priority", "==", "critical"]
         ],
         name="filter_1:condition_1",
         delimiter=None)
