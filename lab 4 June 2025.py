@@ -12,6 +12,8 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
+    phantom.debug('Chris was here')
+    phantom.debug(container)
     # call 'format_1' block
     format_1(container=container)
 
@@ -57,10 +59,10 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     if format_1 is not None:
         parameters.append({
-            "command": "savedsearch",
-            "search_mode": "smart",
             "query": format_1,
+            "command": "savedsearch",
             "start_time": "-60m",
+            "search_mode": "smart",
         })
 
     ################################################################################
@@ -208,9 +210,9 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     for container_artifact_item in container_artifact_data:
         if container_artifact_item[0] is not None:
             parameters.append({
-                "event_ids": container_artifact_item[0],
                 "status": "in progress",
                 "comment": format_3,
+                "event_ids": container_artifact_item[0],
                 "context": {'artifact_id': container_artifact_item[1]},
             })
 
