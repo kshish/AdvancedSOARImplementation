@@ -1,0 +1,41 @@
+{
+    "create_time": "2025-06-27T17:08:52.169915+00:00",
+    "custom_function_id": "9395867763e907a1aa74e9642406de079ae0836b",
+    "description": "This is a comment in the code",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "description": "Map some IP address into here",
+            "input_type": "list",
+            "name": "my_ip_used_for_something",
+            "placeholder": "111.22.33.44"
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "list",
+            "name": "myString",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "data_path": "some_ip",
+            "description": "This is an ip output"
+        },
+        {
+            "contains_type": [],
+            "data_path": "myOutputString",
+            "description": ""
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.2.2.123",
+    "python_version": "3"
+}
