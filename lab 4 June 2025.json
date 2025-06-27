@@ -42,29 +42,43 @@
                     "targetPort": "6_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_4_to_port_7",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
-                    "targetNode": "7",
-                    "targetPort": "7_in"
-                },
-                {
                     "id": "port_7_to_port_8",
                     "sourceNode": "7",
                     "sourcePort": "7_out",
                     "targetNode": "8",
                     "targetPort": "8_in"
+                },
+                {
+                    "id": "port_0_to_port_9",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_4_to_port_10",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
+                },
+                {
+                    "id": "port_10_to_port_7",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "74a5762e54c3e7d9ac1b36c3f5ca70f0c1e6e30a",
+            "hash": "292c329b18b7586be7d711dfdff5002ca07d0d22",
             "nodes": {
                 "0": {
-                    "customCode": "@phantom.playbook_block()\ndef on_start(container):\n    phantom.debug('on_start() called')\n\n    phantom.debug('Chris was here')\n    phantom.debug(container)\n    # call 'format_1' block\n    format_1(container=container)\n\n    return",
+                    "customCode": null,
                     "data": {
                         "advanced": {
                             "join": []
@@ -78,7 +92,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999998
+                    "y": 100
                 },
                 "1": {
                     "data": {
@@ -96,13 +110,43 @@
                     "x": 1000,
                     "y": 1500
                 },
-                "2": {
+                "10": {
                     "data": {
                         "advanced": {
                             "join": []
                         },
                         "functionId": 1,
-                        "functionName": "format_1",
+                        "functionName": "code_1",
+                        "id": "10",
+                        "inputParameters": [
+                            "container:label",
+                            "artifact:*.cef.destination",
+                            "run_query_1:action_result.data",
+                            "run_query_1:action_result.data.*.count"
+                        ],
+                        "outputVariables": [
+                            "my_output_var"
+                        ],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "code",
+                    "userCode": "    code_1__my_output_var = label_value\n    # Write your custom code here...\n\n",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1100
+                },
+                "2": {
+                    "customCode": null,
+                    "data": {
+                        "advanced": {
+                            "customName": "format  query",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "format_query",
                         "id": "2",
                         "parameters": [
                             "artifact:*.cef.destination"
@@ -113,6 +157,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "format",
+                    "userCode": "    phantom.debug(parameters)\n    # Write your custom code here...\n\n",
                     "warnings": {},
                     "x": 979.5,
                     "y": 564.5
@@ -144,7 +189,7 @@
                         },
                         "parameters": {
                             "command": "savedsearch",
-                            "query": "format_1:formatted_data",
+                            "query": "format_query:formatted_data",
                             "search_mode": "smart",
                             "start_time": "-60m"
                         },
@@ -346,17 +391,18 @@
                         "parameters": [
                             "run_query_1:action_result.data.*.peer",
                             "run_query_1:action_result.data.*.priority",
-                            "run_query_1:action_result.data.*.count"
+                            "run_query_1:action_result.data.*.count",
+                            "code_1:custom_function:my_output_var"
                         ],
-                        "template": "%%\nPeer: {0} with priority{1} communicated {2} times\n%%\n",
+                        "template": "%%\nPeer: {0} with priority{1} communicated {2} times\n{3}\n%%\n",
                         "type": "format"
                     },
                     "errors": {},
                     "id": "7",
                     "type": "format",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1184.5
+                    "x": 980,
+                    "y": 1200
                 },
                 "8": {
                     "data": {
@@ -402,6 +448,77 @@
                     "warnings": {},
                     "x": 980,
                     "y": 1344.5
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "add_comment_2",
+                        "id": "9",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "chris was here too"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 1360,
+                    "y": 624.5
                 }
             },
             "notes": ""
@@ -414,7 +531,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-06-27T16:11:28.342918+00:00",
+    "create_time": "2025-06-27T16:24:56.405501+00:00",
     "draft_mode": false,
     "labels": [
         "migrated_malware",

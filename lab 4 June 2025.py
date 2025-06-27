@@ -12,16 +12,16 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    phantom.debug('Chris was here')
-    phantom.debug(container)
-    # call 'format_1' block
-    format_1(container=container)
+    # call 'format_query' block
+    format_query(container=container)
+    # call 'add_comment_2' block
+    add_comment_2(container=container)
 
     return
 
 @phantom.playbook_block()
-def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("format_1() called")
+def format_query(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_query() called")
 
     template = """find_peers server=\"{0}\"\n"""
 
@@ -33,14 +33,14 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     ################################################################################
     ## Custom Code Start
     ################################################################################
-
+    phantom.debug(parameters)
     # Write your custom code here...
 
     ################################################################################
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_1")
+    phantom.format(container=container, template=template, parameters=parameters, name="format_query")
 
     run_query_1(container=container)
 
@@ -53,13 +53,13 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    format_1 = phantom.get_format_data(name="format_1")
+    format_query = phantom.get_format_data(name="format_query")
 
     parameters = []
 
-    if format_1 is not None:
+    if format_query is not None:
         parameters.append({
-            "query": format_1,
+            "query": format_query,
             "command": "savedsearch",
             "start_time": "-60m",
             "search_mode": "smart",
@@ -110,7 +110,7 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        format_3(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        code_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     return
 
@@ -169,13 +169,14 @@ def add_comment_1(action=None, success=None, container=None, results=None, handl
 def format_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_3() called")
 
-    template = """%%\nPeer: {0} with priority{1} communicated {2} times\n%%\n"""
+    template = """%%\nPeer: {0} with priority{1} communicated {2} times\n{3}\n%%\n"""
 
     # parameter list for template variable replacement
     parameters = [
         "run_query_1:action_result.data.*.peer",
         "run_query_1:action_result.data.*.priority",
-        "run_query_1:action_result.data.*.count"
+        "run_query_1:action_result.data.*.count",
+        "code_1:custom_function:my_output_var"
     ]
 
     ################################################################################
@@ -227,6 +228,56 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     ################################################################################
 
     phantom.act("update event", parameters=parameters, name="update_event_1", assets=["mysplunk"])
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("add_comment_2() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment="chris was here too")
+
+    return
+
+
+@phantom.playbook_block()
+def code_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("code_1() called")
+
+    label_value = container.get("label", None)
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.destination"])
+    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.data","run_query_1:action_result.data.*.count"], action_results=results)
+
+    container_artifact_cef_item_0 = [item[0] for item in container_artifact_data]
+    run_query_1_result_item_0 = [item[0] for item in run_query_1_result_data]
+    run_query_1_result_item_1 = [item[1] for item in run_query_1_result_data]
+
+    code_1__my_output_var = None
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+    code_1__my_output_var = label_value
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.save_run_data(key="code_1:my_output_var", value=json.dumps(code_1__my_output_var))
+
+    format_3(container=container)
 
     return
 
