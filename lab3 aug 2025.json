@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "d3a0d1ada885439af6a0f6447494d85045f06738",
+            "hash": "e9351ad892dff6a85733c7cff43d32a1b4c7775e",
             "nodes": {
                 "0": {
                     "data": {
@@ -246,7 +246,12 @@
                         "utilityType": "api",
                         "values": {
                             "comment": {
-                                "comment": null
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "format_2:formatted_data"
                             }
                         }
                     },
@@ -301,7 +306,7 @@
                     "type": "action",
                     "warnings": {},
                     "x": 980,
-                    "y": 1184.5
+                    "y": 1180
                 }
             },
             "notes": ""
@@ -314,7 +319,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-08-26T20:15:32.957549+00:00",
+    "create_time": "2025-08-26T20:22:19.058372+00:00",
     "draft_mode": false,
     "labels": [
         "malware"

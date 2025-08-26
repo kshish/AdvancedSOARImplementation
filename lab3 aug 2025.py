@@ -112,6 +112,8 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
 def add_comment_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("add_comment_1() called")
 
+    format_2 = phantom.get_format_data(name="format_2")
+
     ################################################################################
     ## Custom Code Start
     ################################################################################
@@ -122,7 +124,7 @@ def add_comment_1(action=None, success=None, container=None, results=None, handl
     ## Custom Code End
     ################################################################################
 
-    phantom.comment()
+    phantom.comment(container=container, comment=format_2)
 
     return
 
