@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "34d253e13403a56e6a6d0bbaa764a5aee9e3b548",
+            "hash": "807e5b50fb693ef97e24ddd38e41f3728872e7da",
             "nodes": {
                 "0": {
                     "data": {
@@ -58,7 +58,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999864
+                    "y": 419.9999999999985
                 },
                 "1": {
                     "data": {
@@ -106,7 +106,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "my soar http app"
+                            "instrsoar"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -258,7 +258,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.123"
     },
-    "create_time": "2025-06-27T19:46:59.578122+00:00",
+    "create_time": "2025-08-27T19:46:59.781463+00:00",
     "draft_mode": false,
     "labels": [
         "*"
