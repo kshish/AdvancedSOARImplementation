@@ -1,0 +1,41 @@
+{
+    "create_time": "2025-08-27T17:27:38.994015+00:00",
+    "custom_function_id": "73877a598e10305597a5e0199c227d1e451a9ec3",
+    "description": "this i s demo of a custom function",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "description": "Provide one or more IPs",
+            "input_type": "list",
+            "name": "ip",
+            "placeholder": "111.22.33.44"
+        },
+        {
+            "contains_type": [],
+            "description": "",
+            "input_type": "list",
+            "name": "container_name",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [
+                "ip"
+            ],
+            "data_path": "outip",
+            "description": "This is the result of the cf doing something"
+        },
+        {
+            "contains_type": [],
+            "data_path": "outcontainer",
+            "description": ""
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "6.2.2.123",
+    "python_version": "3"
+}
