@@ -18,7 +18,7 @@ def cf_demo_2025_aug(ip=None, container_name=None, **kwargs):
     
     # Write your custom code here...
     someip=ip
-    outcontainer=container_name
+    outcontainer=container_name.upper()
     
     outputs = {"outip":someip, "outcontainer": outcontainer}
     # Return a JSON-serializable object
