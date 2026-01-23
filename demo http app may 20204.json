@@ -35,7 +35,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "db90b9369f9f54cd21691d78ff5fe2e0dc5f982c",
+            "hash": "60e836d2fd239cedd4d9f2cb0ea3a7f393ad1ea9",
             "nodes": {
                 "0": {
                     "data": {
@@ -78,7 +78,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "my soar instance"
+                            "instructorssoar"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -142,7 +142,7 @@
                     "type": "format",
                     "warnings": {},
                     "x": 960,
-                    "y": 864.5
+                    "y": 860
                 },
                 "4": {
                     "data": {
@@ -155,6 +155,7 @@
                         },
                         "functionId": 1,
                         "functionName": "prompt_1",
+                        "hasExternalApprover": false,
                         "id": "4",
                         "message": "{0}",
                         "parameters": [
@@ -162,6 +163,8 @@
                         ],
                         "responseTime": 30,
                         "responses": [],
+                        "samlEnabled": false,
+                        "samlGroupsAllowed": [],
                         "type": "prompt"
                     },
                     "errors": {},
@@ -354,12 +357,13 @@
         },
         "input_spec": null,
         "output_spec": null,
+        "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3",
-        "schema": "5.0.11",
-        "version": "6.2.0.355"
+        "python_version": "3.9",
+        "schema": "5.0.22",
+        "version": "7.0.0.198"
     },
-    "create_time": "2024-05-31T18:59:55.188091+00:00",
+    "create_time": "2026-01-23T20:22:44.384992+00:00",
     "draft_mode": false,
     "labels": [
         "*"

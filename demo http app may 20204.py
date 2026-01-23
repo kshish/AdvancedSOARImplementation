@@ -39,7 +39,7 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["my soar instance"], callback=get_data_1_callback)
+    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["instructorssoar"], callback=get_data_1_callback)
 
     return
 
@@ -89,7 +89,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("prompt_1() called")
 
-    # set user and message variables for phantom.prompt call
+    # set approver and message variables for phantom.prompt call
 
     user = None
     role = "Administrator"
