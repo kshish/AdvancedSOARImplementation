@@ -70,7 +70,7 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["instrsoar"], callback=format_2)
+    phantom.act("get data", parameters=parameters, name="get_data_1", assets=["instructorssoar"], callback=format_2)
 
     return
 
@@ -79,7 +79,7 @@ def get_data_1(action=None, success=None, container=None, results=None, handle=N
 def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("prompt_1() called")
 
-    # set user and message variables for phantom.prompt call
+    # set approver and message variables for phantom.prompt call
 
     user = None
     role = "Administrator"
@@ -94,6 +94,7 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
             "prompt": "What type of CEF fields would you like to see",
             "options": {
                 "type": "list",
+                "required": True,
                 "choices": [
                     "custom",
                     "default"
@@ -140,7 +141,7 @@ def format_2(action=None, success=None, container=None, results=None, handle=Non
 def prompt_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("prompt_2() called")
 
-    # set user and message variables for phantom.prompt call
+    # set approver and message variables for phantom.prompt call
 
     user = None
     role = "Administrator"

@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "807e5b50fb693ef97e24ddd38e41f3728872e7da",
+            "hash": "5544e98a9227501fee05ff647172c6bc7f106250",
             "nodes": {
                 "0": {
                     "data": {
@@ -58,7 +58,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999985
+                    "y": 419.9999999999984
                 },
                 "1": {
                     "data": {
@@ -106,7 +106,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "instrsoar"
+                            "instructorssoar"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -151,12 +151,14 @@
                         },
                         "functionId": 1,
                         "functionName": "prompt_1",
+                        "hasExternalApprover": false,
                         "id": "4",
                         "message": "Hi.",
                         "parameters": [],
                         "responseTime": 30,
                         "responses": [
                             {
+                                "required": true,
                                 "responseOptions": [
                                     "custom",
                                     "default"
@@ -165,6 +167,8 @@
                                 "responseType": "customList"
                             }
                         ],
+                        "samlEnabled": false,
+                        "samlGroupsAllowed": [],
                         "type": "prompt"
                     },
                     "errors": {},
@@ -231,6 +235,7 @@
                         },
                         "functionId": 2,
                         "functionName": "prompt_2",
+                        "hasExternalApprover": false,
                         "id": "6",
                         "message": "{0}",
                         "parameters": [
@@ -238,6 +243,8 @@
                         ],
                         "responseTime": 30,
                         "responses": [],
+                        "samlEnabled": false,
+                        "samlGroupsAllowed": [],
                         "type": "prompt"
                     },
                     "errors": {},
@@ -254,11 +261,11 @@
         "output_spec": null,
         "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3",
-        "schema": "5.0.12",
-        "version": "6.2.2.123"
+        "python_version": "3.9",
+        "schema": "5.0.22",
+        "version": "7.0.0.198"
     },
-    "create_time": "2025-08-27T19:46:59.781463+00:00",
+    "create_time": "2026-01-23T20:31:31.936541+00:00",
     "draft_mode": false,
     "labels": [
         "*"
