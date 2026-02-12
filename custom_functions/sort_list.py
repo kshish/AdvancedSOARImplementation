@@ -16,9 +16,9 @@ def sort_list(unsorted_list=None, **kwargs):
 
 
 # Default to ascending
-    sorted_list= sorted(unsorted_list, reverse=False)
+    sorted_list=sorted(unsorted_list, reverse=False)
     
-    outputs = {"sorted_list": sorted_list }
+    outputs={"sorted_list": sorted_list }
     
     # Write your custom code here...
     
