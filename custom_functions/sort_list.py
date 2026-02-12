@@ -1,10 +1,9 @@
-def sort_list(unsorted_list=None, sort_order=None, **kwargs):
+def sort_list(unsorted_list=None, **kwargs):
     """
     Sort a list
     
     Args:
         unsorted_list
-        sort_order: ascending or descending sort order
     
     Returns a JSON-serializable object that implements the configured data paths:
         sorted_list
@@ -16,12 +15,9 @@ def sort_list(unsorted_list=None, sort_order=None, **kwargs):
 
 
 
-# Only check for "d" for descending
 # Default to ascending
-
     sorted_list= sorted(unsorted_list, reverse=False)
-        
-        
+    
     outputs = {"sorted_list": sorted_list }
     
     # Write your custom code here...

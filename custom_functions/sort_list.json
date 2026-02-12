@@ -1,5 +1,5 @@
 {
-    "create_time": "2026-02-12T18:54:12.565366+00:00",
+    "create_time": "2026-02-12T18:55:23.623876+00:00",
     "custom_function_id": "68886b954000bf282bebf98daa392a7f0440e087",
     "description": "Sort a list",
     "draft_mode": false,
@@ -10,13 +10,6 @@
             "input_type": "item",
             "name": "unsorted_list",
             "placeholder": ""
-        },
-        {
-            "contains_type": [],
-            "description": "ascending or descending sort order",
-            "input_type": "item",
-            "name": "sort_order",
-            "placeholder": "a or d"
         }
     ],
     "outputs": [
