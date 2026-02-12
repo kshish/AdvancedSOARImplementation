@@ -1,0 +1,171 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "",
+            "edges": [
+                {
+                    "id": "port_0_to_port_5",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_5_to_port_3",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                }
+            ],
+            "hash": "1bf02c769c3f47073ffa1891a3509be90d9dbd13",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 419.99999999999983
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "warnings": {},
+                    "x": 1000,
+                    "y": 1000
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_1",
+                        "id": "3",
+                        "message": "Here's the unsorted list:\n\n{0}\n\nHere's the sorted list:\n\n{1",
+                        "parameters": [
+                            "artifact:*.cef.destinationAddress",
+                            "sort_list_3:custom_function_result.data.sorted_list"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 844.5
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "sort_list",
+                            "repoName": "asi"
+                        },
+                        "functionId": 3,
+                        "functionName": "sort_list_3",
+                        "id": "5",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "sort_list": {
+                                "description": "Sort a list",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "",
+                                        "inputType": "item",
+                                        "label": "unsorted_list",
+                                        "name": "unsorted_list",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "ascending or descending sort order",
+                                        "inputType": "item",
+                                        "label": "sort_order",
+                                        "name": "sort_order",
+                                        "placeholder": "a or d",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "sort_list",
+                                "name": "sort_list"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "sort_list": {
+                                "sort_order": "a",
+                                "unsorted_list": "artifact:*.cef.destinationAddress"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 664.5
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_trigger": "artifact_created",
+        "playbook_type": "automation",
+        "python_version": "3.9",
+        "schema": "5.0.20",
+        "version": "6.4.1.361"
+    },
+    "create_time": "2026-02-12T18:46:48.867705+00:00",
+    "draft_mode": false,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
