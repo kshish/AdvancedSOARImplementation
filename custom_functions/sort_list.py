@@ -1,9 +1,10 @@
-def sort_list(unsorted_list=None, **kwargs):
+def sort_list(unsorted_list=None, sort_order=None, **kwargs):
     """
     Sort a list
     
     Args:
         unsorted_list
+        sort_order: ascending or descending sort order
     
     Returns a JSON-serializable object that implements the configured data paths:
         sorted_list
@@ -11,13 +12,18 @@ def sort_list(unsorted_list=None, **kwargs):
     ############################ Custom Code Goes Below This Line #################################
     import json
     import phantom.rules as phantom
-    sorted_list=unsorted_list
 
 
 
+
+# Only check for "d" for descending
 # Default to ascending
-    sorted_list= sorted(unsorted_list, reverse=False)
-    
+    if sort_order[0].lower() == "d":
+        sorted_list= sorted(unsorted_list, reverse=True)
+    else:
+        sorted_list= sorted(unsorted_list, reverse=False)
+        
+        
     outputs = {"sorted_list": sorted_list }
     
     # Write your custom code here...
