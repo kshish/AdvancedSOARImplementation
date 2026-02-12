@@ -14,14 +14,14 @@
                     "targetPort": "5_in"
                 },
                 {
-                    "id": "port_5_to_port_3",
+                    "id": "port_5_to_port_6",
                     "sourceNode": "5",
                     "sourcePort": "5_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
+                    "targetNode": "6",
+                    "targetPort": "6_in"
                 }
             ],
-            "hash": "1bf02c769c3f47073ffa1891a3509be90d9dbd13",
+            "hash": "8c56b890f2a5b988e6ede3d26a9554125b51f602",
             "nodes": {
                 "0": {
                     "data": {
@@ -54,34 +54,6 @@
                     "warnings": {},
                     "x": 1000,
                     "y": 1000
-                },
-                "3": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "approver": {
-                            "type": "role",
-                            "value": "Administrator"
-                        },
-                        "functionId": 1,
-                        "functionName": "prompt_1",
-                        "id": "3",
-                        "message": "Here's the unsorted list:\n\n{0}\n\nHere's the sorted list:\n\n{1",
-                        "parameters": [
-                            "artifact:*.cef.destinationAddress",
-                            "sort_list_3:custom_function_result.data.sorted_list"
-                        ],
-                        "responseTime": 30,
-                        "responses": [],
-                        "type": "prompt"
-                    },
-                    "errors": {},
-                    "id": "3",
-                    "type": "prompt",
-                    "warnings": {},
-                    "x": 980,
-                    "y": 844.5
                 },
                 "5": {
                     "data": {
@@ -150,6 +122,34 @@
                     "warnings": {},
                     "x": 980,
                     "y": 664.5
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Administrator"
+                        },
+                        "functionId": 2,
+                        "functionName": "prompt_2",
+                        "id": "6",
+                        "message": "Here's the unsorted list:\n\n{0}\n\nHere's the sorted list: \n\n{1}",
+                        "parameters": [
+                            "artifact:*.cef.destinationAddress",
+                            "sort_list_3:custom_function_result.data.sorted_list"
+                        ],
+                        "responseTime": 30,
+                        "responses": [],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 990,
+                    "y": 824.5
                 }
             },
             "notes": ""
@@ -162,7 +162,7 @@
         "schema": "5.0.20",
         "version": "6.4.1.361"
     },
-    "create_time": "2026-02-12T18:46:48.867705+00:00",
+    "create_time": "2026-02-12T18:48:31.575407+00:00",
     "draft_mode": false,
     "labels": [
         "*"

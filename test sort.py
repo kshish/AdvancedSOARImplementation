@@ -18,27 +18,6 @@ def on_start(container):
     return
 
 @phantom.playbook_block()
-def prompt_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("prompt_1() called")
-
-    # set approver and message variables for phantom.prompt call
-
-    user = None
-    role = "Administrator"
-    message = """Here's the unsorted list:\n\n{0}\n\nHere's the sorted list:\n\n{1"""
-
-    # parameter list for template variable replacement
-    parameters = [
-        "artifact:*.cef.destinationAddress",
-        "sort_list_3:custom_function_result.data.sorted_list"
-    ]
-
-    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_1", parameters=parameters)
-
-    return
-
-
-@phantom.playbook_block()
 def sort_list_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("sort_list_3() called")
 
@@ -63,7 +42,28 @@ def sort_list_3(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="asi/sort_list", parameters=parameters, name="sort_list_3", callback=prompt_1)
+    phantom.custom_function(custom_function="asi/sort_list", parameters=parameters, name="sort_list_3", callback=prompt_2)
+
+    return
+
+
+@phantom.playbook_block()
+def prompt_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("prompt_2() called")
+
+    # set approver and message variables for phantom.prompt call
+
+    user = None
+    role = "Administrator"
+    message = """Here's the unsorted list:\n\n{0}\n\nHere's the sorted list: \n\n{1}"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "artifact:*.cef.destinationAddress",
+        "sort_list_3:custom_function_result.data.sorted_list"
+    ]
+
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_2", parameters=parameters)
 
     return
 
