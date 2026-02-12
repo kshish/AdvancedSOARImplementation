@@ -18,7 +18,7 @@ def sort_list(unsorted_list=None, sort_order=None, **kwargs):
 
 # Only check for "d" for descending
 # Default to ascending
-    if sort_order[0].lower() == "d":
+    if sort_order == "d":
         sorted_list= sorted(unsorted_list, reverse=True)
     else:
         sorted_list= sorted(unsorted_list, reverse=False)
