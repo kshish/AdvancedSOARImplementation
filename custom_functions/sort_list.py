@@ -12,7 +12,7 @@ def sort_list(unsorted_list=None, sort_order=None, **kwargs):
     ############################ Custom Code Goes Below This Line #################################
     import json
     import phantom.rules as phantom
-
+    sorted_list=unsorted_list
 
 
 
