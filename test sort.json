@@ -7,21 +7,21 @@
             "description": "",
             "edges": [
                 {
-                    "id": "port_0_to_port_5",
+                    "id": "port_0_to_port_7",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 },
                 {
-                    "id": "port_5_to_port_6",
-                    "sourceNode": "5",
-                    "sourcePort": "5_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
+                    "id": "port_7_to_port_8",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
                 }
             ],
-            "hash": "8c56b890f2a5b988e6ede3d26a9554125b51f602",
+            "hash": "6d8355a14583347662e62cda2cd6e65810830292",
             "nodes": {
                 "0": {
                     "data": {
@@ -55,7 +55,7 @@
                     "x": 1000,
                     "y": 1000
                 },
-                "5": {
+                "7": {
                     "data": {
                         "advanced": {
                             "join": []
@@ -65,9 +65,9 @@
                             "name": "sort_list",
                             "repoName": "asi"
                         },
-                        "functionId": 3,
-                        "functionName": "sort_list_3",
-                        "id": "5",
+                        "functionId": 4,
+                        "functionName": "sort_list_4",
+                        "id": "7",
                         "loop": {
                             "enabled": false,
                             "exitAfterUnit": "m",
@@ -92,16 +92,6 @@
                                         "placeholder": "",
                                         "renderType": "datapath",
                                         "required": false
-                                    },
-                                    {
-                                        "dataTypes": [],
-                                        "description": "ascending or descending sort order",
-                                        "inputType": "item",
-                                        "label": "sort_order",
-                                        "name": "sort_order",
-                                        "placeholder": "a or d",
-                                        "renderType": "datapath",
-                                        "required": false
                                     }
                                 ],
                                 "label": "sort_list",
@@ -111,19 +101,18 @@
                         "utilityType": "custom_function",
                         "values": {
                             "sort_list": {
-                                "sort_order": "a",
                                 "unsorted_list": "artifact:*.cef.destinationAddress"
                             }
                         }
                     },
                     "errors": {},
-                    "id": "5",
+                    "id": "7",
                     "type": "utility",
                     "warnings": {},
                     "x": 980,
-                    "y": 664.5
+                    "y": 644.5
                 },
-                "6": {
+                "8": {
                     "data": {
                         "advanced": {
                             "join": []
@@ -132,24 +121,24 @@
                             "type": "role",
                             "value": "Administrator"
                         },
-                        "functionId": 2,
-                        "functionName": "prompt_2",
-                        "id": "6",
-                        "message": "Here's the unsorted list:\n\n{0}\n\nHere's the sorted list: \n\n{1}",
+                        "functionId": 3,
+                        "functionName": "prompt_3",
+                        "id": "8",
+                        "message": "Unsorted:\n\n{0}\n\nSorted:\n\n{1}",
                         "parameters": [
                             "artifact:*.cef.destinationAddress",
-                            "sort_list_3:custom_function_result.data.sorted_list"
+                            "sort_list_4:custom_function_result.data.sorted_list"
                         ],
                         "responseTime": 30,
                         "responses": [],
                         "type": "prompt"
                     },
                     "errors": {},
-                    "id": "6",
+                    "id": "8",
                     "type": "prompt",
                     "warnings": {},
-                    "x": 990,
-                    "y": 824.5
+                    "x": 980,
+                    "y": 784.5
                 }
             },
             "notes": ""
@@ -162,7 +151,7 @@
         "schema": "5.0.20",
         "version": "6.4.1.361"
     },
-    "create_time": "2026-02-12T18:48:31.575407+00:00",
+    "create_time": "2026-02-12T18:57:12.510906+00:00",
     "draft_mode": false,
     "labels": [
         "*"
