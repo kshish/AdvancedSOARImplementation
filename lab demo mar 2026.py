@@ -47,7 +47,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.act("run query", parameters=parameters, name="run_query_1", assets=["instructor splunk"])
+    phantom.act("run query", parameters=parameters, name="run_query_1", assets=["instructor splunk"], callback=format_2)
 
     return
 
@@ -56,7 +56,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_1() called")
 
-    template = """index=* dest=\"{0}\" | head 100"""
+    template = """index=* dest=\"{0}\" | head 100 """
 
     # parameter list for template variable replacement
     parameters = [
@@ -76,6 +76,57 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     phantom.format(container=container, template=template, parameters=parameters, name="format_1")
 
     run_query_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_2() called")
+
+    template = """Source: {0} User: {1} Using Application: {2}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "run_query_1:action_result.data.*.src",
+        "run_query_1:action_result.data.*.user",
+        "run_query_1:action_result.data.*.src_app"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_2")
+
+    add_comment_1(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("add_comment_1() called")
+
+    format_2 = phantom.get_format_data(name="format_2")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment=format_2)
 
     return
 
