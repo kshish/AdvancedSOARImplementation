@@ -56,7 +56,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_1() called")
 
-    template = """index=* dest=\"{0}\""""
+    template = """index=* dest=\"{0}\" | head 100"""
 
     # parameter list for template variable replacement
     parameters = [

@@ -21,7 +21,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "b7f7b08897ef81591561ce524d9b33ed95fddbd0",
+            "hash": "8842fb1ee53ea616f8b0278d45a7277d10ba6f38",
             "nodes": {
                 "0": {
                     "data": {
@@ -114,7 +114,7 @@
                         "parameters": [
                             "artifact:*.cef.sourceAddress"
                         ],
-                        "template": "index=* dest=\"{0}\"",
+                        "template": "index=* dest=\"{0}\" | head 100",
                         "type": "format"
                     },
                     "errors": {},
@@ -135,7 +135,7 @@
         "schema": "5.0.22",
         "version": "7.0.0.198"
     },
-    "create_time": "2026-03-11T18:04:21.038999+00:00",
+    "create_time": "2026-03-11T18:05:20.098579+00:00",
     "draft_mode": false,
     "labels": [
         "splunk"
