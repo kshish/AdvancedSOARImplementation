@@ -84,7 +84,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 def format_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_2() called")
 
-    template = """Source: {0} User: {1} Using Application: {2}\n"""
+    template = """%%\nSource: {0} User: {1} Using Application: {2}\n%%"""
 
     # parameter list for template variable replacement
     parameters = [
