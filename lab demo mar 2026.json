@@ -21,7 +21,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "8842fb1ee53ea616f8b0278d45a7277d10ba6f38",
+            "hash": "32825da742e6fcd00a054d023d433b1bb0fe78ae",
             "nodes": {
                 "0": {
                     "data": {
@@ -86,7 +86,7 @@
                             "end_time": "now",
                             "query": "format_1:formatted_data",
                             "search_mode": "smart",
-                            "start_time": "-1h"
+                            "start_time": "-10m"
                         },
                         "requiredParameters": [
                             {
@@ -135,7 +135,7 @@
         "schema": "5.0.22",
         "version": "7.0.0.198"
     },
-    "create_time": "2026-03-11T18:05:20.098579+00:00",
+    "create_time": "2026-03-11T18:05:38.264213+00:00",
     "draft_mode": false,
     "labels": [
         "splunk"

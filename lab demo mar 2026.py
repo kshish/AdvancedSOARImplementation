@@ -33,7 +33,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
             "search_mode": "smart",
             "add_raw_field": True,
             "query": format_1,
-            "start_time": "-1h",
+            "start_time": "-10m",
             "end_time": "now",
         })
 
