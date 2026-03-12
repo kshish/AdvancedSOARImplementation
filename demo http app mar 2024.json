@@ -42,7 +42,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "5544e98a9227501fee05ff647172c6bc7f106250",
+            "hash": "ac5b92fe2547b29308723cc59896f2e21d68038b",
             "nodes": {
                 "0": {
                     "data": {
@@ -58,7 +58,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999984
+                    "y": 419.99999999999835
                 },
                 "1": {
                     "data": {
@@ -106,7 +106,7 @@
                         },
                         "connector": "HTTP",
                         "connectorConfigs": [
-                            "instructorssoar"
+                            "instructorsoar"
                         ],
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
@@ -265,7 +265,7 @@
         "schema": "5.0.22",
         "version": "7.0.0.198"
     },
-    "create_time": "2026-01-23T20:31:31.936541+00:00",
+    "create_time": "2026-03-12T18:48:01.472601+00:00",
     "draft_mode": false,
     "labels": [
         "*"
