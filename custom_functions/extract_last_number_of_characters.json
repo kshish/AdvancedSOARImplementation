@@ -1,0 +1,32 @@
+{
+    "create_time": "2026-05-01T17:43:52.824545+00:00",
+    "custom_function_id": "5f08bc62189232737d7c4c42c9a81dd1eb280123",
+    "description": "This is a cf that extracts number of remaining characters from a string",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "Provide the string whose last number of characters you want to extract",
+            "input_type": "item",
+            "name": "some_string",
+            "placeholder": "some string value"
+        },
+        {
+            "contains_type": [],
+            "description": "blah blhah dsfgqasasdfasf",
+            "input_type": "item",
+            "name": "number_of_characters",
+            "placeholder": "3 - will extract the last 3 characters from string"
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "string_output",
+            "description": "the last bunch of characters from string input"
+        }
+    ],
+    "outputs_type": "item",
+    "platform_version": "7.0.0.198",
+    "python_version": "3.13"
+}
